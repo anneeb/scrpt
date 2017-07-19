@@ -19,20 +19,16 @@ As a writer, I want:
 ## Entity Relationship Diagram
 
 ![erd](./public/erd.jpeg)
-Entity Relationship Diagram
 
 ## Wireframes
 
 ![wireframes](./public/wireframe_all.jpeg)
-Wireframess
 
 
 ![wireframes](./public/wireframe_1.jpeg)
-"/" and "/scripts/cuid" with modals
 
 
 ![wireframes](./public/wireframe_2.jpeg)
-"/scripts/cuid/edit", "/scripts/cuid/versions" and "/scripts/cuid/reports"
 
 
 ## Frameworks and Libraries
