@@ -1,1 +1,116 @@
-# scrpt
+# _scrpt_
+
+## User Story
+
+As a reader, I want:
+
+* To view a script when provided with a url
+* To filter the script by act(s), scene(s), or character(s)
+* To see old versions of the script and compare them to the current version
+
+As a writer, I want:
+
+* To create a script that can be viewed by anyone with the  url, but can only be edited if they have the password
+* To write scripts without having to worry about styling, so that I can focus on the content rather than formatting
+* To simultaneously work on one document with other collaborators
+* To be able to revert back to older versions of the script
+
+
+## Entity Relationship Diagram
+
+![erd](./public/erd.jpeg)
+Entity Relationship Diagram
+
+## Wireframes
+
+![wireframes](./public/wireframe_all.jpeg)
+Wireframess
+
+
+![wireframes](./public/wireframe_1.jpeg)
+"/" and "/scripts/cuid" with modals
+
+
+![wireframes](./public/wireframe_2.jpeg)
+"/scripts/cuid/edit", "/scripts/cuid/versions" and "/scripts/cuid/reports"
+
+
+## Frameworks and Libraries
+
+#### Client
+
+* React
+  * React DOM
+  * React Router DOM
+  * React Semantic UI
+  * DraftJS
+* Redux
+  * React-Redux
+* Reactive javascript
+* WebSocket
+
+#### Server
+
+* Ruby on Rails
+* PostgreSQL
+* CUID
+
+## Store State
+
+```javascript
+state = {
+  auth: {
+    isLoggedIn: boolean
+    name: string
+  },
+  script = {
+    id: integer,
+    cuid: string,
+    title: string,
+    versions: [
+      {
+        id: integer,
+        editors: [
+          {
+            name: string
+          }
+        ],
+        characters: [
+          {
+            name: string,
+            description: text
+          }
+        ],
+        acts: [
+          {
+            id: integer,
+            title: string,
+            index: float,
+            scenes: [
+              {
+                id: integer,
+                title: string,
+                index: float,
+                actions: [
+                  {
+                    id: integer,
+                    type: string,
+                    body: text,
+                    index: float,
+                    characters: [
+                      {
+                        id: integer,
+                        name: string
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
