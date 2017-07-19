@@ -63,6 +63,7 @@ state = {
     id: integer,
     cuid: string,
     title: string,
+    editor: {editorState},
     versions: [
       {
         id: integer,
