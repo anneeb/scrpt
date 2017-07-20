@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
-import NavBar from '../containers/NavBar'
+import { Switch, Route } from 'react-router-dom'
 import HomeContainer from '../containers/HomeContainer'
-import ScriptContainer from '../containers/ScriptContainer'
+import ScriptsContainer from '../containers/ScriptsContainer'
 
 class AppRouter extends Component {
   render() {
     return (
-      <div>
-        <Route path='/' render={(props) => <NavBar {...props} />} />
+      <Switch>
         <Route exact path='/' component={HomeContainer} />
-        <Route exact path='/scripts/:cuid' render={(props) => <ScriptContainer {...props} />} />
-      </div>
+        <Route path='/scripts/:cuid' render={(props) => <ScriptsContainer {...props} />} />
+      </Switch>
     );
   }
 }
