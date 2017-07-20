@@ -44,6 +44,7 @@ As a writer, I want:
   * React-Redux
 * Reactive javascript
 * WebSocket
+* PDFkit or jsPDF or Generatre pdf (react)
 
 #### Server
 
