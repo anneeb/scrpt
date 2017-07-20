@@ -1,4 +1,4 @@
-class Api::V1::ScriptsController < ApplicationController
+class Api::V1::VersionsController < ApplicationController
 
   def index
   end
@@ -6,13 +6,4 @@ class Api::V1::ScriptsController < ApplicationController
   def create
   end
 
-  def show
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-  
 end
