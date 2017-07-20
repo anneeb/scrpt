@@ -1,22 +1,34 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Container, Menu } from 'semantic-ui-react'
+import { Menu, Container, Header } from 'semantic-ui-react'
 import NewScriptModal from '../containers/NewScriptModal'
+import LogInModal from '../containers/LogInModal'
 
 
 class NavBar extends Component {
 
+  renderOption = () => {
+    if (this.props.location.pathname === '/') {
+      return <NewScriptModal />
+    } else {
+      return this.props.auth.isLoggedIn ? 'Editing as: NAME' : <LogInModal />
+    }
+  }
+
   render () {
+    console.log(this.props);
     return (
       <Menu inverted>
         <Container>
           <Menu.Item as={Link} to='/'>
-            scrpt
+            <Header as='h2' inverted>
+              scrpt
+            </Header>
           </Menu.Item>
         <Menu.Menu position='right'>
           <Menu.Item>
-            {this.props.auth.isLoggedIn ? 'Editing as: NAME' : <NewScriptModal />}
+            {this.renderOption()}
           </Menu.Item>
         </Menu.Menu>
         </Container>

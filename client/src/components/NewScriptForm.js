@@ -32,7 +32,7 @@ class NewScriptForm extends Component {
           required
         />
         <Form.Input
-          label='Author'
+          label='Editor'
           name='editor'
           placeholder='your name'
           value={this.state.editor}
@@ -43,13 +43,13 @@ class NewScriptForm extends Component {
           label='Password'
           type='password'
           name='password'
-          placeholder='password'
+          placeholder='script password'
           validations={{ minLength: 6 }}
           validationErrors={{
             minLength: 'Password must be at least 6 characters',
             isDefaultRequiredValue: 'Password is required'
           }}
-          errorLabel={ <Label color='red' pointing/> }
+          errorLabel={ <Label color='red' pointing /> }
           value={this.state.password}
           onChange={this.handleChange}
           required
@@ -58,13 +58,13 @@ class NewScriptForm extends Component {
           label='Confirm Password'
           type='password'
           name='confirmPassword'
-          placeholder='password again'
+          placeholder='script password again'
           validations={{equalsField: 'password'}}
           validationErrors={{
             equalsField: 'Passwords must match',
             isDefaultRequiredValue: 'Password confirmation is required'
           }}
-          errorLabel={ <Label color='red' pointing/> }
+          errorLabel={ <Label color='red' pointing /> }
           value={this.state.confirmPassword}
           onChange={this.handleChange}
           required

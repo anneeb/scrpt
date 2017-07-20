@@ -7,7 +7,7 @@ class NewScriptModal extends Component {
     return (
       <Modal trigger={<Button color='green'>+</Button>}>
         <Modal.Header>Create a New Script</Modal.Header>
-        <Modal.Content >
+        <Modal.Content>
           <NewScriptForm />
         </Modal.Content>
       </Modal>
