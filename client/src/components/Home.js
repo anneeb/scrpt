@@ -28,7 +28,7 @@ class Home extends Component {
         </Grid.Row>
         <Grid.Row>
           <Header as='h3'>
-            or if you have a script key, enter it here:
+            or if you have a script key, paste it here:
           </Header>
         </Grid.Row>
         <Grid.Row>
