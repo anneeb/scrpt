@@ -2,7 +2,7 @@ import {
   DID_LOG_IN
 } from '../ActionTypes'
 
-export default function (state = {}, action) {
+export default function (state = {isLoggedIn: true}, action) {
   function didLogIn () {
     return {isLoggedIn: true, ...action.data}
   }

@@ -17,7 +17,6 @@ class ScriptsMenu extends Component {
   }
 
   render () {
-    console.log(this.props);
     return (
       <Menu tabular>
         <Menu.Item as={NavLink} exact to={`/scripts/${this.props.match.params.cuid}`}>

@@ -18,7 +18,7 @@ class NavBar extends Component {
 
   render () {
     return (
-      <Menu inverted style={{'border-radius': 0}}>
+      <Menu inverted style={{borderRadius: 0}}>
         <Container>
           <Menu.Item as={Link} to='/'>
             <Header as='h2' inverted>
