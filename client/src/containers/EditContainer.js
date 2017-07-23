@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import BlockStyleControls from '../components/edit/BlockStyleControls'
-import InlineStyleControls from '../components/edit/InlineStyleControls'
-import { Editor, EditorState, RichUtils} from 'draft-js'
+import EditMenu from '../containers/EditMenu'
+import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js'
 import '../../node_modules/draft-js/dist/Draft.css'
 import '../stylesheets/EditContainer.css'
 
@@ -80,33 +79,26 @@ class EditContainer extends Component {
         className += ' RichEditor-hidePlaceholder';
       }
     }
-
+    // console.log(convertToRaw(contentState: contentState)); // Editor state as JS object
     return (
       <div className="RichEditor-root">
-        <div>
-          <BlockStyleControls
+        <EditMenu
+          editorState={editorState}
+          onBlockToggle={this.toggleBlockType}
+          onInlineToggle={this.toggleInlineStyle}
+        />
+        <div className={className} onClick={this.focus}>
+          <Editor
+            blockStyleFn={this.getBlockStyle}
+            customStyleMap={this.styleMap}
             editorState={editorState}
-            onToggle={this.toggleBlockType}
+            handleKeyCommand={this.handleKeyCommand}
+            onChange={this.onChange}
+            onTab={this.onTab}
+            placeholder="Tell a story..."
+            ref="editor"
+            spellCheck={true}
           />
-          <InlineStyleControls
-            editorState={editorState}
-            onToggle={this.toggleInlineStyle}
-          />
-        </div>
-        <div>
-          <div className={className} onClick={this.focus}>
-            <Editor
-              blockStyleFn={this.getBlockStyle}
-              customStyleMap={this.styleMap}
-              editorState={editorState}
-              handleKeyCommand={this.handleKeyCommand}
-              onChange={this.onChange}
-              onTab={this.onTab}
-              placeholder="Tell a story..."
-              ref="editor"
-              spellCheck={true}
-            />
-          </div>
         </div>
       </div>
     );
