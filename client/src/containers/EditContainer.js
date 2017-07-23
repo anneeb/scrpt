@@ -5,44 +5,45 @@ import '../../node_modules/draft-js/dist/Draft.css'
 import '../stylesheets/EditContainer.css'
 
 class EditContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {editorState: EditorState.createEmpty()};
-
-    this.focus = () => this.refs.editor.focus();
-    this.onChange = (editorState) => this.setState({editorState});
-
-    this.handleKeyCommand = (command) => this._handleKeyCommand(command);
-    this.onTab = (e) => this._onTab(e);
-    this.toggleBlockType = (type) => this._toggleBlockType(type);
-    this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+  state = {
+    editorState: EditorState.createEmpty()
   }
 
-  _handleKeyCommand(command) {
-    const {editorState} = this.state;
-    const newState = RichUtils.handleKeyCommand(editorState, command);
+  focus = () => {
+    this.refs.editor.focus()
+  }
+
+  onChange = (state) => {
+    this.setState({
+      editorState: state
+    })
+  }
+
+  handleKeyCommand = (command) => {
+    const newState = RichUtils.handleKeyCommand(this.state.editorState, command)
     if (newState) {
-      this.onChange(newState);
+      this.onChange(newState)
       return true;
     }
     return false;
   }
 
-  _onTab(e) {
+  onTab = (event) => {
+    event.preventDefault()
     const maxDepth = 4;
-    this.onChange(RichUtils.onTab(e, this.state.editorState, maxDepth));
+    this.onChange(RichUtils.onTab(event, this.state.editorState, maxDepth));
   }
 
-  _toggleBlockType(blockType) {
+  toggleBlockType = (blockType) => {
     this.onChange(
       RichUtils.toggleBlockType(
         this.state.editorState,
         blockType
       )
-    );
+    )
   }
 
-  _toggleInlineStyle(inlineStyle) {
+  toggleInlineStyle = (inlineStyle) => {
     this.onChange(
       RichUtils.toggleInlineStyle(
         this.state.editorState,
@@ -52,23 +53,22 @@ class EditContainer extends Component {
   }
 
   styleMap = {
-    CODE: {
-      backgroundColor: 'rgba(0, 0, 0, 0.05)',
-      fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-      fontSize: 16,
-      padding: 2,
-    },
-  };
-
-  getBlockStyle(block) {
-    switch (block.getType()) {
-      case 'blockquote': return 'RichEditor-blockquote';
-      default: return null;
+    STRIKETHROUGH: {
+      textDecoration: 'line-through'
     }
   }
 
+  getBlockStyle = (block) => {
+    const Switch = {
+      act: 'RichEditor-act',
+      scene: 'RichEditor-scene',
+      character: 'RichEditor-character'
+    }
+    return Switch[block.getType()] || null
+  }
+
   render() {
-    const {editorState} = this.state;
+    const { editorState } = this.state;
 
     // If the user changes block type before entering any text, we can
     // either style the placeholder or hide it. Let's just hide it now.
@@ -81,24 +81,26 @@ class EditContainer extends Component {
     }
     // console.log(convertToRaw(contentState: contentState)); // Editor state as JS object
     return (
-      <div className="RichEditor-root">
+      <div className='RichEditor-root'>
         <EditMenu
           editorState={editorState}
           onBlockToggle={this.toggleBlockType}
           onInlineToggle={this.toggleInlineStyle}
         />
-        <div className={className} onClick={this.focus}>
-          <Editor
-            blockStyleFn={this.getBlockStyle}
-            customStyleMap={this.styleMap}
-            editorState={editorState}
-            handleKeyCommand={this.handleKeyCommand}
-            onChange={this.onChange}
-            onTab={this.onTab}
-            placeholder="Tell a story..."
-            ref="editor"
-            spellCheck={true}
-          />
+        <div className='RichEditor-container'>
+          <div className={className} onClick={this.focus}>
+            <Editor
+              blockStyleFn={this.getBlockStyle}
+              customStyleMap={this.styleMap}
+              editorState={editorState}
+              handleKeyCommand={this.handleKeyCommand}
+              onChange={this.onChange}
+              onTab={this.onTab}
+              placeholder="Tell a story..."
+              ref="editor"
+              spellCheck={true}
+            />
+          </div>
         </div>
       </div>
     );
