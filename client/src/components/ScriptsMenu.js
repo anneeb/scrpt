@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { Menu, Header } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 
 
 class ScriptsMenu extends Component {
