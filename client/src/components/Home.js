@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Grid, Header, Input, Button } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom'
+import { Grid, Header, Input, Form } from 'semantic-ui-react'
 
 class Home extends Component {
   state = {
-    input: ''
+    input: '',
+    redirect: false
   }
 
   handleChange = (event) => {
@@ -13,9 +14,23 @@ class Home extends Component {
     })
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.setState({
+      redirect: true
+    })
+  }
+
+  redirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to={`/scripts/${this.state.input}`} />
+    }
+  }
+
   render() {
     return (
-      <Grid centered textAlign='center' style={{'padding-top': 50}}>
+      <Grid centered textAlign='center' style={{paddingTop: 50}} as={Form} onSubmit={this.handleSubmit}>
+        {this.redirect()}
         <Grid.Row>
           <Header as='h1'>
             Welcome to Scrpt!
@@ -32,17 +47,19 @@ class Home extends Component {
           </Header>
         </Grid.Row>
         <Grid.Row>
-          <Input
-            label='http://scrpt.herokuapp.com/scripts/'
-            placeholder='your script key'
-            value={this.state.input}
-            onChange={this.handleChange}
-          />
+          <Form.Field inline>
+            <Input
+              label='http://scrpt.herokuapp.com/scripts/'
+              placeholder='your script key'
+              value={this.state.input}
+              onChange={this.handleChange}
+            />
+          </Form.Field>
         </Grid.Row>
         <Grid.Row>
-          <Button disabled={!this.state.input} as={Link} exact to={`/scripts/${this.state.input}`} color='green'>
+          <Form.Button disabled={!this.state.input} color='green'>
             GO
-          </Button>
+          </Form.Button>
         </Grid.Row>
       </Grid>
     )
