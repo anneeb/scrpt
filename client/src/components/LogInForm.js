@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Form } from 'semantic-ui-react'
+import * as actions from '../../actions'
 
 class LogInForm extends Component {
   state = {
@@ -15,6 +16,7 @@ class LogInForm extends Component {
 
   handleSubmit = (event) => {
     console.log(event)
+    this.props.logIn(event)
   }
 
   render () {
@@ -43,4 +45,8 @@ class LogInForm extends Component {
   }
 }
 
-export default LogInForm
+function mapStateToProps(state) {
+  return { authenticated: state.auth.authenticated }
+}
+
+export default connect(mapStateToProps)(LogInForm)

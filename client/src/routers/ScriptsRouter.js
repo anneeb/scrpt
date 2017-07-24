@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
+import Auth from '../containers/Auth.js'
 import Script from '../components/Script'
 import EditContainer from '../containers/EditContainer'
 import ReportsContainer from '../containers/ReportsContainer'
@@ -10,7 +11,7 @@ class ScriptsRouter extends Component {
     return (
       <Switch>
         <Route exact path='/scripts/:cuid' component={Script} />
-        <Route exact path='/scripts/:cuid/edit' component={EditContainer} />
+        <Route exact path='/scripts/:cuid/edit' component={Auth(EditContainer)} />
         <Route exact path='/scripts/:cuid/reports' component={ReportsContainer} />
         <Route exact path='/scripts/:cuid/versions' component={VersionsContainer} />
       </Switch>

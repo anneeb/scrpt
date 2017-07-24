@@ -2,9 +2,9 @@ import {
   DID_LOG_IN
 } from '../ActionTypes'
 
-export default function (state = {isLoggedIn: true}, action) {
+export default function (state = {authenticated: false}, action) {
   function didLogIn () {
-    return {isLoggedIn: true, ...action.data}
+    return {authenticated: true, ...action.data}
   }
 
   const Switch = {
