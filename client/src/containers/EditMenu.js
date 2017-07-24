@@ -5,6 +5,7 @@ const BLOCK_TYPES = [
   {label: 'Act', style: 'act'},
   {label: 'Scene', style: 'scene'},
   {label: 'Character', style: 'character'},
+  {label: 'Dialogue', style: 'dialogue'}
 ]
 
 const INLINE_STYLES = [

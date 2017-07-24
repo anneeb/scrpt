@@ -34,6 +34,18 @@ class EditContainer extends Component {
     this.onChange(RichUtils.onTab(event, this.state.editorState, maxDepth));
   }
 
+  // block styles
+
+  getBlockStyle = (block) => {
+    const Switch = {
+      act: 'RichEditor-act',
+      scene: 'RichEditor-scene',
+      character: 'RichEditor-character',
+      dialogue: 'RichEditor-dialogue'
+    }
+    return Switch[block.getType()] || null
+  }
+
   toggleBlockType = (blockType) => {
     this.onChange(
       RichUtils.toggleBlockType(
@@ -43,14 +55,7 @@ class EditContainer extends Component {
     )
   }
 
-  toggleInlineStyle = (inlineStyle) => {
-    this.onChange(
-      RichUtils.toggleInlineStyle(
-        this.state.editorState,
-        inlineStyle
-      )
-    );
-  }
+  // inline styles
 
   styleMap = {
     STRIKETHROUGH: {
@@ -58,13 +63,13 @@ class EditContainer extends Component {
     }
   }
 
-  getBlockStyle = (block) => {
-    const Switch = {
-      act: 'RichEditor-act',
-      scene: 'RichEditor-scene',
-      character: 'RichEditor-character'
-    }
-    return Switch[block.getType()] || null
+  toggleInlineStyle = (inlineStyle) => {
+    this.onChange(
+      RichUtils.toggleInlineStyle(
+        this.state.editorState,
+        inlineStyle
+      )
+    );
   }
 
   render() {
