@@ -15,24 +15,21 @@ const INLINE_STYLES = [
 ]
 
 class EditMenu extends Component {
-  constructor(props) {
-    super(props)
-    this.currentStyle = props.editorState.getCurrentInlineStyle()
-    this.editorState = props.editorState
-    this.selection = this.editorState.getSelection()
-    this.blockType = this.editorState
-      .getCurrentContent()
-      .getBlockForKey(this.selection.getStartKey())
-      .getType()
-  }
-
   render() {
+    const editorState = this.props.editorState
+    const currentStyle = editorState.getCurrentInlineStyle()
+    const selection = editorState.getSelection()
+    const blockType = editorState
+      .getCurrentContent()
+      .getBlockForKey(selection.getStartKey())
+      .getType()
+
     return (
       <div className="RichEditor-controls">
         {BLOCK_TYPES.map((type) =>
           <StyleButton
             key={type.label}
-            active={type.style === this.blockType}
+            active={type.style === blockType}
             label={type.label}
             onToggle={this.props.onBlockToggle}
             style={type.style}
@@ -41,7 +38,7 @@ class EditMenu extends Component {
         {INLINE_STYLES.map(type =>
           <StyleButton
             key={type.label}
-            active={this.currentStyle.has(type.style)}
+            active={currentStyle.has(type.style)}
             icon={type.icon}
             onToggle={this.props.onInlineToggle}
             style={type.style}
