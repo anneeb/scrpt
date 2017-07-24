@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Icon } from 'semantic-ui-react'
 
 class StyleButton extends Component {
 
@@ -15,7 +16,7 @@ class StyleButton extends Component {
 
     return (
       <span className={className} onMouseDown={this.onToggle}>
-        {this.props.label}
+        {this.props.icon ? <Icon name={this.props.icon}/> : this.props.label}
       </span>
     );
   }

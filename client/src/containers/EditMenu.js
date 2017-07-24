@@ -8,10 +8,10 @@ const BLOCK_TYPES = [
 ]
 
 const INLINE_STYLES = [
-  {label: 'Bold', style: 'BOLD'},
-  {label: 'Italic', style: 'ITALIC'},
-  {label: 'Underline', style: 'UNDERLINE'},
-  {label: 'Strikethrough', style: 'STRIKETHROUGH'}
+  {icon: 'bold', style: 'BOLD'},
+  {icon: 'italic', style: 'ITALIC'},
+  {icon: 'underline', style: 'UNDERLINE'},
+  {icon: 'strikethrough', style: 'STRIKETHROUGH'}
 ]
 
 class EditMenu extends Component {
@@ -42,7 +42,7 @@ class EditMenu extends Component {
           <StyleButton
             key={type.label}
             active={this.currentStyle.has(type.style)}
-            label={type.label}
+            icon={type.icon}
             onToggle={this.props.onInlineToggle}
             style={type.style}
           />
