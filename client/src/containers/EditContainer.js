@@ -84,7 +84,6 @@ class EditContainer extends Component {
         className += ' RichEditor-hidePlaceholder';
       }
     }
-    // console.log(convertToRaw(contentState: contentState)); // Editor state as JS object
     return (
       <div className='RichEditor-root'>
         <EditMenu

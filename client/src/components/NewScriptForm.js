@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import { Button, Label } from 'semantic-ui-react'
+import { connect } from 'react-redux'
+import { Label } from 'semantic-ui-react'
 import { Form } from 'formsy-semantic-ui-react'
+import PropTypes from 'prop-types'
+import * as actions from '../actions'
 
 class NewScriptForm extends Component {
   state = {
@@ -10,14 +13,34 @@ class NewScriptForm extends Component {
     confirmPassword: ''
   }
 
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-  handleSubmit = (data) => {
-    console.log(data)
+  handleSubmit = ({ title, editor, password, confirmPassword }) => {
+    this.props.createScript({ title, editor, password, confirmPassword })
+  }
+
+  componentWillUpdate(nextProps) {
+    if (nextProps.script.cuid) {
+      this.context.router.history.push(`/scripts/${nextProps.script.cuid}/edit`)
+    }
+  }
+
+  renderAlert = () => {
+    if (this.props.auth.errorMessage) {
+      return (
+        <div className='alert alert-danger'>
+          <strong>Oops!</strong> {this.props.auth.errorMessage}
+        </div>
+      )
+    }
   }
 
   render () {
@@ -69,10 +92,16 @@ class NewScriptForm extends Component {
           onChange={this.handleChange}
           required
         />
-        <Button type='submit' color='green'>Submit</Button>
+
+        {this.renderAlert()}
+        <Form.Button type='submit' color='green'>Submit</Form.Button>
       </Form>
     )
   }
 }
 
-export default NewScriptForm
+function mapStateToProps (state) {
+  return { auth: state.auth, script: state.script }
+}
+
+export default connect(mapStateToProps, actions)(NewScriptForm)

@@ -5,6 +5,7 @@ import ScriptsMenu from '../components/ScriptsMenu'
 import ScriptsRouter from '../routers/ScriptsRouter'
 
 class ScriptContainer extends Component {
+
   render () {
     return (
       <Container>

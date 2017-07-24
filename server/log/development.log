@@ -10,3 +10,793 @@
   [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "server_test"[0m
   [1m[35m (756.7ms)[0m  [1m[35mCREATE DATABASE "server_development" ENCODING = 'unicode'[0m
   [1m[35m (325.2ms)[0m  [1m[35mCREATE DATABASE "server_test" ENCODING = 'unicode'[0m
+  [1m[35m (354.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "server_development"[0m
+  [1m[35m (132.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "server_test"[0m
+  [1m[35m (148.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (17.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (6.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4709995827031202925);[0m
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateScripts (20170720134816)
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (24.3ms)[0m  [1m[35mCREATE TABLE "scripts" ("id" bigserial primary key, "title" character varying, "password_digest" character varying, "cuid" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (8.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170720134816"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateVersions (20170720134919)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (33.5ms)[0m  [1m[35mCREATE TABLE "versions" ("id" bigserial primary key, "script_id" bigint, "editorState" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_cd5ae7065a"
+FOREIGN KEY ("script_id")
+  REFERENCES "scripts" ("id")
+)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE  INDEX  "index_versions_on_script_id" ON "versions"  ("script_id")[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170720134919"]]
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEditors (20170720134932)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.1ms)[0m  [1m[35mCREATE TABLE "editors" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170720134932"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEditorVersions (20170720134950)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.4ms)[0m  [1m[35mCREATE TABLE "editor_versions" ("id" bigserial primary key, "version_id" bigint, "editor_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_bf56ebb849"
+FOREIGN KEY ("version_id")
+  REFERENCES "versions" ("id")
+, CONSTRAINT "fk_rails_26b10ad4d0"
+FOREIGN KEY ("editor_id")
+  REFERENCES "editors" ("id")
+)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_editor_versions_on_version_id" ON "editor_versions"  ("version_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_editor_versions_on_editor_id" ON "editor_versions"  ("editor_id")[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170720134950"]]
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-07-24 16:19:13.708518"], ["updated_at", "2017-07-24 16:19:13.708518"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4709995827031202925)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-07-24 12:20:15 -0400
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/anneebarrett/.rvm/gems/ruby-2.3.1/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/anneebarrett/.rvm/gems/ruby-2.3.1/gems/railties-5.1.2/lib/rails/templates/rails/welcome/index.html.erb (13.4ms)
+Completed 200 OK in 36ms (Views: 24.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/auth" for 127.0.0.1 at 2017-07-24 12:20:28 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/auth"):
+  
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-24 12:20:37 -0400
+Processing by Api::V1::AuthController#show as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant ApplicationController::User):
+  
+app/controllers/application_controller.rb:16:in `current_user'
+app/controllers/application_controller.rb:10:in `authorize_user!'
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-24 12:39:13 -0400
+Processing by Api::V1::AuthController#show as HTML
+Completed 500 Internal Server Error in 119ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `authorize_user!' for #<Api::V1::AuthController:0x007fb7dc67d298>):
+  
+activesupport (5.1.2) lib/active_support/callbacks.rb:413:in `block in make_lambda'
+activesupport (5.1.2) lib/active_support/callbacks.rb:178:in `block (2 levels) in halting_and_conditional'
+actionpack (5.1.2) lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.1.2) lib/active_support/callbacks.rb:179:in `block in halting_and_conditional'
+activesupport (5.1.2) lib/active_support/callbacks.rb:507:in `block in invoke_before'
+activesupport (5.1.2) lib/active_support/callbacks.rb:507:in `each'
+activesupport (5.1.2) lib/active_support/callbacks.rb:507:in `invoke_before'
+activesupport (5.1.2) lib/active_support/callbacks.rb:130:in `run_callbacks'
+actionpack (5.1.2) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.2) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.2) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.2) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.2) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.2) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.2) lib/abstract_controller/base.rb:124:in `process'
+actionpack (5.1.2) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.2) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/api/v1/scripts/create" for 127.0.0.1 at 2017-07-24 12:53:02 -0400
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/scripts/create"):
+  
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 12:53:36 -0400
+  
+NameError (uninitialized constant ApplicationRecord):
+  
+app/models/script.rb:1:in `<top (required)>'
+Started GET "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 12:56:16 -0400
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for Api::V1::ScriptsController):
+  
+actionpack (5.1.2) lib/abstract_controller/base.rb:119:in `process'
+actionpack (5.1.2) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.2) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 12:56:45 -0400
+  
+NameError (uninitialized constant ApplicationRecord):
+  
+app/models/script.rb:1:in `<top (required)>'
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 12:58:10 -0400
+  
+NameError (uninitialized constant ApplicationRecord):
+  
+app/models/script.rb:1:in `<top (required)>'
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:00:50 -0400
+  
+NameError (uninitialized constant ApplicationRecord):
+  
+app/models/script.rb:1:in `<top (required)>'
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:02:10 -0400
+  
+NameError (uninitialized constant ApplicationRecord):
+  
+app/models/script.rb:1:in `<top (required)>'
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:07:03 -0400
+  
+NameError (uninitialized constant ApplicationRecord):
+  
+app/models/script.rb:1:in `<top (required)>'
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:09:18 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"title"=>"test", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5ieq7ke00013i5rm21yelp5", "editor[name]"=>"test", "version[contentState]"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"djgge\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}", "script"=>{"title"=>"test", "cuid"=>"cj5ieq7ke00013i5rm21yelp5"}}
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:14:04 -0400
+  [1m[35m (9.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/anneebarrett/code/Flatiron/Projects/scrpt/server/app/controllers/api/v1/scripts_controller.rb:33: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/api/v1/scripts_controller.rb:33: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:14:14 -0400
+  
+SyntaxError (/Users/anneebarrett/code/Flatiron/Projects/scrpt/server/app/controllers/api/v1/scripts_controller.rb:33: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/api/v1/scripts_controller.rb:33: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:14:45 -0400
+  
+SyntaxError (/Users/anneebarrett/code/Flatiron/Projects/scrpt/server/app/controllers/api/v1/scripts_controller.rb:34: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/api/v1/scripts_controller.rb:34: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:15:33 -0400
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/anneebarrett/code/Flatiron/Projects/scrpt/server/app/controllers/api/v1/scripts_controller.rb:34: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/api/v1/scripts_controller.rb:34: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:16:10 -0400
+  
+SyntaxError (/Users/anneebarrett/code/Flatiron/Projects/scrpt/server/app/controllers/api/v1/scripts_controller.rb:34: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/api/v1/scripts_controller.rb:34: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:21:08 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"title"=>"test", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5if5fho00023i5r8gmzikcx", "editor"=>{"name"=>"test"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"csh6v\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}, "script"=>{"title"=>"test", "cuid"=>"cj5if5fho00023i5r8gmzikcx"}}
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:23:15 -0400
+  [1m[35m (5.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"title", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5if85jj00003i5r1prt9g8y"}, "editor"=>{"name"=>"edito"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"4r5fr\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameters: :password, :confirmPassword
+Completed 500 Internal Server Error in 377829ms (ActiveRecord: 133.3ms)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/api/v1/scripts_controller.rb:15:in `create'
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:29:56 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"title", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5ifgqut00013i5rpztz24nd"}, "editor"=>{"name"=>"edito"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"tvjj\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+Unpermitted parameter: :editorState
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.45ms)
+Completed 200 OK in 442ms (Views: 7.0ms | ActiveRecord: 17.5ms)
+
+
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:30:30 -0400
+  
+SyntaxError (/Users/anneebarrett/code/Flatiron/Projects/scrpt/server/app/controllers/api/v1/scripts_controller.rb:50: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/api/v1/scripts_controller.rb:50: syntax error, unexpected end-of-input, expecting keyword_end
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:31:06 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"title", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5ifi8ra00033i5r5pfmxbeo"}, "editor"=>{"name"=>"edito"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"dbmee\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+Unpermitted parameter: :editorState
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (29.4ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "title"], ["password_digest", "$2a$10$SUf2.Eba//Um4SwedxexBOV/iSnZJEGp5SG1Q56QUBskiTitGvB1m"], ["cuid", "cj5ifi8ra00033i5r5pfmxbeo"], ["created_at", "2017-07-24 17:32:04.276092"], ["updated_at", "2017-07-24 17:32:04.276092"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mVersion Load (7.7ms)[0m  [1m[34mSELECT  "versions".* FROM "versions" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (113.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (20.4ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["script_id", 1], ["created_at", "2017-07-24 17:33:21.355539"], ["updated_at", "2017-07-24 17:33:21.355539"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mVersion Load (3.1ms)[0m  [1m[34mSELECT  "versions".* FROM "versions" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mEditor Load (5.0ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" LIMIT $1[0m  [["LIMIT", 11]]
+Unpermitted parameter: :confirmPassword
+Unpermitted parameter: :editorState
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (5.4ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "title"], ["password_digest", "$2a$10$Rxh7sUw7WzYgKjrYLdskVOY3uA77L2blmmkoCHjSu7ml60JqxwJDa"], ["cuid", "cj5ifi8ra00033i5r5pfmxbeo"], ["created_at", "2017-07-24 17:38:11.032798"], ["updated_at", "2017-07-24 17:38:11.032798"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.54ms)
+Completed 200 OK in 424821ms (Views: 7.4ms | ActiveRecord: 248.0ms)
+
+
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:38:15 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"title", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5ifrfzl00043i5rjpbdj9w8"}, "editor"=>{"name"=>"edito"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"3gi7h\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "title"], ["password_digest", "$2a$10$23ebhZyKav28WXt6my5CY.hz7BPGqqdHtWWSwQdoJDYVgG30./shi"], ["cuid", "cj5ifrfzl00043i5rjpbdj9w8"], ["created_at", "2017-07-24 17:38:46.490404"], ["updated_at", "2017-07-24 17:38:46.490404"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mVersion Load (0.8ms)[0m  [1m[34mSELECT  "versions".* FROM "versions" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (153.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "server_development"[0m
+  [1m[35m (128.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "server_test"[0m
+  [1m[35m (444.4ms)[0m  [1m[35mCREATE DATABASE "server_development" ENCODING = 'unicode'[0m
+  [1m[35m (256.2ms)[0m  [1m[35mCREATE DATABASE "server_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (3.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "editor_versions" CASCADE[0m
+  [1m[35m (33.6ms)[0m  [1m[35mCREATE TABLE "editor_versions" ("id" bigserial primary key, "version_id" bigint, "editor_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_editor_versions_on_editor_id" ON "editor_versions"  ("editor_id")[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE  INDEX  "index_editor_versions_on_version_id" ON "editor_versions"  ("version_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "editors" CASCADE[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "editors" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "scripts" CASCADE[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "scripts" ("id" bigserial primary key, "title" character varying, "password_digest" character varying, "cuid" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "versions" CASCADE[0m
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE TABLE "versions" ("id" bigserial primary key, "script_id" bigint, "editorState" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_versions_on_script_id" ON "versions"  ("script_id")[0m
+  [1m[35m (9.1ms)[0m  [1m[35mALTER TABLE "editor_versions" ADD CONSTRAINT "fk_rails_26b10ad4d0"
+FOREIGN KEY ("editor_id")
+  REFERENCES "editors" ("id")
+[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "editor_versions" ADD CONSTRAINT "fk_rails_bf56ebb849"
+FOREIGN KEY ("version_id")
+  REFERENCES "versions" ("id")
+[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "versions" ADD CONSTRAINT "fk_rails_cd5ae7065a"
+FOREIGN KEY ("script_id")
+  REFERENCES "scripts" ("id")
+[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170720134950)[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170720134816),
+(20170720134919),
+(20170720134932);
+
+[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-07-24 17:39:34.002578"], ["updated_at", "2017-07-24 17:39:34.002578"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (5.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (2.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "editor_versions" CASCADE[0m
+  [1m[35m (59.8ms)[0m  [1m[35mCREATE TABLE "editor_versions" ("id" bigserial primary key, "version_id" bigint, "editor_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_editor_versions_on_editor_id" ON "editor_versions"  ("editor_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_editor_versions_on_version_id" ON "editor_versions"  ("version_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "editors" CASCADE[0m
+  [1m[35m (11.6ms)[0m  [1m[35mCREATE TABLE "editors" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "scripts" CASCADE[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "scripts" ("id" bigserial primary key, "title" character varying, "password_digest" character varying, "cuid" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "versions" CASCADE[0m
+  [1m[35m (15.6ms)[0m  [1m[35mCREATE TABLE "versions" ("id" bigserial primary key, "script_id" bigint, "editorState" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE  INDEX  "index_versions_on_script_id" ON "versions"  ("script_id")[0m
+  [1m[35m (7.0ms)[0m  [1m[35mALTER TABLE "editor_versions" ADD CONSTRAINT "fk_rails_26b10ad4d0"
+FOREIGN KEY ("editor_id")
+  REFERENCES "editors" ("id")
+[0m
+  [1m[35m (6.0ms)[0m  [1m[35mALTER TABLE "editor_versions" ADD CONSTRAINT "fk_rails_bf56ebb849"
+FOREIGN KEY ("version_id")
+  REFERENCES "versions" ("id")
+[0m
+  [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "versions" ADD CONSTRAINT "fk_rails_cd5ae7065a"
+FOREIGN KEY ("script_id")
+  REFERENCES "scripts" ("id")
+[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20170720134950)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20170720134816),
+(20170720134919),
+(20170720134932);
+
+[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-07-24 17:39:34.386208"], ["updated_at", "2017-07-24 17:39:34.386208"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:39:44 -0400
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"title", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5iftch600053i5r6kg50o5w"}, "editor"=>{"name"=>"edito"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"dh0oi\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (101.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (136.5ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "title"], ["password_digest", "$2a$10$8k1EdKMRcOgCRm0d4sqxGu.ZUsb20nEDdJtySp00z6SqVYjrHJnPm"], ["cuid", "cj5iftch600053i5r6kg50o5w"], ["created_at", "2017-07-24 17:40:28.332520"], ["updated_at", "2017-07-24 17:40:28.332520"]]
+  [1m[35m (306.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT  "versions".* FROM "versions" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (413.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (35.9ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 1], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"dh0oi\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 17:40:53.374913"], ["updated_at", "2017-07-24 17:40:53.374913"]]
+  [1m[35mSQL (77.5ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "edito"], ["created_at", "2017-07-24 17:40:53.577753"], ["updated_at", "2017-07-24 17:40:53.577753"]]
+  [1m[35mSQL (183.5ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 1], ["editor_id", 1], ["created_at", "2017-07-24 17:40:53.977302"], ["updated_at", "2017-07-24 17:40:53.977302"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mVersion Load (0.6ms)[0m  [1m[34mSELECT  "versions".* FROM "versions" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mScript Load (0.5ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" ORDER BY "scripts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mScript Load (0.6ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" ORDER BY "scripts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mScript Load (87.7ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" ORDER BY "scripts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.59ms)
+Completed 200 OK in 157848ms (Views: 18.1ms | ActiveRecord: 2893.6ms)
+
+
+  [1m[36mScript Load (0.5ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mScript Load (0.5ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" ORDER BY "scripts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mScript Load (0.5ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" ORDER BY "scripts"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mEditor Load (1.5ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 LIMIT $2[0m  [["script_id", 1], ["LIMIT", 11]]
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:46:41 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"title", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5ig2asz00063i5rlvst1ekm"}, "editor"=>{"name"=>"edito"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"encbv\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "title"], ["password_digest", "$2a$10$i1EqDRJDmp6fEfsR4Qx7DeJ7wyeoU4MO7o116oKirvE2cFKW6Nr4G"], ["cuid", "cj5ig2asz00063i5rlvst1ekm"], ["created_at", "2017-07-24 17:46:52.281349"], ["updated_at", "2017-07-24 17:46:52.281349"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 2], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"encbv\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 17:46:52.344825"], ["updated_at", "2017-07-24 17:46:52.344825"]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "edito"], ["created_at", "2017-07-24 17:46:52.347749"], ["updated_at", "2017-07-24 17:46:52.347749"]]
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 2], ["editor_id", 2], ["created_at", "2017-07-24 17:46:52.349243"], ["updated_at", "2017-07-24 17:46:52.349243"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.94ms)
+Completed 500 Internal Server Error in 194ms (Views: 7.1ms | ActiveRecord: 8.1ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/api/v1/scripts_controller.rb:21:in `create'
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:47:07 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"title", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5ig2uwo00073i5ruqije93l"}, "editor"=>{"name"=>"edito"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"9jmpf\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (3.6ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "title"], ["password_digest", "$2a$10$iRl60T17on/oHUIAonrmAeBkaWScW.Q9whQhbXOPNCGehxTPuy4M6"], ["cuid", "cj5ig2uwo00073i5ruqije93l"], ["created_at", "2017-07-24 17:47:08.014597"], ["updated_at", "2017-07-24 17:47:08.014597"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 3], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"9jmpf\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 17:47:08.024594"], ["updated_at", "2017-07-24 17:47:08.024594"]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "edito"], ["created_at", "2017-07-24 17:47:08.027757"], ["updated_at", "2017-07-24 17:47:08.027757"]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 3], ["editor_id", 3], ["created_at", "2017-07-24 17:47:08.029919"], ["updated_at", "2017-07-24 17:47:08.029919"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.6ms)
+Completed 500 Internal Server Error in 116ms (Views: 1.2ms | ActiveRecord: 9.4ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/api/v1/scripts_controller.rb:21:in `create'
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:48:15 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"title", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5ig4b8o00083i5rpe0kwytg"}, "editor"=>{"name"=>"edito"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"bnbj6\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "title"], ["password_digest", "$2a$10$nmLeHaMdQ/RNmMGEHqa4EuWj6jMSHs3tFXf8G6Gg3SXUg9i4rbN8e"], ["cuid", "cj5ig4b8o00083i5rpe0kwytg"], ["created_at", "2017-07-24 17:48:16.038344"], ["updated_at", "2017-07-24 17:48:16.038344"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 4], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"bnbj6\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 17:48:16.138708"], ["updated_at", "2017-07-24 17:48:16.138708"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "edito"], ["created_at", "2017-07-24 17:48:16.143123"], ["updated_at", "2017-07-24 17:48:16.143123"]]
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 4], ["editor_id", 4], ["created_at", "2017-07-24 17:48:16.146556"], ["updated_at", "2017-07-24 17:48:16.146556"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.76ms)
+Completed 500 Internal Server Error in 60278ms (Views: 12.2ms | ActiveRecord: 39.7ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+app/controllers/api/v1/scripts_controller.rb:22:in `create'
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 13:51:52 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"title", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5ig8ykq00093i5rkcycimdx"}, "editor"=>{"name"=>"edito"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"en63b\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "title"], ["password_digest", "$2a$10$jUveci6oPLE8nvArLusxsOJVp/wxCn3FxFCttcGDe1SH8P5IyphV."], ["cuid", "cj5ig8ykq00093i5rkcycimdx"], ["created_at", "2017-07-24 17:51:52.905530"], ["updated_at", "2017-07-24 17:51:52.905530"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 5], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"en63b\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 17:51:52.974871"], ["updated_at", "2017-07-24 17:51:52.974871"]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "edito"], ["created_at", "2017-07-24 17:51:52.979006"], ["updated_at", "2017-07-24 17:51:52.979006"]]
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 5], ["editor_id", 5], ["created_at", "2017-07-24 17:51:52.981022"], ["updated_at", "2017-07-24 17:51:52.981022"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.81ms)
+Completed 200 OK in 3344ms (Views: 10.8ms | ActiveRecord: 8.2ms)
+
+
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "me"], ["created_at", "2017-07-24 18:04:19.952005"], ["updated_at", "2017-07-24 18:04:19.952005"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (26.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (46.8ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "annee"], ["created_at", "2017-07-24 18:43:38.274179"], ["updated_at", "2017-07-24 18:43:38.274179"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 17:31:06 -0400
+  
+SyntaxError (/Users/anneebarrett/code/Flatiron/Projects/scrpt/server/app/controllers/api/v1/scripts_controller.rb:17: syntax error, unexpected tIDENTIFIER, expecting '}'
+            editor: {
+                  ^
+/Users/anneebarrett/code/Flatiron/Projects/scrpt/server/app/controllers/api/v1/scripts_controller.rb:20: syntax error, unexpected ':', expecting keyword_end
+            token: {
+                  ^
+/Users/anneebarrett/code/Flatiron/Projects/scrpt/server/app/controllers/api/v1/scripts_controller.rb:23: syntax error, unexpected '}', expecting keyword_end
+/Users/anneebarrett/code/Flatiron/Projects/scrpt/server/app/controllers/api/v1/scripts_controller.rb:79: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/api/v1/scripts_controller.rb:17: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/controllers/api/v1/scripts_controller.rb:20: syntax error, unexpected ':', expecting keyword_end
+app/controllers/api/v1/scripts_controller.rb:23: syntax error, unexpected '}', expecting keyword_end
+app/controllers/api/v1/scripts_controller.rb:79: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/favicon.ico" for 127.0.0.1 at 2017-07-24 17:31:09 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 17:56:03 -0400
+  
+SyntaxError (/Users/anneebarrett/code/Flatiron/Projects/scrpt/server/app/controllers/api/v1/scripts_controller.rb:21: syntax error, unexpected ',', expecting =>
+/Users/anneebarrett/code/Flatiron/Projects/scrpt/server/app/controllers/api/v1/scripts_controller.rb:23: syntax error, unexpected '}', expecting keyword_end
+/Users/anneebarrett/code/Flatiron/Projects/scrpt/server/app/controllers/api/v1/scripts_controller.rb:82: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/controllers/api/v1/scripts_controller.rb:21: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/scripts_controller.rb:23: syntax error, unexpected '}', expecting keyword_end
+app/controllers/api/v1/scripts_controller.rb:82: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 17:59:51 -0400
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for Api::V1::ScriptsController):
+  
+actionpack (5.1.2) lib/abstract_controller/base.rb:119:in `process'
+actionpack (5.1.2) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.2) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.2) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.2) lib/action_dispatch/routing/route_set.rb:832:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+activerecord (5.1.2) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.2) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.2) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.2) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.2) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.2) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+rack-cors (0.4.1) lib/rack/cors.rb:81:in `call'
+railties (5.1.2) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 18:27:40 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"test", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5iq3mu800003i5rnv8ja3yh"}, "editor"=>{"name"=>"test"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"1c6se\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (3.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (14.0ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "test"], ["password_digest", "$2a$10$5Vdkd0nOUVhV/6VaCuGVkOJnlS94elLQDUZm5EsxdgXYJRFre4PkS"], ["cuid", "cj5iq3mu800003i5rnv8ja3yh"], ["created_at", "2017-07-24 22:27:42.139082"], ["updated_at", "2017-07-24 22:27:42.139082"]]
+  [1m[35m (6.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.0ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 6], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"1c6se\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 22:27:42.360570"], ["updated_at", "2017-07-24 22:27:42.360570"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 22:27:42.555333"], ["updated_at", "2017-07-24 22:27:42.555333"]]
+  [1m[35mSQL (13.9ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 6], ["editor_id", 8], ["created_at", "2017-07-24 22:27:42.772400"], ["updated_at", "2017-07-24 22:27:42.772400"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.44ms)
+Completed 200 OK in 1429ms (Views: 52.6ms | ActiveRecord: 263.4ms)
+
+
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 18:27:45 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"test", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5iq3r8i00013i5rdcioibdz"}, "editor"=>{"name"=>"test"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"11vnq\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (8.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (45.3ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "test"], ["password_digest", "$2a$10$s1kX.nFN1Nr5bq/Ly8fHOuER02vQZ/6tmFwQ/izDoHglkXVnDau32"], ["cuid", "cj5iq3r8i00013i5rdcioibdz"], ["created_at", "2017-07-24 22:27:46.137878"], ["updated_at", "2017-07-24 22:27:46.137878"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (16.5ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 7], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"11vnq\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 22:27:46.190988"], ["updated_at", "2017-07-24 22:27:46.190988"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 22:27:46.218034"], ["updated_at", "2017-07-24 22:27:46.218034"]]
+  [1m[35mSQL (4.1ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 7], ["editor_id", 9], ["created_at", "2017-07-24 22:27:46.230883"], ["updated_at", "2017-07-24 22:27:46.230883"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.18ms)
+Completed 200 OK in 229ms (Views: 0.7ms | ActiveRecord: 80.4ms)
+
+
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 18:28:39 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"test", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5iq4wqh00003i5rr1buc3nb"}, "editor"=>{"name"=>"test"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"1d7ap\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (25.9ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "test"], ["password_digest", "$2a$10$l/eX10PKJIPes2kQLN3og.2rIugJFyKNzo0zd0yjg8ylyAljjt8we"], ["cuid", "cj5iq4wqh00003i5rr1buc3nb"], ["created_at", "2017-07-24 22:28:40.035515"], ["updated_at", "2017-07-24 22:28:40.035515"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (9.8ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 8], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"1d7ap\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 22:28:40.086824"], ["updated_at", "2017-07-24 22:28:40.086824"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 22:28:40.120152"], ["updated_at", "2017-07-24 22:28:40.120152"]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 8], ["editor_id", 10], ["created_at", "2017-07-24 22:28:40.140031"], ["updated_at", "2017-07-24 22:28:40.140031"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.79ms)
+Completed 200 OK in 290ms (Views: 7.7ms | ActiveRecord: 43.3ms)
+
+
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 18:30:12 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"test", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5iq6w7k00003i5r95ybqw86"}, "editor"=>{"name"=>"test"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"23gqp\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (16.3ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "test"], ["password_digest", "$2a$10$ktn2nY/2qPL8ILEs6eooT.PIHGZ6.gNdAlgA4sSpZMKrAGMknclsq"], ["cuid", "cj5iq6w7k00003i5r95ybqw86"], ["created_at", "2017-07-24 22:30:12.660144"], ["updated_at", "2017-07-24 22:30:12.660144"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (25.1ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 9], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"23gqp\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 22:30:12.708293"], ["updated_at", "2017-07-24 22:30:12.708293"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.4ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 22:30:12.756961"], ["updated_at", "2017-07-24 22:30:12.756961"]]
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 9], ["editor_id", 11], ["created_at", "2017-07-24 22:30:12.794304"], ["updated_at", "2017-07-24 22:30:12.794304"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.69ms)
+Completed 200 OK in 319ms (Views: 5.7ms | ActiveRecord: 61.9ms)
+
+
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 18:34:02 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"test", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5iqbtk500003i5rridb11gm"}, "editor"=>{"name"=>"test"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"ffaat\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.4ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "test"], ["password_digest", "$2a$10$F7/pSM/sVv7DWhwXo7JLWu9XZ9q15kdNyAw/3/cdVSoKyVO1uWQ5K"], ["cuid", "cj5iqbtk500003i5rridb11gm"], ["created_at", "2017-07-24 22:34:02.505147"], ["updated_at", "2017-07-24 22:34:02.505147"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (4.2ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 10], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"ffaat\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 22:34:02.534276"], ["updated_at", "2017-07-24 22:34:02.534276"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 22:34:02.559323"], ["updated_at", "2017-07-24 22:34:02.559323"]]
+  [1m[35mSQL (5.0ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 10], ["editor_id", 12], ["created_at", "2017-07-24 22:34:02.588113"], ["updated_at", "2017-07-24 22:34:02.588113"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.66ms)
+Completed 200 OK in 249ms (Views: 9.6ms | ActiveRecord: 23.0ms)
+
+
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 18:37:26 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"test", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5iqg6un00003i5r48mym30k"}, "editor"=>{"name"=>"test"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"4pffh\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (30.3ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "test"], ["password_digest", "$2a$10$eACR/7kf5edyS.12hvu.UeSuZmCg.8GxeyczaVsg9D5OSTpahRh2q"], ["cuid", "cj5iqg6un00003i5r48mym30k"], ["created_at", "2017-07-24 22:37:26.502892"], ["updated_at", "2017-07-24 22:37:26.502892"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (12.8ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 11], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"4pffh\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 22:37:26.559839"], ["updated_at", "2017-07-24 22:37:26.559839"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 22:37:26.598359"], ["updated_at", "2017-07-24 22:37:26.598359"]]
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 11], ["editor_id", 13], ["created_at", "2017-07-24 22:37:26.629720"], ["updated_at", "2017-07-24 22:37:26.629720"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.63ms)
+Completed 200 OK in 325ms (Views: 2.7ms | ActiveRecord: 53.4ms)
+
+
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 18:46:38 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"test", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5iqs0xt00003i5rph55umc1"}, "editor"=>{"name"=>"test"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"dgubh\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (61.9ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "test"], ["password_digest", "$2a$10$r4U4UN0FSdRTttLyi9qgBOA3RdZlCs08LwOFsI2/PHCZZW7kfmueu"], ["cuid", "cj5iqs0xt00003i5rph55umc1"], ["created_at", "2017-07-24 22:46:38.972465"], ["updated_at", "2017-07-24 22:46:38.972465"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (11.7ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 12], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"dgubh\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 22:46:39.152100"], ["updated_at", "2017-07-24 22:46:39.152100"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 22:46:39.244197"], ["updated_at", "2017-07-24 22:46:39.244197"]]
+  [1m[35mSQL (5.3ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 12], ["editor_id", 14], ["created_at", "2017-07-24 22:46:39.281358"], ["updated_at", "2017-07-24 22:46:39.281358"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.73ms)
+Completed 200 OK in 629ms (Views: 11.9ms | ActiveRecord: 94.5ms)
+
+

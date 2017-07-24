@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Modal, Button, Icon } from 'semantic-ui-react'
 import LogInForm from '../components/LogInForm'
 
-class EditorModal extends Component {
+class LogInModal extends Component {
   render () {
     return (
       <Modal trigger={
@@ -13,11 +13,11 @@ class EditorModal extends Component {
       }>
         <Modal.Header>Log In</Modal.Header>
         <Modal.Content>
-          <LogInForm />
+          <LogInForm {...this.props} />
         </Modal.Content>
       </Modal>
     )
   }
 }
 
-export default EditorModal
+export default LogInModal
