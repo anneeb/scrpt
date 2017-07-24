@@ -13,7 +13,7 @@ class LogInModal extends Component {
       }>
         <Modal.Header>Log In</Modal.Header>
         <Modal.Content>
-          <LogInForm {...this.props} />
+          <LogInForm cuid={this.props.cuid} />
         </Modal.Content>
       </Modal>
     )

@@ -23,8 +23,8 @@ module Api
           }
         else
           render json: {
-            error: 'Something went wrong. Please try again.'
-          }, status: 404
+            error: 'Invalid password. Please try again.'
+          }
         end
       end
 

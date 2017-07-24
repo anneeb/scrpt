@@ -13,7 +13,7 @@ class NavBar extends Component {
       return <NewScriptModal />
     } else {
       const cuid = this.props.location.pathname.split('/')[2]
-      return this.props.auth[cuid] ? 'Editing as: NAME' : <LogInModal {...this.props} />
+      return this.props.auth[cuid] ? 'Editing as: NAME' : <LogInModal cuid={cuid} />
     }
   }
 

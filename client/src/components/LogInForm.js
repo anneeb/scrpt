@@ -8,7 +8,7 @@ class LogInForm extends Component {
   state = {
     editor: '',
     password: '',
-    cuid: this.props.location.pathname.split('/')[2]
+    cuid: this.props.cuid
   }
 
   static contextTypes = {
@@ -25,18 +25,11 @@ class LogInForm extends Component {
     this.props.logIn({ editor, password, cuid })
   }
 
-  componentWillUpdate(nextProps) {
-    const cuid = this.props.match.params.cuid
-    if (nextProps.auth.cuid.authenticated) {
-      this.context.router.history.push(`/scripts/${cuid}/edit`)
-    }
-  }
-
   renderAlert = () => {
-    if (this.props.auth.errorMessage) {
+    if (this.props.auth.error) {
       return (
         <div className='alert alert-danger'>
-          <strong>Oops!</strong> {this.props.auth.errorMessage}
+          <strong>Oops!</strong> {this.props.auth.error}
         </div>
       )
     }

@@ -11,11 +11,15 @@ export function logIn (params) {
   return function (dispatch) {
     AuthAdapter.logIn(params)
       .then(resp => {
-        localStorage.setItem(resp.data.payload.cuid, resp.data.token)
-        dispatch({
-          type: AUTH_USER,
-          payload: resp.data.payload
-        })
+        if (resp.error) {
+          dispatch(authError(resp.error))
+        } else {
+          localStorage.setItem(resp.data.payload.cuid, resp.data.token)
+          dispatch({
+            type: AUTH_USER,
+            payload: resp.data.payload
+          })
+        }
       })
       .catch(() => {
         dispatch(authError('Something went wrong. Please try again.'))
@@ -27,19 +31,15 @@ export function createScript (params) {
   return function (dispatch) {
     ScriptsAdapter.createScript(params)
       .then(resp => {
-        if (resp.error) {
-          dispatch(authError('Something went wrong. Please try again.'))
-        } else {
-          localStorage.setItem(resp.data.payload.cuid, resp.data.token)
-          dispatch({
-            type: AUTH_USER,
-            payload: resp.data.payload
-          })
-          dispatch({
-            type: DID_CREATE_SCRIPT,
-            payload: resp.data.payload
-          })
-        }
+        localStorage.setItem(resp.data.payload.cuid, resp.data.token)
+        dispatch({
+          type: AUTH_USER,
+          payload: resp.data.payload
+        })
+        dispatch({
+          type: DID_CREATE_SCRIPT,
+          payload: resp.data.payload
+        })
       })
       .catch(() => {
         dispatch(authError('Something went wrong. Please try again.'))

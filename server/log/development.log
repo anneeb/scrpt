@@ -800,3 +800,350 @@ Unpermitted parameter: :confirmPassword
 Completed 200 OK in 629ms (Views: 11.9ms | ActiveRecord: 94.5ms)
 
 
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 18:58:58 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"I am a script", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5ir7vn800003i5rebrnzq60"}, "editor"=>{"name"=>"Annee"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"23s3l\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (15.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (43.6ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "I am a script"], ["password_digest", "$2a$10$sdrKKYS1R5iJ7/Gqq3cYPuldX9v6rS0uZSJ8fnTahALNJaCOMj9n2"], ["cuid", "cj5ir7vn800003i5rebrnzq60"], ["created_at", "2017-07-24 22:58:58.614191"], ["updated_at", "2017-07-24 22:58:58.614191"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (25.3ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 13], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"23s3l\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 22:58:58.728202"], ["updated_at", "2017-07-24 22:58:58.728202"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (6.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Annee"], ["created_at", "2017-07-24 22:58:58.810099"], ["updated_at", "2017-07-24 22:58:58.810099"]]
+  [1m[35mSQL (8.5ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 13], ["editor_id", 15], ["created_at", "2017-07-24 22:58:58.845947"], ["updated_at", "2017-07-24 22:58:58.845947"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.32ms)
+Completed 200 OK in 497ms (Views: 9.4ms | ActiveRecord: 106.4ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:00:20 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}}}
+  [1m[36mScript Load (20.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+  [1m[36mEditor Load (24.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 13], ["name", "annee"], ["LIMIT", 1]]
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (16.7ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "annee"], ["created_at", "2017-07-24 23:00:21.999312"], ["updated_at", "2017-07-24 23:00:21.999312"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.46ms)
+Completed 200 OK in 1084ms (Views: 6.5ms | ActiveRecord: 65.4ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:00:43 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}}}
+  [1m[36mScript Load (12.9ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.49ms)
+Completed 404 Not Found in 231ms (Views: 28.0ms | ActiveRecord: 18.8ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:00:55 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}}}
+  [1m[36mScript Load (2.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+  [1m[36mEditor Load (6.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 13], ["name", "annee"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "annee"], ["created_at", "2017-07-24 23:00:55.522615"], ["updated_at", "2017-07-24 23:00:55.522615"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.28ms)
+Completed 200 OK in 161ms (Views: 5.8ms | ActiveRecord: 12.0ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:02:08 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"dragons"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"dragons"}}}
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+  [1m[36mEditor Load (38.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 13], ["name", "dragons"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (4.2ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "dragons"], ["created_at", "2017-07-24 23:02:08.739335"], ["updated_at", "2017-07-24 23:02:08.739335"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.16ms)
+Completed 200 OK in 260ms (Views: 9.3ms | ActiveRecord: 45.1ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:03:39 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (18.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+  [1m[36mEditor Load (26.5ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 13], ["name", "test"], ["LIMIT", 1]]
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (15.9ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 23:03:40.221536"], ["updated_at", "2017-07-24 23:03:40.221536"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.44ms)
+Completed 200 OK in 354ms (Views: 16.8ms | ActiveRecord: 64.3ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:04:24 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (42.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+  [1m[36mEditor Load (29.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 13], ["name", "test"], ["LIMIT", 1]]
+  [1m[35m (4.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (23.5ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 23:04:24.954279"], ["updated_at", "2017-07-24 23:04:24.954279"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (15.82ms)
+Completed 200 OK in 434ms (Views: 18.9ms | ActiveRecord: 100.9ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:05:08 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (23.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+  [1m[36mEditor Load (15.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 13], ["name", "test"], ["LIMIT", 1]]
+  [1m[35m (2.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.9ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 23:05:08.437351"], ["updated_at", "2017-07-24 23:05:08.437351"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (7.94ms)
+Completed 200 OK in 317ms (Views: 19.8ms | ActiveRecord: 54.1ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:05:41 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}}}
+  [1m[36mScript Load (5.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+  [1m[36mEditor Load (12.1ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 13], ["name", "annee"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "annee"], ["created_at", "2017-07-24 23:05:41.638568"], ["updated_at", "2017-07-24 23:05:41.638568"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (11.73ms)
+Completed 200 OK in 259ms (Views: 15.9ms | ActiveRecord: 19.2ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:06:16 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}}}
+  [1m[36mScript Load (4.7ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+  [1m[36mEditor Load (8.5ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 13], ["name", "annee"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (4.3ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "annee"], ["created_at", "2017-07-24 23:06:16.840038"], ["updated_at", "2017-07-24 23:06:16.840038"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.9ms)
+Completed 200 OK in 211ms (Views: 10.1ms | ActiveRecord: 18.2ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:08:03 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}}}
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+  [1m[36mEditor Load (3.5ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 13], ["name", "annee"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "annee"], ["created_at", "2017-07-24 23:08:04.114794"], ["updated_at", "2017-07-24 23:08:04.114794"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.6ms)
+Completed 200 OK in 193ms (Views: 6.1ms | ActiveRecord: 8.0ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:11:16 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (22.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+  [1m[36mEditor Load (26.9ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 13], ["name", "test"], ["LIMIT", 1]]
+  [1m[35m (2.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (13.4ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 23:11:16.907533"], ["updated_at", "2017-07-24 23:11:16.907533"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (13.09ms)
+Completed 200 OK in 372ms (Views: 19.8ms | ActiveRecord: 66.2ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:12:40 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (27.7ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+  [1m[36mEditor Load (31.1ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 13], ["name", "test"], ["LIMIT", 1]]
+  [1m[35m (5.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (21.1ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 23:12:41.147631"], ["updated_at", "2017-07-24 23:12:41.147631"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (9.45ms)
+Completed 200 OK in 505ms (Views: 20.2ms | ActiveRecord: 86.4ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:13:22 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (1.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+  [1m[36mEditor Load (7.2ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 13], ["name", "test"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 23:13:22.495294"], ["updated_at", "2017-07-24 23:13:22.495294"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (8.6ms)
+Completed 200 OK in 258ms (Views: 15.9ms | ActiveRecord: 9.8ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:14:53 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5ir7vn800003i5rebrnzq60", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (9.6ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5ir7vn800003i5rebrnzq60"], ["LIMIT", 1]]
+  [1m[36mEditor Load (44.3ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 13], ["name", "test"], ["LIMIT", 1]]
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (9.7ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 23:14:54.827933"], ["updated_at", "2017-07-24 23:14:54.827933"]]
+  [1m[35m (5.3ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.16ms)
+Completed 200 OK in 1119ms (Views: 10.9ms | ActiveRecord: 71.6ms)
+
+
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-24 19:17:39 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"test", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5irvwvn00003i5rs5lq5j96"}, "editor"=>{"name"=>"test"}, "version"=>{"editorState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"78fmp\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (3.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (36.5ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "test"], ["password_digest", "$2a$10$z1pniYluiudKj5m/rlmRd.F2YG/nS.1SY7rRb1OTXxioODWq4D8oG"], ["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["created_at", "2017-07-24 23:17:39.685299"], ["updated_at", "2017-07-24 23:17:39.685299"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (12.4ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "editorState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 14], ["editorState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"78fmp\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-24 23:17:39.764684"], ["updated_at", "2017-07-24 23:17:39.764684"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "test"], ["created_at", "2017-07-24 23:17:39.822519"], ["updated_at", "2017-07-24 23:17:39.822519"]]
+  [1m[35mSQL (12.2ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 14], ["editor_id", 29], ["created_at", "2017-07-24 23:17:39.863016"], ["updated_at", "2017-07-24 23:17:39.863016"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.41ms)
+Completed 200 OK in 433ms (Views: 4.2ms | ActiveRecord: 69.6ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:19:50 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"dragons"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"dragons"}}}
+  [1m[36mScript Load (18.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+  [1m[36mEditor Load (42.9ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 14], ["name", "dragons"], ["LIMIT", 1]]
+  [1m[35m (3.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (16.4ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "dragons"], ["created_at", "2017-07-24 23:19:50.850182"], ["updated_at", "2017-07-24 23:19:50.850182"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.79ms)
+Completed 200 OK in 505ms (Views: 7.4ms | ActiveRecord: 82.1ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:23:57 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (15.6ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+  [1m[36mEditor Load (51.1ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 14], ["name", "test"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (15.75ms)
+Completed 200 OK in 392ms (Views: 22.3ms | ActiveRecord: 66.7ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:24:48 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (11.8ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+  [1m[36mEditor Load (33.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 14], ["name", "test"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.43ms)
+Completed 200 OK in 339ms (Views: 4.7ms | ActiveRecord: 45.6ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:30:42 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"asdf"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"asdf"}}}
+  [1m[36mScript Load (19.6ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.78ms)
+Completed 404 Not Found in 287ms (Views: 41.9ms | ActiveRecord: 19.6ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:31:08 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"asdf"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"asdf"}}}
+  [1m[36mScript Load (5.9ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.26ms)
+Completed 404 Not Found in 152ms (Views: 20.2ms | ActiveRecord: 5.9ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:31:32 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (11.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.6ms)
+Completed 404 Not Found in 193ms (Views: 25.3ms | ActiveRecord: 11.3ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:32:41 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (27.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.9ms)
+Completed 422 Unprocessable Entity in 359ms (Views: 38.6ms | ActiveRecord: 27.1ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:34:44 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (28.7ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.38ms)
+Completed 200 OK in 425ms (Views: 49.4ms | ActiveRecord: 28.7ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:34:55 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (6.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (5.56ms)
+Completed 200 OK in 122ms (Views: 6.3ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:36:19 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (15.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.55ms)
+Completed 200 OK in 194ms (Views: 8.3ms | ActiveRecord: 15.1ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:39:36 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (11.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.26ms)
+Completed 200 OK in 236ms (Views: 25.5ms | ActiveRecord: 11.3ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:40:55 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (11.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.88ms)
+Completed 200 OK in 222ms (Views: 15.6ms | ActiveRecord: 11.1ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:41:08 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (7.0ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (3.82ms)
+Completed 200 OK in 141ms (Views: 6.9ms | ActiveRecord: 7.0ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:41:09 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (0.9ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (21.96ms)
+Completed 200 OK in 137ms (Views: 26.6ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:41:13 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (0.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.7ms)
+Completed 200 OK in 117ms (Views: 7.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:41:19 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (3.6ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 109ms (Views: 5.1ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-24 19:41:27 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}, "auth"=>{"script"=>{"cuid"=>"cj5irvwvn00003i5rs5lq5j96", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"test"}}}
+  [1m[36mScript Load (0.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5irvwvn00003i5rs5lq5j96"], ["LIMIT", 1]]
+  [1m[36mEditor Load (4.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 LIMIT $3[0m  [["script_id", 14], ["name", "test"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.23ms)
+Completed 200 OK in 1278ms (Views: 3.2ms | ActiveRecord: 343.8ms)
+
+
