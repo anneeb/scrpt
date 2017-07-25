@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import AuthReducer from './AuthReducer'
-import ScriptsReducer from './ScriptsReducer'
+import ScriptReducer from './ScriptReducer'
 
 const Reducers = combineReducers({
   auth: AuthReducer,
-  script: ScriptsReducer
+  script: ScriptReducer
 })
 
 export default Reducers

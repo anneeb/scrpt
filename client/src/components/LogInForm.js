@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Form } from 'formsy-semantic-ui-react'
-import PropTypes from 'prop-types'
 import * as actions from '../actions'
 
 class LogInForm extends Component {
@@ -9,10 +8,6 @@ class LogInForm extends Component {
     editor: '',
     password: '',
     cuid: this.props.cuid
-  }
-
-  static contextTypes = {
-    router: PropTypes.object
   }
 
   handleChange = (event) => {

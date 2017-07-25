@@ -16,11 +16,8 @@ module Api
           })
           return render json: {
             payload: {
-              cuid: script.cuid,
-              editor: {
-                id: editor.id,
-                name: editor.name
-              }
+              editor: editor,
+              script: script
             },
             token: created_token
           }

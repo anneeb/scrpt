@@ -11,7 +11,7 @@ export default function(ComposedComponent) {
     }
 
     componentWillMount() {
-      console.log(this.props)
+      debugger
       const cuid = this.props.match.params.cuid
       if (!this.props.auth[cuid]) {
         this.context.router.history.push(`/scripts/${cuid}`)
@@ -19,7 +19,6 @@ export default function(ComposedComponent) {
     }
 
     componentWillUpdate(nextProps) {
-      console.log(this.props)
       const cuid = this.props.match.params.cuid
       if (!nextProps.auth[cuid]) {
         this.context.router.history.push(`/scripts/${cuid}`)

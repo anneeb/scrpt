@@ -1,20 +1,26 @@
 import {
   AUTH_USER,
   AUTH_ERROR,
-  CHECK_AUTH
+  CHECK_AUTH,
+  AUTH_COMPLETED
 } from '../actions/types'
 
 export default function (state = {}, action) {
-// export default function (state = {authenticated: true}, action) {
-  const cuid = action.payload ? action.payload.cuid : 'cuid'
-  const Switch = {
-    [AUTH_USER]: {
-      ...state,
-      error: '',
-      [cuid]: true
-    },
-    [AUTH_ERROR]: { ...state, error: action.payload },
-    [CHECK_AUTH]: { ...state, message: action.payload }
+  switch (action.type) {
+    case AUTH_USER:
+      return {
+        ...state,
+        error: '',
+        shouldRedirect: true,
+        [action.payload.script.cuid]: action.payload.editor
+      }
+    case AUTH_ERROR:
+      return { ...state, error: action.payload }
+    case CHECK_AUTH:
+      return { ...state, message: action.payload }
+    case AUTH_COMPLETED:
+      return {...state, shouldRedirect: false}
+    default:
+      return state
   }
-  return Switch[action.type] || state
 }

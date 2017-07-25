@@ -28,16 +28,18 @@ class NewScriptForm extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    if (nextProps.script.cuid) {
+    console.log(nextProps.auth.shouldRedirect);
+    if (nextProps.auth.shouldRedirect) {
+      this.props.authCompleted()
       this.context.router.history.push(`/scripts/${nextProps.script.cuid}/edit`)
     }
   }
 
   renderAlert = () => {
-    if (this.props.auth.errorMessage) {
+    if (this.props.auth.error) {
       return (
         <div className='alert alert-danger'>
-          <strong>Oops!</strong> {this.props.auth.errorMessage}
+          <strong>Oops!</strong> {this.props.auth.error}
         </div>
       )
     }

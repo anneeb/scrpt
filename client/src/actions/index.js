@@ -4,7 +4,8 @@ import {
   AUTH_USER,
   AUTH_ERROR,
   CHECK_AUTH,
-  DID_CREATE_SCRIPT
+  AUTH_COMPLETED,
+  DID_GET_SCRIPT
 } from './types'
 
 export function logIn (params) {
@@ -14,7 +15,11 @@ export function logIn (params) {
         if (resp.error) {
           dispatch(authError(resp.error))
         } else {
-          localStorage.setItem(resp.data.payload.cuid, resp.data.token)
+          localStorage.setItem(resp.data.payload.script.cuid, resp.data.token)
+          dispatch({
+            type: DID_GET_SCRIPT,
+            payload: resp.data.payload
+          })
           dispatch({
             type: AUTH_USER,
             payload: resp.data.payload
@@ -31,13 +36,13 @@ export function createScript (params) {
   return function (dispatch) {
     ScriptsAdapter.createScript(params)
       .then(resp => {
-        localStorage.setItem(resp.data.payload.cuid, resp.data.token)
+        localStorage.setItem(resp.data.payload.script.cuid, resp.data.token)
         dispatch({
-          type: AUTH_USER,
+          type: DID_GET_SCRIPT,
           payload: resp.data.payload
         })
         dispatch({
-          type: DID_CREATE_SCRIPT,
+          type: AUTH_USER,
           payload: resp.data.payload
         })
       })
@@ -46,6 +51,13 @@ export function createScript (params) {
       })
   }
 }
+
+export function authCompleted () {
+  return {
+    type: AUTH_COMPLETED
+  }
+}
+
 //
 // export function signupUser ({ email, password }) {
 //   return function (dispatch) {
