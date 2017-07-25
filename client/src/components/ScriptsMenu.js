@@ -7,9 +7,10 @@ import { Menu } from 'semantic-ui-react'
 class ScriptsMenu extends Component {
 
   renderEdit = () => {
-    if (this.props.auth.authenticated) {
+    const cuid = this.props.match.params.cuid
+    if (this.props.auth[cuid]) {
       return (
-        <Menu.Item as={NavLink} exact to={`/scripts/${this.props.match.params.cuid}/edit`}>
+        <Menu.Item as={NavLink} exact to={`/scripts/${cuid}/edit`}>
           Edit
         </Menu.Item>
       )

@@ -1,16 +1,15 @@
 import {
-  DID_GET_SCRIPT
-} from '../ActionTypes'
+  DID_GET_SCRIPT,
+  SCRIPT_ERROR
+} from '../actions/types'
 
 export default function (state = {}, action) {
-  function didGetScript () {
-    return {script: {...action.data}}
+  switch (action.type) {
+    case DID_GET_SCRIPT:
+      return {...state, ...action.payload.script, error: '' }
+    case SCRIPT_ERROR:
+      return {...state, error: action.payload}
+    default:
+      return state
   }
-
-  const Switch = {
-    [DID_GET_SCRIPT]: didGetScript
-  }
-
-  return (Switch[action.type] || function () {return state})()
-
 }

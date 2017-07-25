@@ -38,7 +38,7 @@ class EditMenu extends Component {
         )}
         {INLINE_STYLES.map(type =>
           <StyleButton
-            key={type.label}
+            key={type.icon}
             active={currentStyle.has(type.style)}
             icon={type.icon}
             onToggle={this.props.onInlineToggle}

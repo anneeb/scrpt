@@ -11,14 +11,16 @@ export default function(ComposedComponent) {
     }
 
     componentWillMount() {
-      if (!this.props.authenticated) {
-        this.context.router.history.push(`/scripts/${this.props.match.params.cuid}`)
+      const cuid = this.props.match.params.cuid
+      if (!this.props.auth[cuid]) {
+        this.context.router.history.push(`/scripts/${cuid}`)
       }
     }
 
     componentWillUpdate(nextProps) {
-      if (!nextProps.authenticated) {
-        this.context.router.history.push(`/scripts/${this.props.match.params.cuid}`)
+      const cuid = this.props.match.params.cuid
+      if (!nextProps.auth[cuid]) {
+        this.context.router.history.push(`/scripts/${cuid}`)
       }
     }
 
@@ -28,7 +30,7 @@ export default function(ComposedComponent) {
   }
 
   function mapStateToProps(state) {
-    return { authenticated: state.auth.authenticated }
+    return { auth: state.auth }
   }
 
   return connect(mapStateToProps)(Authentication)
