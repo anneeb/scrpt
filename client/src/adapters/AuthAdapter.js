@@ -14,10 +14,10 @@ class AuthAdapter {
     return axios.post(`${ROOT_URL}/auth`, data)
   }
 
-  static checkAuth = () => {
+  static checkAuth = (token) => {
     return axios.get(`${ROOT_URL}/me`, {
       headers: {
-        authorization: localStorage.getItem('token')
+        authorization: token
       }
     })
   }

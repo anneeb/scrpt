@@ -13,7 +13,7 @@ class ScriptContainer extends Component {
   }
 
   componentWillMount() {
-    this.props.getScript(this.props.match.params.cuid)
+    this.props.checkScriptAuth(this.props.match.params.cuid)
   }
 
   componentWillUpdate(nextProps) {
@@ -23,9 +23,21 @@ class ScriptContainer extends Component {
     }
   }
 
+  renderAlert = () => {
+    if (this.props.script.error) {
+      return (
+        <div className='alert alert-danger'>
+          <strong>Oops!</strong> {this.props.script.error}
+        </div>
+      )
+    }
+  }
+
   render () {
+    console.log(this.props.script);
     return (
       <Container>
+        {this.renderAlert()}
         <Header>
           {this.props.script.title}
         </Header>

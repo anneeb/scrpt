@@ -28,7 +28,6 @@ class NewScriptForm extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    console.log(nextProps.auth.shouldRedirect);
     if (nextProps.auth.shouldRedirect) {
       this.props.authCompleted()
       this.context.router.history.push(`/scripts/${nextProps.script.cuid}/edit`)

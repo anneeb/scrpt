@@ -25,7 +25,7 @@ class ScriptsAdapter {
     const data = {
       cuid: cuid
     }
-    return axios.post(`${ROOT_URL}/script`, data)
+    return axios.get(`${ROOT_URL}/scripts/${cuid}`, data)
   }
 }
 

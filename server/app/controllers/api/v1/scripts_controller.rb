@@ -16,28 +16,28 @@ module Api
           })
           return render json: {
             payload: {
-              editor: editor,
-              script: script
+              editor: ActiveModel::Serializer::EditSerializer.new(editor),
+              script: ActiveModel::Serializer::ScriptSerializer.new(script)
             },
             token: created_token
           }
         end
         render json: {
-          error: 'Something went wrong. Please try again.'
+          error: 'Script did not save. Please try again.'
         }
       end
 
       def show
-        script = Script.find_by(cuid: params[:cuid])
+        script = Script.find_by(cuid: params[:id])
         if script
           return render json: {
             payload: {
-              script: script
+              script: ActiveModel::Serializer::ScriptSerializer.new(script)
             }
           }
         end
         render json: {
-          error: 'Something went wrong. Please try again.'
+          error: "Could not find script with cuid #{params[:cuid]}"
         }
       end
 

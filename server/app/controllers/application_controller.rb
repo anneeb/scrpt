@@ -8,7 +8,9 @@ class ApplicationController < ActionController::API
 
   def authorize_editor!
     if !current_script.present? || !current_editor.present?
-      render json: {error: 'No authentication'}
+      render json: {
+        error: 'Authentication invalid. Please try again.'
+      }
     end
   end
 
@@ -25,7 +27,7 @@ class ApplicationController < ActionController::API
   end
 
   def token_editor_id
-    decoded_token.first['id']
+    decoded_token.first['editor']
   end
 
   def decoded_token

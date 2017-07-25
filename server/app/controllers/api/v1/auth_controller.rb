@@ -1,7 +1,7 @@
 module Api
   module V1
     class AuthController < ApplicationController
-      before_action :authorize_user!, only: [:show]
+      before_action :authorize_editor!, only: [:show]
 
       def create
         script = Script.find_by(cuid: params[:script][:cuid])
@@ -13,8 +13,8 @@ module Api
           })
           render json: {
             payload: {
-              editor: editor,
-              script: script
+              editor: ActiveModel::Serializer::EditSerializer.new(editor),
+              script: ActiveModel::Serializer::ScriptSerializer.new(script)
             },
             token: created_token
           }
@@ -27,9 +27,10 @@ module Api
 
       def show
         render json: {
-          id: current_user.id,
-          first_name: current_user.first_name,
-          last_name: current_user.last_name
+          payload: {
+            editor: ActiveModel::Serializer::EditSerializer.new(editor),
+            script: ActiveModel::Serializer::ScriptSerializer.new(script)
+          }
         }
       end
 
