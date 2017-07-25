@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Route, Redirect } from 'react-router-dom'
-import { Container } from 'semantic-ui-react'
+import { Container, Header } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import ScriptsMenu from '../components/ScriptsMenu'
 import ScriptsRouter from '../routers/ScriptsRouter'
@@ -13,8 +12,11 @@ class ScriptContainer extends Component {
     router: PropTypes.object
   }
 
+  componentWillMount() {
+    this.props.getScript(this.props.match.params.cuid)
+  }
+
   componentWillUpdate(nextProps) {
-    console.log(nextProps.auth.shouldRedirect)
     if (nextProps.auth.shouldRedirect) {
       this.props.authCompleted()
       this.context.router.history.push(`/scripts/${nextProps.script.cuid}/edit`)
@@ -24,7 +26,10 @@ class ScriptContainer extends Component {
   render () {
     return (
       <Container>
-        <Route path='/scripts/:cuid' render={(props) => <ScriptsMenu {...props} />} />
+        <Header>
+          {this.props.script.title}
+        </Header>
+        <ScriptsMenu {...this.props} />
         <ScriptsRouter />
       </Container>
     );

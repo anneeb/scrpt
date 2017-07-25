@@ -20,6 +20,13 @@ class ScriptsAdapter {
     }
     return axios.post(`${ROOT_URL}/scripts`, data)
   }
+
+  static getScript = (cuid) => {
+    const data = {
+      cuid: cuid
+    }
+    return axios.post(`${ROOT_URL}/script`, data)
+  }
 }
 
 export default ScriptsAdapter

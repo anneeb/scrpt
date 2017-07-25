@@ -24,10 +24,21 @@ module Api
         end
         render json: {
           error: 'Something went wrong. Please try again.'
-        }, status: 404
+        }
       end
 
       def show
+        script = Script.find_by(cuid: params[:cuid])
+        if script
+          return render json: {
+            payload: {
+              script: script
+            }
+          }
+        end
+        render json: {
+          error: 'Something went wrong. Please try again.'
+        }
       end
 
       def destroy

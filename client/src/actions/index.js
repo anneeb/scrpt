@@ -5,7 +5,8 @@ import {
   AUTH_ERROR,
   CHECK_AUTH,
   AUTH_COMPLETED,
-  DID_GET_SCRIPT
+  DID_GET_SCRIPT,
+  SCRIPT_ERROR
 } from './types'
 
 export function logIn (params) {
@@ -52,28 +53,37 @@ export function createScript (params) {
   }
 }
 
+export function getScript (params) {
+  return function (dispatch) {
+    ScriptsAdapter.getScript(params)
+      .then(resp => {
+        dispatch({
+          type: DID_GET_SCRIPT,
+          payload: resp.data.payload
+        })
+      })
+      . catch(() => {
+        dispatch(scriptError('Something went wrong. Please try again.'))
+      })
+  }
+}
+
 export function authCompleted () {
   return {
     type: AUTH_COMPLETED
   }
 }
 
-//
-// export function signupUser ({ email, password }) {
-//   return function (dispatch) {
-//     axios.post(`${ROOT_URL}/signup`, { email, password })
-//       .then(response => {
-//         dispatch({ type: AUTH_USER })
-//         localStorage.setItem('token', response.data.token)
-//       })
-//       .catch(response => dispatch(authError(response.data.error)))
-//   }
-// }
-//
-
 export function authError (error) {
   return {
     type: AUTH_ERROR,
+    payload: error
+  }
+}
+
+export function scriptError (error) {
+  return {
+    type: SCRIPT_ERROR,
     payload: error
   }
 }
