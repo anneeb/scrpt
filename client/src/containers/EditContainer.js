@@ -1,39 +1,36 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import EditMenu from '../containers/EditMenu'
-import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js'
+import { Editor, EditorState, RichUtils, convertFromRaw } from 'draft-js'
 import '../../node_modules/draft-js/dist/Draft.css'
 import '../stylesheets/EditContainer.css'
 import * as actions from '../actions'
 
 class EditContainer extends Component {
   state = {
-    editorState: EditorState.createEmpty()
+    editorState: EditorState.createEmpty(),
+    loadedFromStore: false
   }
 
-  // componentWillMount() {
-  //   if (this.props.script.versions) {
-  //     this.props.getContentState(this.props.script)
-  //   }
-  // }
+  componentWillMount() {
+    if (this.props.script.versions) {
+      this.props.getContentState(this.props.script)
+    }
+  }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.edit.contentState) {
-  //     this.setState
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (!this.state.loadedFromStore && nextProps.contentState) {
+      console.log('loaded')
+      this.setState({
+        editorState: EditorState.createWithContent(convertFromRaw(nextProps.contentState)),
+        loadedFromStore: true
+      })
+    }
+  }
 
   focus = () => {
     this.refs.editor.focus()
   }
-
-  // componentWillUpdate(nextProps, nextState) {
-  //   const thisContext = this.props.contentState
-  //   const nextContext = nextProps.contentState
-  //   if (thisContext && nextContext && thisContext !== nextContext) {
-  //     console.log('here')
-  //   }
-  // }
 
   onChange = (state) => {
     this.setState({
@@ -94,12 +91,8 @@ class EditContainer extends Component {
     );
   }
 
-  componentWillUnmount() {
-    console.log('um')
-  }
-
   render() {
-    // if (this.props.contentState) {
+    if (this.props.contentState) {
       // const editorState = EditorState.createWithContent(convertFromRaw(this.props.contentState))
       // const selectionState = this.state.editorState.getSelection()
       // const editorState = EditorState.acceptSelection(propsEditor, selectionState)
@@ -128,11 +121,11 @@ class EditContainer extends Component {
           </div>
         </div>
       );
-    // } else {
-      // return (
-        // <div> Loading... </div>
-      // )
-    // }
+    } else {
+      return (
+        <div> Loading... </div>
+      )
+    }
   }
 
 }

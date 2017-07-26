@@ -45,6 +45,7 @@ class EditMenu extends Component {
             style={type.style}
           />
         )}
+        <button>Save</button>
       </div>
     )
   }
