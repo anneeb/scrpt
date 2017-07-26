@@ -39,7 +39,6 @@ class EditContainer extends Component {
   }
 
   createVersion (json) {
-    console.log('creating version');
     const cuid = this.props.script.cuid
     this.props.createVersion(json, cuid)
   }
