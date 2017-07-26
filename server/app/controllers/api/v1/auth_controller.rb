@@ -13,8 +13,8 @@ module Api
           })
           render json: {
             payload: {
-              editor: ActiveModel::Serializer::EditorSerializer.new(editor),
-              script: ActiveModel::Serializer::ScriptSerializer.new(script)
+              editor: EditorSerializer.new(editor),
+              script: ScriptSerializer.new(script)
             },
             token: created_token
           }
@@ -28,8 +28,8 @@ module Api
       def show
         render json: {
           payload: {
-            editor: ActiveModel::Serializer::EditorSerializer.new(current_editor),
-            script: ActiveModel::Serializer::ScriptSerializer.new(current_script)
+            editor: EditorSerializer.new(current_editor),
+            script: ScriptSerializer.new(current_script)
           }
         }
       end

@@ -32,7 +32,7 @@ module Api
         if script
           return render json: {
             payload: {
-              script: ActiveModel::Serializer::ScriptSerializer.new(script)
+              script: ScriptSerializer.new(script)
             }
           }
         end

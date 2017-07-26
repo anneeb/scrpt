@@ -14,7 +14,7 @@ class EditContainer extends Component {
   }
 
   initEditorState = (versions) => {
-    const json = versions[versions.length - 1].contentState
+    const json = versions[0].contentState
     const editorState = EditorState.createWithContent(this.parseContent(json))
     this.props.setEditorState(editorState)
   }
@@ -25,9 +25,9 @@ class EditContainer extends Component {
   }
 
   compareVersions (versions) {
-    const oldJson = versions[versions.length - 1].contentState
+    const oldJson = versions[0].contentState
     const newJson = this.stringifyContent(this.props.editorState.getCurrentContent())
-    if (newJson !== oldJson) { this.createVersion(newJson)}
+    if (newJson !== oldJson) { this.createVersion(newJson) }
   }
 
   stringifyContent(contentState) {
@@ -39,6 +39,7 @@ class EditContainer extends Component {
   }
 
   createVersion (json) {
+    console.log('creating version');
     const cuid = this.props.script.cuid
     this.props.createVersion(json, cuid)
   }
@@ -107,9 +108,6 @@ class EditContainer extends Component {
   render() {
     const editorState = this.props.editorState
     if (editorState) {
-      // const editorState = EditorState.createWithContent(convertFromRaw(this.props.contentState))
-      // const selectionState = this.state.editorState.getSelection()
-      // const editorState = EditorState.acceptSelection(propsEditor, selectionState)
       return (
         <div className='RichEditor-root'>
           <EditMenu

@@ -10,7 +10,7 @@ module Api
         if version.save
           return render json: {
             payload: {
-              script: ActiveModel::Serializer::ScriptSerializer.new(version.script)
+              script: ScriptSerializer.new(version.script)
             }
           }
         end

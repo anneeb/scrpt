@@ -34,6 +34,7 @@ class ScriptContainer extends Component {
   }
 
   render () {
+    console.log(this.props.script)
     return (
       <Container >
         {this.renderAlert()}
