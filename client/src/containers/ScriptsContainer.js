@@ -37,9 +37,7 @@ class ScriptContainer extends Component {
     return (
       <Container>
         {this.renderAlert()}
-        <Header>
-          {this.props.script.title}
-        </Header>
+        <Header content={this.props.script.title} subheader={this.props.script.cuid} />
         <ScriptsMenu {...this.props} />
         <ScriptsRouter />
       </Container>
