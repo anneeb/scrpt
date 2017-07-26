@@ -1,17 +1,39 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import EditMenu from '../containers/EditMenu'
-import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js'
+import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js'
 import '../../node_modules/draft-js/dist/Draft.css'
 import '../stylesheets/EditContainer.css'
+import * as actions from '../actions'
 
 class EditContainer extends Component {
   state = {
     editorState: EditorState.createEmpty()
   }
 
+  // componentWillMount() {
+  //   if (this.props.script.versions) {
+  //     this.props.getContentState(this.props.script)
+  //   }
+  // }
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.edit.contentState) {
+  //     this.setState
+  //   }
+  // }
+
   focus = () => {
     this.refs.editor.focus()
   }
+
+  // componentWillUpdate(nextProps, nextState) {
+  //   const thisContext = this.props.contentState
+  //   const nextContext = nextProps.contentState
+  //   if (thisContext && nextContext && thisContext !== nextContext) {
+  //     console.log('here')
+  //   }
+  // }
 
   onChange = (state) => {
     this.setState({
@@ -72,43 +94,51 @@ class EditContainer extends Component {
     );
   }
 
-  render() {
-    const { editorState } = this.state;
+  componentWillUnmount() {
+    console.log('um')
+  }
 
-    // If the user changes block type before entering any text, we can
-    // either style the placeholder or hide it. Let's just hide it now.
-    let className = 'RichEditor-editor';
-    var contentState = editorState.getCurrentContent();
-    if (!contentState.hasText()) {
-      if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-        className += ' RichEditor-hidePlaceholder';
-      }
-    }
-    return (
-      <div className='RichEditor-root'>
-        <EditMenu
-          editorState={editorState}
-          onBlockToggle={this.toggleBlockType}
-          onInlineToggle={this.toggleInlineStyle}
-        />
-        <div className='RichEditor-container'>
-          <div className={className} onClick={this.focus}>
-            <Editor
-              blockStyleFn={this.getBlockStyle}
-              customStyleMap={this.styleMap}
-              editorState={editorState}
-              handleKeyCommand={this.handleKeyCommand}
-              onChange={this.onChange}
-              onTab={this.onTab}
-              placeholder="Tell a story..."
-              ref="editor"
-              spellCheck={true}
-            />
+  render() {
+    // if (this.props.contentState) {
+      // const editorState = EditorState.createWithContent(convertFromRaw(this.props.contentState))
+      // const selectionState = this.state.editorState.getSelection()
+      // const editorState = EditorState.acceptSelection(propsEditor, selectionState)
+      const editorState = this.state.editorState
+      return (
+        <div className='RichEditor-root'>
+          <EditMenu
+            editorState={editorState}
+            onBlockToggle={this.toggleBlockType}
+            onInlineToggle={this.toggleInlineStyle}
+          />
+          <div className='RichEditor-container'>
+            <div className='RichEditor-editor' onClick={this.focus}>
+              <Editor
+                blockStyleFn={this.getBlockStyle}
+                customStyleMap={this.styleMap}
+                editorState={editorState}
+                handleKeyCommand={this.handleKeyCommand}
+                onChange={this.onChange}
+                onTab={this.onTab}
+                placeholder="Tell a story..."
+                ref="editor"
+                spellCheck={true}
+              />
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    // } else {
+      // return (
+        // <div> Loading... </div>
+      // )
+    // }
   }
+
 }
 
-export default EditContainer
+function mapStateToProps (state) {
+  return { contentState: state.edit.contentState, script: state.script }
+}
+
+export default connect(mapStateToProps, actions)(EditContainer)

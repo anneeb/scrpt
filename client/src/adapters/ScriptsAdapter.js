@@ -6,8 +6,7 @@ const ROOT_URL = 'http://localhost:3000/api/v1'
 
 class ScriptsAdapter {
   static createScript = ({ title, editor, password, confirmPassword }) => {
-    const contentState = EditorState.createEmpty().getCurrentContent()
-    const raw = convertToRaw(contentState: contentState)
+    const contentState = convertToRaw(EditorState.createEmpty().getCurrentContent())
     const data = {
       script: {
         title,
@@ -16,7 +15,7 @@ class ScriptsAdapter {
         cuid: cuid()
       },
       editor: {name: editor},
-      version: {editorState: JSON.stringify(raw)}
+      version: {contentState: JSON.stringify(contentState)}
     }
     return axios.post(`${ROOT_URL}/scripts`, data)
   }

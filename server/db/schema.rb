@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20170720134950) do
 
   create_table "versions", force: :cascade do |t|
     t.bigint "script_id"
-    t.text "editorState"
+    t.text "contentState"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["script_id"], name: "index_versions_on_script_id"

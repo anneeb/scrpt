@@ -16,7 +16,7 @@ module Api
           })
           return render json: {
             payload: {
-              editor: ActiveModel::Serializer::EditSerializer.new(editor),
+              editor: ActiveModel::Serializer::EditorSerializer.new(editor),
               script: ActiveModel::Serializer::ScriptSerializer.new(script)
             },
             token: created_token
@@ -55,7 +55,7 @@ module Api
       end
 
       def version_params
-        params.require(:version).permit(:editorState)
+        params.require(:version).permit(:contentState)
       end
 
       def password_match

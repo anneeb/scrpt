@@ -1,14 +1,15 @@
 import AuthAdapter from '../adapters/AuthAdapter'
 import ScriptsAdapter from '../adapters/ScriptsAdapter'
+import VersionsAdapter from '../adapters/VersionsAdapter'
 import {
   AUTH_USER,
   AUTH_USER_WITH_REDIRECT,
   AUTH_ERROR,
-  CHECK_AUTH,
   AUTH_COMPLETED,
   UNAUTH_USER,
   DID_GET_SCRIPT,
-  SCRIPT_ERROR
+  SCRIPT_ERROR,
+  SET_CONTENT_STATE
 } from './types'
 
 export function logIn (params) {
@@ -82,6 +83,37 @@ export function checkAuth(token, cuid) {
           dispatch(authUser(resp.data))
         }
       })
+  }
+}
+
+export function getContentState(script) {
+  const json = script.versions[script.versions.length - 1].contentState
+  const contentState = JSON.parse(json)
+  return setContentState(contentState)
+}
+
+export function createVersion(data, cuid) {
+  return function (dispatch) {
+    const token = localStorage.getItem(cuid)
+    VersionsAdapter.createVersion(data, token)
+      .then(resp => {
+        if (resp.data.error) {
+          dispatch(scriptError(resp.data.error))
+        } else {
+          const contentState = JSON.parse(resp.data.payload.version.contentState)
+          dispatch(setContentState(contentState))
+        }
+      })
+      .catch(() => {
+        dispatch(authError('Something went wrong. Please try again.'))
+      })
+  }
+}
+
+export function setContentState(editorState) {
+  return {
+    type: SET_CONTENT_STATE,
+    payload: editorState
   }
 }
 

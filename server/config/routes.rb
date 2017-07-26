@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :scripts, only: [:create, :show]
+      resources :versions, only: [:create]
       post '/auth', to: 'auth#create'
       get '/me', to: 'auth#show'
     end
