@@ -5,10 +5,12 @@ module Api
 
       def create
         version = Version.new(version_params)
+        version.script = current_script
+        version.editors.push(current_editor)
         if version.save
-          render json: {
+          return render json: {
             payload: {
-              version: ActiveModel::Serializer::VersionSerializer.new(version)
+              script: ActiveModel::Serializer::ScriptSerializer.new(version.script)
             }
           }
         end
@@ -20,7 +22,7 @@ module Api
       private
 
       def version_params
-        params.require(:version).permit(:contentState, :script_id, :editor_id)
+        params.require(:version).permit(:contentState)
       end
 
     end

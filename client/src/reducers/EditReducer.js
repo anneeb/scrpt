@@ -1,11 +1,11 @@
 import {
-  SET_CONTENT_STATE,
+  SET_EDITOR_STATE,
 } from '../actions/types'
 
 export default function (state = {}, action) {
   switch (action.type) {
-    case SET_CONTENT_STATE:
-      return {...state, contentState: action.payload}
+    case SET_EDITOR_STATE:
+      return {...state, editorState: action.payload}
     default:
       return state
   }

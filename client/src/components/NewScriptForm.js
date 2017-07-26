@@ -23,8 +23,8 @@ class NewScriptForm extends Component {
     })
   }
 
-  handleSubmit = ({ title, editor, password, confirmPassword }) => {
-    this.props.createScript({ title, editor, password, confirmPassword })
+  handleSubmit = (formData) => {
+    this.props.createScript(formData)
   }
 
   componentWillUpdate(nextProps) {

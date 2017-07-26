@@ -1,31 +1,46 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import EditMenu from '../containers/EditMenu'
-import { Editor, EditorState, RichUtils, convertFromRaw } from 'draft-js'
+import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js'
 import '../../node_modules/draft-js/dist/Draft.css'
 import '../stylesheets/EditContainer.css'
 import * as actions from '../actions'
 
 class EditContainer extends Component {
-  state = {
-    editorState: EditorState.createEmpty(),
-    loadedFromStore: false
+
+  componentWillMount () {
+    const versions = this.props.script.versions
+    if (versions) { this.initEditorState(versions) }
   }
 
-  componentWillMount() {
-    if (this.props.script.versions) {
-      this.props.getContentState(this.props.script)
-    }
+  initEditorState = (versions) => {
+    const json = versions[versions.length - 1].contentState
+    const editorState = EditorState.createWithContent(this.parseContent(json))
+    this.props.setEditorState(editorState)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!this.state.loadedFromStore && nextProps.contentState) {
-      console.log('loaded')
-      this.setState({
-        editorState: EditorState.createWithContent(convertFromRaw(nextProps.contentState)),
-        loadedFromStore: true
-      })
-    }
+  componentWillUnmount () {
+    const versions = this.props.script.versions
+    if (versions) { this.compareVersions(versions) }
+  }
+
+  compareVersions (versions) {
+    const oldJson = versions[versions.length - 1].contentState
+    const newJson = this.stringifyContent(this.props.editorState.getCurrentContent())
+    if (newJson !== oldJson) { this.createVersion(newJson)}
+  }
+
+  stringifyContent(contentState) {
+    return JSON.stringify(convertToRaw(contentState))
+  }
+
+  parseContent(json) {
+    return convertFromRaw(JSON.parse(json))
+  }
+
+  createVersion (json) {
+    const cuid = this.props.script.cuid
+    this.props.createVersion(json, cuid)
   }
 
   focus = () => {
@@ -33,13 +48,11 @@ class EditContainer extends Component {
   }
 
   onChange = (state) => {
-    this.setState({
-      editorState: state
-    })
+    this.props.setEditorState(state)
   }
 
   handleKeyCommand = (command) => {
-    const newState = RichUtils.handleKeyCommand(this.state.editorState, command)
+    const newState = RichUtils.handleKeyCommand(this.props.editorState, command)
     if (newState) {
       this.onChange(newState)
       return true;
@@ -50,7 +63,7 @@ class EditContainer extends Component {
   onTab = (event) => {
     event.preventDefault()
     const maxDepth = 4;
-    this.onChange(RichUtils.onTab(event, this.state.editorState, maxDepth));
+    this.onChange(RichUtils.onTab(event, this.props.editorState, maxDepth));
   }
 
   // block styles
@@ -68,7 +81,7 @@ class EditContainer extends Component {
   toggleBlockType = (blockType) => {
     this.onChange(
       RichUtils.toggleBlockType(
-        this.state.editorState,
+        this.props.editorState,
         blockType
       )
     )
@@ -85,18 +98,18 @@ class EditContainer extends Component {
   toggleInlineStyle = (inlineStyle) => {
     this.onChange(
       RichUtils.toggleInlineStyle(
-        this.state.editorState,
+        this.props.editorState,
         inlineStyle
       )
     );
   }
 
   render() {
-    if (this.props.contentState) {
+    const editorState = this.props.editorState
+    if (editorState) {
       // const editorState = EditorState.createWithContent(convertFromRaw(this.props.contentState))
       // const selectionState = this.state.editorState.getSelection()
       // const editorState = EditorState.acceptSelection(propsEditor, selectionState)
-      const editorState = this.state.editorState
       return (
         <div className='RichEditor-root'>
           <EditMenu
@@ -131,7 +144,7 @@ class EditContainer extends Component {
 }
 
 function mapStateToProps (state) {
-  return { contentState: state.edit.contentState, script: state.script }
+  return { script: state.script, editorState: state.edit.editorState, auth: state.auth }
 }
 
 export default connect(mapStateToProps, actions)(EditContainer)

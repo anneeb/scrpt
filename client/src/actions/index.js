@@ -9,12 +9,12 @@ import {
   UNAUTH_USER,
   DID_GET_SCRIPT,
   SCRIPT_ERROR,
-  SET_CONTENT_STATE
+  SET_EDITOR_STATE
 } from './types'
 
-export function logIn (params) {
+export function logIn (formData) {
   return function (dispatch) {
-    AuthAdapter.logIn(params)
+    AuthAdapter.logIn(formData)
       .then(resp => {
         if (resp.data.error) {
           dispatch(authError(resp.data.error))
@@ -29,9 +29,9 @@ export function logIn (params) {
   }
 }
 
-export function createScript (params) {
+export function createScript (formData) {
   return function (dispatch) {
-    ScriptsAdapter.createScript(params)
+    ScriptsAdapter.createScript(formData)
       .then(resp => {
         if (resp.data.error) {
           dispatch(authError(resp.data.error))
@@ -86,22 +86,15 @@ export function checkAuth(token, cuid) {
   }
 }
 
-export function getContentState(script) {
-  const json = script.versions[script.versions.length - 1].contentState
-  const contentState = JSON.parse(json)
-  return setContentState(contentState)
-}
-
-export function createVersion(data, cuid) {
+export function createVersion(json, cuid) {
   return function (dispatch) {
     const token = localStorage.getItem(cuid)
-    VersionsAdapter.createVersion(data, token)
+    VersionsAdapter.createVersion(json, token)
       .then(resp => {
         if (resp.data.error) {
           dispatch(scriptError(resp.data.error))
         } else {
-          const contentState = JSON.parse(resp.data.payload.version.contentState)
-          dispatch(setContentState(contentState))
+          dispatch(didGetScript(resp.data))
         }
       })
       .catch(() => {
@@ -110,9 +103,9 @@ export function createVersion(data, cuid) {
   }
 }
 
-export function setContentState(editorState) {
+export function setEditorState(editorState) {
   return {
-    type: SET_CONTENT_STATE,
+    type: SET_EDITOR_STATE,
     payload: editorState
   }
 }

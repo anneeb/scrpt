@@ -16,8 +16,8 @@ class LogInForm extends Component {
     })
   }
 
-  handleSubmit = ({ editor, password, cuid }) => {
-    this.props.logIn({ editor, password, cuid })
+  handleSubmit = (formData) => {
+    this.props.logIn(formData)
   }
 
   renderAlert = () => {
