@@ -2,14 +2,14 @@ import AuthAdapter from '../adapters/AuthAdapter'
 import ScriptsAdapter from '../adapters/ScriptsAdapter'
 import VersionsAdapter from '../adapters/VersionsAdapter'
 import {
-  AUTH_USER,
-  AUTH_USER_WITH_REDIRECT,
-  AUTH_ERROR,
-  AUTH_COMPLETED,
-  UNAUTH_USER,
   DID_GET_SCRIPT,
-  SCRIPT_ERROR,
-  SET_EDITOR_STATE
+  DID_GET_SCRIPT_WITH_AUTH,
+  DID_GET_SCRIPT_WITH_AUTH_REDIRECT,
+  DID_GET_SCRIPT_WITH_NO_AUTH,
+  AUTH_REDIRECT_COMPLETED,
+  SET_EDITOR_STATE,
+  AUTH_ERROR,
+  SCRIPT_ERROR
 } from './types'
 
 export function logIn (formData) {
@@ -19,8 +19,8 @@ export function logIn (formData) {
         if (resp.data.error) {
           dispatch(authError(resp.data.error))
         } else {
-          dispatch(didGetScript(resp.data))
-          dispatch(authUserWithRedirect(resp.data))
+          localStorage.setItem(resp.data.payload.script.cuid, resp.data.token)
+          dispatch(didGetScriptWithAuthRedirect(resp.data))
         }
       })
       .catch(() => {
@@ -36,8 +36,8 @@ export function createScript (formData) {
         if (resp.data.error) {
           dispatch(authError(resp.data.error))
         } else {
-          dispatch(didGetScript(resp.data))
-          dispatch(authUserWithRedirect(resp.data))
+          localStorage.setItem(resp.data.payload.script.cuid, resp.data.token)
+          dispatch(didGetScriptWithAuthRedirect(resp.data))
         }
       })
       .catch(() => {
@@ -62,6 +62,22 @@ export function getScript (cuid) {
   }
 }
 
+export function getScriptWithNoAuth (cuid) {
+  return function (dispatch) {
+    ScriptsAdapter.getScript(cuid)
+      .then(resp => {
+        if (resp.data.error) {
+          dispatch(scriptError(resp.data.error))
+        } else {
+          dispatch(didGetScriptWithNoAuth(resp.data))
+        }
+      })
+      .catch(() => {
+        dispatch(scriptError('Something went wrong. Please try again.'))
+      })
+  }
+}
+
 export function checkScriptAuth (cuid) {
   const token = localStorage.getItem(cuid)
   if (token) {
@@ -76,11 +92,10 @@ export function checkAuth(token, cuid) {
     AuthAdapter.checkAuth(token)
       .then(resp => {
         if (resp.data.error) {
-          dispatch(unAuthUser(cuid))
-          dispatch(getScript(cuid))
+          localStorage.removeItem(cuid)
+          dispatch(getScriptWithNoAuth(cuid))
         } else {
-          dispatch(didGetScript(resp.data))
-          dispatch(authUser(resp.data))
+          dispatch(didGetScriptWithAuth(resp.data))
         }
       })
   }
@@ -103,46 +118,46 @@ export function createVersion(json, cuid) {
   }
 }
 
-export function setEditorState(editorState) {
-  return {
-    type: SET_EDITOR_STATE,
-    payload: editorState
-  }
-}
+// simple actions
 
-export function didGetScript(data) {
+export function didGetScript (data) {
   return {
     type: DID_GET_SCRIPT,
     payload: data.payload
   }
 }
 
-export function authUser(data) {
+export function didGetScriptWithAuth (data) {
   return {
-    type: AUTH_USER,
+    type: DID_GET_SCRIPT_WITH_AUTH,
     payload: data.payload
   }
 }
 
-export function authUserWithRedirect(data) {
-  localStorage.setItem(data.payload.script.cuid, data.token)
+export function didGetScriptWithAuthRedirect (data) {
   return {
-    type: AUTH_USER_WITH_REDIRECT,
+    type: DID_GET_SCRIPT_WITH_AUTH_REDIRECT,
     payload: data.payload
   }
 }
 
-export function unAuthUser(cuid) {
-  localStorage.removeItem(cuid)
+export function didGetScriptWithNoAuth (data) {
   return {
-    type: UNAUTH_USER,
-    payload: cuid
+    type: DID_GET_SCRIPT_WITH_NO_AUTH,
+    payload: data.payload
   }
 }
 
-export function authCompleted () {
+export function authRedirectCompleted () {
   return {
-    type: AUTH_COMPLETED
+    type: AUTH_REDIRECT_COMPLETED
+  }
+}
+
+export function setEditorState(editorState) {
+  return {
+    type: SET_EDITOR_STATE,
+    payload: editorState
   }
 }
 

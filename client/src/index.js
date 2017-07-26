@@ -6,11 +6,11 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import reduxThunk from 'redux-thunk'
 
 import App from './App'
-import Reducers from './reducers/index'
+import Reducer from './reducers'
 import registerServiceWorker from './registerServiceWorker'
 import 'semantic-ui-css/semantic.min.css'
 
-const store = createStore(Reducers, composeWithDevTools(
+const store = createStore(Reducer, composeWithDevTools(
   applyMiddleware(reduxThunk)
 ))
 

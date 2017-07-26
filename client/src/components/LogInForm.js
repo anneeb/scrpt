@@ -21,10 +21,11 @@ class LogInForm extends Component {
   }
 
   renderAlert = () => {
-    if (this.props.auth.error) {
+    const error = this.props.auth.error
+    if (error) {
       return (
         <div className='alert alert-danger'>
-          <strong>Oops!</strong> {this.props.auth.error}
+          <strong>Oops!</strong> {error}
         </div>
       )
     }

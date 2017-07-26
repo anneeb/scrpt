@@ -18,7 +18,7 @@ class ScriptContainer extends Component {
 
   componentWillUpdate(nextProps) {
     if (nextProps.auth.shouldRedirect) {
-      this.props.authCompleted()
+      this.props.authRedirectCompleted()
       this.context.router.history.push(`/scripts/${nextProps.script.cuid}/edit`)
     }
   }
@@ -35,7 +35,7 @@ class ScriptContainer extends Component {
 
   render () {
     return (
-      <Container>
+      <Container >
         {this.renderAlert()}
         <Header content={this.props.script.title} subheader={this.props.script.cuid} />
         <ScriptsMenu {...this.props} />
