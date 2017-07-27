@@ -20,6 +20,14 @@ class EditContainer extends Component {
   }
 
   componentWillUnmount () {
+    this.checkForVersions()
+  }
+
+  onUnload = (event) => {
+    this.checkForVersions()
+  }
+
+  checkForVersions = () => {
     const versions = this.props.script.versions
     if (versions) { this.compareVersions(versions) }
   }
