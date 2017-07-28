@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-//This is a higher order component to authorize a user
 export default function(ComposedComponent) {
-  //use the context property to access the router history
   class Authentication extends Component {
     componentWillMount() {
       const cuid = this.props.match.params.cuid

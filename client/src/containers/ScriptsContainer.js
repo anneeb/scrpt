@@ -1,16 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Container, Header } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
 import ScriptsMenu from '../components/ScriptsMenu'
 import ScriptsRouter from '../routers/ScriptsRouter'
 import * as actions from '../actions/'
 
 class ScriptContainer extends Component {
-
-  static contextTypes = {
-    router: PropTypes.object
-  }
 
   componentWillMount() {
     console.log('checking auth', this.props.location.pathname.split('/')[3] === 'edit')
