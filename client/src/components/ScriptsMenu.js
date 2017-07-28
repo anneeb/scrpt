@@ -8,13 +8,12 @@ class ScriptsMenu extends Component {
 
   renderEdit = () => {
     const cuid = this.props.match.params.cuid
-    if (this.props.auth[cuid]) {
+    if (this.props.auth[cuid])
       return (
         <Menu.Item as={NavLink} exact to={`/scripts/${cuid}/edit`}>
           Edit
         </Menu.Item>
       )
-    }
   }
 
   render () {
@@ -35,6 +34,8 @@ class ScriptsMenu extends Component {
   }
 }
 
-const mapStateToProps = (state) => {return {auth: state.auth}}
+const mapStateToProps = (state) => {
+  return { auth: state.AuthReducer }
+}
 
 export default connect(mapStateToProps)(ScriptsMenu)

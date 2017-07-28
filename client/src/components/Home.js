@@ -1,36 +1,30 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import { Grid, Header, Input, Form } from 'semantic-ui-react'
+import { Grid, Header, Input } from 'semantic-ui-react'
+import { Form } from 'formsy-semantic-ui-react'
+import PropTypes from 'prop-types'
 
 class Home extends Component {
   state = {
-    input: '',
-    redirect: false
+    cuid: ''
   }
 
-  handleChange = (event) => {
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
+  handleChange = event => {
     this.setState({
-      input: event.target.value
+      cuid: event.target.value
     })
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault()
-    this.setState({
-      redirect: true
-    })
+  handleSubmit = formData => {
+    this.context.router.history.push(`/scripts/${formData.cuid}`)
   }
 
-  redirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to={`/scripts/${this.state.input}`} />
-    }
-  }
-
-  render() {
+  render () {
     return (
-      <Grid centered textAlign='center' style={{paddingTop: 50}} as={Form} onSubmit={this.handleSubmit}>
-        {this.redirect()}
+      <Grid as={Form} onSubmit={this.handleSubmit} style={{paddingTop: 50}} centered textAlign='center'>
         <Grid.Row>
           <Header as='h1'>
             Welcome to Scrpt!
@@ -48,16 +42,17 @@ class Home extends Component {
         </Grid.Row>
         <Grid.Row>
           <Form.Field inline>
-            <Input
+            <Form.Input as={Input}
               label='http://scrpt.herokuapp.com/scripts/'
+              name='cuid'
               placeholder='your script key'
-              value={this.state.input}
+              value={this.state.cuid}
               onChange={this.handleChange}
             />
           </Form.Field>
         </Grid.Row>
         <Grid.Row>
-          <Form.Button disabled={!this.state.input} color='green'>
+          <Form.Button disabled={!this.state.cuid} color='green'>
             GO
           </Form.Button>
         </Grid.Row>

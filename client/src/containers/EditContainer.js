@@ -1,65 +1,52 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Editor, EditorState, RichUtils, convertFromRaw, convertToRaw } from 'draft-js'
 import EditMenu from '../containers/EditMenu'
-import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js'
-import '../../node_modules/draft-js/dist/Draft.css'
-import '../stylesheets/EditContainer.css'
 import * as actions from '../actions'
+import '../stylesheets/EditContainer.css'
 
 class EditContainer extends Component {
 
   componentWillMount () {
-    const versions = this.props.script.versions
-    if (versions) { this.initEditorState(versions) }
+    this.initEditorState(this.props.script.versions[0].contentState)
   }
 
-  initEditorState = (versions) => {
-    const json = versions[0].contentState
+  initEditorState = (json) => {
     const editorState = EditorState.createWithContent(this.parseContent(json))
     this.props.setEditorState(editorState)
   }
 
   componentWillUnmount () {
-    this.checkForVersions()
+    this.compareVersions(this.props.script.versions[0].contentState)
   }
 
-  onUnload = (event) => {
-    this.checkForVersions()
-  }
-
-  checkForVersions = () => {
-    const versions = this.props.script.versions
-    if (versions) { this.compareVersions(versions) }
-  }
-
-  compareVersions (versions) {
-    const oldJson = versions[0].contentState
+  compareVersions = oldJson => {
     const newJson = this.stringifyContent(this.props.editorState.getCurrentContent())
-    if (newJson !== oldJson) { this.createVersion(newJson) }
+    if (newJson !== oldJson)
+      this.createVersion(newJson)
   }
 
-  stringifyContent(contentState) {
+  stringifyContent = contentState => {
     return JSON.stringify(convertToRaw(contentState))
   }
 
-  parseContent(json) {
+  parseContent = json => {
     return convertFromRaw(JSON.parse(json))
   }
 
-  createVersion (json) {
-    const cuid = this.props.script.cuid
-    this.props.createVersion(json, cuid)
+  createVersion = json => {
+    this.props.createVersion(json, this.props.script.cuid)
   }
 
   focus = () => {
     this.refs.editor.focus()
   }
 
-  onChange = (state) => {
+  onChange = state => {
     this.props.setEditorState(state)
   }
 
-  handleKeyCommand = (command) => {
+  handleKeyCommand = command => {
     const newState = RichUtils.handleKeyCommand(this.props.editorState, command)
     if (newState) {
       this.onChange(newState)
@@ -68,7 +55,7 @@ class EditContainer extends Component {
     return false;
   }
 
-  onTab = (event) => {
+  onTab = event => {
     event.preventDefault()
     const maxDepth = 4;
     this.onChange(RichUtils.onTab(event, this.props.editorState, maxDepth));
@@ -86,7 +73,7 @@ class EditContainer extends Component {
     return Switch[block.getType()] || null
   }
 
-  toggleBlockType = (blockType) => {
+  toggleBlockType = blockType => {
     this.onChange(
       RichUtils.toggleBlockType(
         this.props.editorState,
@@ -103,7 +90,7 @@ class EditContainer extends Component {
     }
   }
 
-  toggleInlineStyle = (inlineStyle) => {
+  toggleInlineStyle = inlineStyle => {
     this.onChange(
       RichUtils.toggleInlineStyle(
         this.props.editorState,
@@ -112,7 +99,8 @@ class EditContainer extends Component {
     );
   }
 
-  render() {
+  render () {
+    console.log('rendering edit')
     const editorState = this.props.editorState
     if (editorState) {
       return (
@@ -148,8 +136,11 @@ class EditContainer extends Component {
 
 }
 
-function mapStateToProps (state) {
-  return { script: state.script, editorState: state.edit.editorState, auth: state.auth }
+const mapStateToProps = state => {
+  return {
+    script: state.ScriptReducer.script,
+    editorState: state.EditReducer.editorState
+  }
 }
 
 export default connect(mapStateToProps, actions)(EditContainer)

@@ -1,20 +1,23 @@
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router-dom'
-import Auth from '../containers/Auth.js'
+import { Route, Switch } from 'react-router-dom'
+import ScriptsMenu from '../components/ScriptsMenu'
 import ScriptContainer from '../containers/ScriptContainer'
-import EditContainer from '../containers/EditContainer'
 import ReportsContainer from '../containers/ReportsContainer'
 import VersionsContainer from '../containers/VersionsContainer'
+import EditContainer from '../containers/EditContainer'
 
 class ScriptsRouter extends Component {
-  render() {
+  render () {
     return (
-      <Switch>
-        <Route exact path='/scripts/:cuid' component={ScriptContainer} />
-        <Route exact path='/scripts/:cuid/edit' component={Auth(EditContainer)} />
-        <Route exact path='/scripts/:cuid/reports' component={ReportsContainer} />
-        <Route exact path='/scripts/:cuid/versions' component={VersionsContainer} />
-      </Switch>
+      <div>
+        <Route path='/scripts/:cuid' component={ScriptsMenu} />
+        <Switch>
+          <Route exact path='/scripts/:cuid' component={ScriptContainer} />
+          <Route exact path='/scripts/:cuid/reports' component={ReportsContainer} />
+          <Route exact path='/scripts/:cuid/versions' component={VersionsContainer} />
+          <Route exact path='/scripts/:cuid/edit' component={EditContainer} />
+        </Switch>
+      </div>
     )
   }
 }

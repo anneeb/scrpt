@@ -4,9 +4,9 @@ import ScriptReducer from './ScriptReducer'
 import EditReducer from './EditReducer'
 
 const Reducers = combineReducers({
-  auth: AuthReducer,
-  script: ScriptReducer,
-  edit: EditReducer
+  AuthReducer,
+  ScriptReducer,
+  EditReducer
 })
 
 export default Reducers

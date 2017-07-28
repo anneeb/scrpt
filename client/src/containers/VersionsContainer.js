@@ -7,7 +7,7 @@ class VersionsContainer extends Component {
       <div>
         <Header textAlign='center'>Versions</Header>
       </div>
-    );
+    )
   }
 }
 

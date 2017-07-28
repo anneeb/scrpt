@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 import StyleButton from '../components/StyleButton'
 
-const BLOCK_TYPES = [
-  {label: 'Act', style: 'act'},
-  {label: 'Scene', style: 'scene'},
-  {label: 'Character', style: 'character'},
-  {label: 'Dialogue', style: 'dialogue'}
-]
-
-const INLINE_STYLES = [
-  {icon: 'bold', style: 'BOLD'},
-  {icon: 'italic', style: 'ITALIC'},
-  {icon: 'underline', style: 'UNDERLINE'},
-  {icon: 'strikethrough', style: 'STRIKETHROUGH'}
-]
-
 class EditMenu extends Component {
-  render() {
+  blockTypes = [
+    {label: 'Act', style: 'act'},
+    {label: 'Scene', style: 'scene'},
+    {label: 'Character', style: 'character'},
+    {label: 'Dialogue', style: 'dialogue'}
+  ]
+
+  inlineStyles = [
+    {icon: 'bold', style: 'BOLD'},
+    {icon: 'italic', style: 'ITALIC'},
+    {icon: 'underline', style: 'UNDERLINE'},
+    {icon: 'strikethrough', style: 'STRIKETHROUGH'}
+  ]
+
+  render () {
     const editorState = this.props.editorState
     const currentStyle = editorState.getCurrentInlineStyle()
     const selection = editorState.getSelection()
@@ -27,7 +27,7 @@ class EditMenu extends Component {
 
     return (
       <div className="RichEditor-controls">
-        {BLOCK_TYPES.map((type) =>
+        {this.blockTypes.map((type) =>
           <StyleButton
             key={type.label}
             active={type.style === blockType}
@@ -36,7 +36,7 @@ class EditMenu extends Component {
             style={type.style}
           />
         )}
-        {INLINE_STYLES.map(type =>
+        {this.inlineStyles.map(type =>
           <StyleButton
             key={type.icon}
             active={currentStyle.has(type.style)}

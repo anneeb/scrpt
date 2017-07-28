@@ -12,10 +12,12 @@ class Pdf extends Component {
     pdfMake.vfs = pdfFonts.pdfMake.vfs
     const docDefinition = { content: 'This is an sample PDF printed with pdfMake' }
     const pdfDocGenerator = pdfMake.createPdf(docDefinition)
-    pdfDocGenerator.getDataUrl((dataUrl) => {
-      this.setState({
-        url: dataUrl
-      })
+    pdfDocGenerator.getDataUrl(this.setDataUrl)
+  }
+
+  setDataUrl = dataUrl => {
+    this.setState({
+      url: dataUrl
     })
   }
 

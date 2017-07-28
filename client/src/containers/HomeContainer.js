@@ -9,7 +9,7 @@ class HomeContainer extends Component {
       <Container>
         <Home />
       </Container>
-    );
+    )
   }
 }
 

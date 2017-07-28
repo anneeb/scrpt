@@ -14807,3 +14807,1145 @@ Processing by Api::V1::AuthController#show as HTML
 Completed 200 OK in 36ms (Views: 22.8ms | ActiveRecord: 5.6ms)
 
 
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 12:21:44 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (3.9ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.2ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (18.17ms)
+Completed 200 OK in 224ms (Views: 186.3ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:18:12 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.8ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (2.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (51.42ms)
+Completed 200 OK in 91ms (Views: 41.8ms | ActiveRecord: 14.6ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:18:16 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.7ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (15.98ms)
+Completed 200 OK in 22ms (Views: 13.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:18:21 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.3ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (17.11ms)
+Completed 200 OK in 21ms (Views: 14.2ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:18:49 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.3ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (1.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.7ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (10.63ms)
+Completed 200 OK in 17ms (Views: 9.0ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:20:03 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.2ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (13.54ms)
+Completed 200 OK in 17ms (Views: 11.2ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:20:40 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (3.1ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (40.6ms)
+Completed 200 OK in 72ms (Views: 41.2ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:22:29 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (2.6ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (26.13ms)
+Completed 200 OK in 54ms (Views: 41.9ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:22:41 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (7.1ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (51.44ms)
+Completed 200 OK in 195ms (Views: 150.6ms | ActiveRecord: 10.3ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:22:47 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.7ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.2ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (22.53ms)
+Completed 200 OK in 30ms (Views: 22.1ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:22:52 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (4.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (22.97ms)
+Completed 200 OK in 31ms (Views: 19.0ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:23:03 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.3ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (3.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.8ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (21.03ms)
+Completed 200 OK in 75ms (Views: 65.8ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:24:11 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.8ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (95.85ms)
+Completed 200 OK in 130ms (Views: 96.5ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:24:17 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.8ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (6.8ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (33.4ms)
+Completed 200 OK in 41ms (Views: 26.9ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:24:27 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (5.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (37.31ms)
+Completed 200 OK in 45ms (Views: 33.7ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:25:03 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.5ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.2ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (27.78ms)
+Completed 200 OK in 35ms (Views: 25.3ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 14:28:56 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (49.3ms)
+Completed 200 OK in 86ms (Views: 50.1ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:01:58 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (4.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (2.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (80.98ms)
+Completed 200 OK in 131ms (Views: 78.2ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:02:34 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.0ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (2.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (5.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (36.75ms)
+Completed 200 OK in 62ms (Views: 35.6ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:02:38 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (4.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (44.01ms)
+Completed 200 OK in 134ms (Views: 119.3ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:02:43 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (33.4ms)
+Completed 200 OK in 51ms (Views: 43.7ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:02:51 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (1.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.8ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (25.28ms)
+Completed 200 OK in 48ms (Views: 37.8ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:03:36 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (1.0ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (4.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (3.7ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (106.7ms)
+Completed 200 OK in 200ms (Views: 147.5ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:03:50 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.8ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (56.16ms)
+Completed 200 OK in 120ms (Views: 98.4ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:04:26 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.3ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (69.14ms)
+Completed 200 OK in 198ms (Views: 168.0ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:05:15 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (6.1ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (42.66ms)
+Completed 200 OK in 78ms (Views: 40.6ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:07:07 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (3.0ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (4.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (9.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (73.27ms)
+Completed 200 OK in 130ms (Views: 63.8ms | ActiveRecord: 17.6ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:07:43 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.8ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (48.48ms)
+Completed 200 OK in 156ms (Views: 143.9ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:08:27 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (23.55ms)
+Completed 200 OK in 38ms (Views: 29.3ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:08:33 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (8.1ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (26.02ms)
+Completed 200 OK in 97ms (Views: 81.3ms | ActiveRecord: 10.0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:09:59 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (1.9ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (8.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.8ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (159.34ms)
+Completed 200 OK in 222ms (Views: 155.2ms | ActiveRecord: 13.4ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:10:42 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.0ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (8.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (2.6ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (35.85ms)
+Completed 200 OK in 112ms (Views: 90.6ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:11:26 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (6.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (28.68ms)
+Completed 200 OK in 189ms (Views: 172.8ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/api/v1/scripts/gross" for 127.0.0.1 at 2017-07-28 15:12:00 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"gross"}
+  [1m[36mScript Load (0.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "gross"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.12ms)
+Completed 200 OK in 13ms (Views: 5.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:14:23 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.8ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (66.73ms)
+Completed 200 OK in 215ms (Views: 185.8ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:15:33 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.7ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (4.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (22.0ms)
+Completed 200 OK in 37ms (Views: 24.0ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/api/v1/scripts/jkhk" for 127.0.0.1 at 2017-07-28 15:15:53 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"jkhk"}
+  [1m[36mScript Load (0.6ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "jkhk"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.43ms)
+Completed 200 OK in 5ms (Views: 1.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:16:00 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.6ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (8.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.6ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (32.36ms)
+Completed 200 OK in 85ms (Views: 68.4ms | ActiveRecord: 11.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:19:36 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (2.6ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (3.2ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.3ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (85.63ms)
+Completed 200 OK in 136ms (Views: 87.0ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:19:49 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.0ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (6.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.1ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (84.61ms)
+Completed 200 OK in 108ms (Views: 82.7ms | ActiveRecord: 10.3ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:19:55 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (5.2ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (44.25ms)
+Completed 200 OK in 54ms (Views: 38.9ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:20:02 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.9ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (90.78ms)
+Completed 200 OK in 134ms (Views: 100.7ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:20:15 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.9ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (6.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (4.7ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (103.49ms)
+Completed 200 OK in 129ms (Views: 93.1ms | ActiveRecord: 12.8ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:23:14 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (2.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (3.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.3ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (110.84ms)
+Completed 200 OK in 189ms (Views: 112.2ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:24:56 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (6.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (121.74ms)
+Completed 200 OK in 248ms (Views: 185.5ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:25:06 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (2.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.8ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (41.31ms)
+Completed 200 OK in 301ms (Views: 277.6ms | ActiveRecord: 13.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:25:33 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (2.0ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (4.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (71.41ms)
+Completed 200 OK in 105ms (Views: 72.1ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:27:31 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (3.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (113.95ms)
+Completed 200 OK in 210ms (Views: 171.6ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:28:09 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (2.7ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (4.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (49.43ms)
+Completed 200 OK in 340ms (Views: 321.5ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:28:20 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (2.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (11.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (108.03ms)
+Completed 200 OK in 151ms (Views: 99.6ms | ActiveRecord: 16.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:32:13 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (5.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (109.32ms)
+Completed 200 OK in 147ms (Views: 107.0ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:33:59 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.0ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (1.1ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.8ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.3ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (46.06ms)
+Completed 200 OK in 73ms (Views: 43.9ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:34:43 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.8ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (6.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (2.7ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (34.47ms)
+Completed 200 OK in 158ms (Views: 123.6ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:35:40 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.7ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.8ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (34.7ms)
+Completed 200 OK in 120ms (Views: 88.6ms | ActiveRecord: 12.2ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:36:00 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (3.0ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (23.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.8ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (136.2ms)
+Completed 200 OK in 192ms (Views: 117.8ms | ActiveRecord: 27.8ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:37:28 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.9ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (14.1ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (111.06ms)
+Completed 200 OK in 183ms (Views: 118.2ms | ActiveRecord: 17.6ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:39:18 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (10.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.8ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (75.49ms)
+Completed 200 OK in 112ms (Views: 69.3ms | ActiveRecord: 13.8ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:39:34 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.8ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (11.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (45.92ms)
+Completed 200 OK in 110ms (Views: 87.1ms | ActiveRecord: 14.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:40:01 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (14.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (100.28ms)
+Completed 200 OK in 136ms (Views: 93.4ms | ActiveRecord: 17.6ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:40:21 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (10.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (2.7ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (193.09ms)
+Completed 200 OK in 226ms (Views: 181.8ms | ActiveRecord: 14.8ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:41:18 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.8ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (76.7ms)
+Completed 200 OK in 122ms (Views: 70.0ms | ActiveRecord: 12.9ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:42:01 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (3.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (2.7ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (79.71ms)
+Completed 200 OK in 133ms (Views: 72.0ms | ActiveRecord: 16.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:43:35 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (58.94ms)
+Completed 200 OK in 194ms (Views: 160.2ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:44:36 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (6.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (13.7ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (131.72ms)
+Completed 200 OK in 201ms (Views: 126.3ms | ActiveRecord: 22.3ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:45:45 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (6.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (97.68ms)
+Completed 200 OK in 219ms (Views: 175.9ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:46:35 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.9ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (12.1ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.4ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (73.39ms)
+Completed 200 OK in 194ms (Views: 142.2ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/api/v1/scripts/undefined" for 127.0.0.1 at 2017-07-28 15:46:54 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"undefined"}
+  [1m[36mScript Load (1.0ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "undefined"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.38ms)
+Completed 200 OK in 69ms (Views: 13.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/scripts/undefined" for 127.0.0.1 at 2017-07-28 15:47:13 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"undefined"}
+  [1m[36mScript Load (0.6ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "undefined"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.17ms)
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/scripts/undefined" for 127.0.0.1 at 2017-07-28 15:49:20 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"undefined"}
+  [1m[36mScript Load (1.0ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "undefined"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.8ms)
+Completed 200 OK in 32ms (Views: 11.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:49:39 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.6ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (2.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (11.2ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.7ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (60.02ms)
+Completed 200 OK in 72ms (Views: 49.1ms | ActiveRecord: 14.9ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:50:00 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.5ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (5.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.3ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (78.43ms)
+Completed 200 OK in 116ms (Views: 75.4ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:50:46 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (3.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (4.8ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (3.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (119.58ms)
+Completed 200 OK in 175ms (Views: 117.1ms | ActiveRecord: 12.8ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:52:01 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (2.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (106.62ms)
+Completed 200 OK in 171ms (Views: 108.5ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:52:24 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.7ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (17.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (157.47ms)
+Completed 200 OK in 293ms (Views: 216.3ms | ActiveRecord: 20.8ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:53:11 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (1.5ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (3.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (109.49ms)
+Completed 200 OK in 155ms (Views: 112.2ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:53:58 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (1.0ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (7.1ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (2.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (120.66ms)
+Completed 200 OK in 174ms (Views: 116.5ms | ActiveRecord: 11.6ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:54:33 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.9ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (1.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (6.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (71.86ms)
+Completed 200 OK in 101ms (Views: 67.0ms | ActiveRecord: 10.2ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:55:35 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (7.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.9ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (6.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (86.83ms)
+Completed 200 OK in 133ms (Views: 89.5ms | ActiveRecord: 15.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:55:44 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (2.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (11.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.3ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (165.36ms)
+Completed 200 OK in 217ms (Views: 162.4ms | ActiveRecord: 17.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:56:24 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (7.8ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.1ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (375.71ms)
+Completed 200 OK in 473ms (Views: 387.3ms | ActiveRecord: 18.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:57:37 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (5.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (54.13ms)
+Completed 200 OK in 96ms (Views: 62.1ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:57:53 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.8ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (4.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (37.06ms)
+Completed 200 OK in 60ms (Views: 32.4ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 15:59:02 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (5.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (5.8ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (73.25ms)
+Completed 200 OK in 130ms (Views: 72.3ms | ActiveRecord: 12.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:00:37 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (2.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (2.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (2.8ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (80.56ms)
+Completed 200 OK in 119ms (Views: 72.1ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:01:02 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.0ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (8.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (3.6ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (59.27ms)
+Completed 200 OK in 142ms (Views: 117.6ms | ActiveRecord: 14.2ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:03:53 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (1.0ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (3.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (2.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (58.56ms)
+Completed 200 OK in 217ms (Views: 175.3ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:34:12 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (8.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (400.7ms)
+Completed 200 OK in 902ms (Views: 855.9ms | ActiveRecord: 11.6ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:36:31 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.9ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (158.88ms)
+Completed 200 OK in 212ms (Views: 152.3ms | ActiveRecord: 13.3ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:36:49 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (3.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (13.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (149.67ms)
+Completed 200 OK in 252ms (Views: 151.5ms | ActiveRecord: 18.5ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:37:39 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (2.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (8.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (132.7ms)
+Completed 200 OK in 191ms (Views: 134.9ms | ActiveRecord: 13.4ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:38:19 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (2.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.1ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (2.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (126.04ms)
+Completed 200 OK in 208ms (Views: 117.7ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:38:39 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (7.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (4.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (128.66ms)
+Completed 200 OK in 208ms (Views: 126.5ms | ActiveRecord: 13.9ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:39:25 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.5ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (2.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (81.1ms)
+Completed 200 OK in 131ms (Views: 81.7ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:40:07 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (3.3ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (15.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (104.09ms)
+Completed 200 OK in 241ms (Views: 186.2ms | ActiveRecord: 21.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:43:56 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (2.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.8ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (12.1ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (86.26ms)
+Completed 200 OK in 123ms (Views: 76.9ms | ActiveRecord: 16.1ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:44:05 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.7ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (1.1ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (5.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (127.52ms)
+Completed 200 OK in 184ms (Views: 120.3ms | ActiveRecord: 16.8ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:44:25 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (4.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.9ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (2.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (2.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (136.08ms)
+Completed 200 OK in 207ms (Views: 154.0ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:44:41 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (2.9ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (3.3ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (3.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (3.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (219.26ms)
+Completed 200 OK in 313ms (Views: 217.4ms | ActiveRecord: 12.2ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:44:50 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (2.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (10.2ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (116.67ms)
+Completed 200 OK in 171ms (Views: 115.9ms | ActiveRecord: 14.3ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:45:00 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.5ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (16.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (239.13ms)
+Completed 200 OK in 337ms (Views: 241.9ms | ActiveRecord: 19.7ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:46:31 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (18.9ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (1.1ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (10.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (147.01ms)
+Completed 200 OK in 230ms (Views: 159.0ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/api/v1/scripts/cj5nxbpwj00003k5r4zextveu" for 127.0.0.1 at 2017-07-28 16:46:56 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"cj5nxbpwj00003k5r4zextveu"}
+  [1m[36mScript Load (4.6ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (3.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.4ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (192.41ms)
+Completed 200 OK in 297ms (Views: 195.4ms | ActiveRecord: 9.2ms)
+
+
+Started POST "/api/v1/auth" for 127.0.0.1 at 2017-07-28 16:47:08 -0400
+Processing by Api::V1::AuthController#create as HTML
+  Parameters: {"script"=>{"cuid"=>"cj5nxbpwj00003k5r4zextveu", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}, "auth"=>{"script"=>{"cuid"=>"cj5nxbpwj00003k5r4zextveu", "password"=>"[FILTERED]"}, "editor"=>{"name"=>"annee"}}}
+  [1m[36mScript Load (1.0ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+  [1m[36mEditor Load (40.2ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 AND "editors"."name" = $2 ORDER BY "versions"."created_at" DESC LIMIT $3[0m  [["script_id", 3], ["name", "annee"], ["LIMIT", 1]]
+  [1m[35m (6.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (50.2ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "annee"], ["created_at", "2017-07-28 20:47:09.065222"], ["updated_at", "2017-07-28 20:47:09.065222"]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mEditor Load (1.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (2.4ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (23.3ms)
+Completed 200 OK in 404ms (Views: 21.8ms | ActiveRecord: 107.4ms)
+
+
+Started GET "/api/v1/scripts/cj5nxbpwj00003k5r4zextveu" for 127.0.0.1 at 2017-07-28 16:48:18 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"cj5nxbpwj00003k5r4zextveu"}
+  [1m[36mScript Load (17.0ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (8.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (8.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (118.57ms)
+Completed 200 OK in 210ms (Views: 109.5ms | ActiveRecord: 34.1ms)
+
+
+Started GET "/api/v1/scripts/cj5nxbpwj00003k5r4zextveu" for 127.0.0.1 at 2017-07-28 16:49:49 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"cj5nxbpwj00003k5r4zextveu"}
+  [1m[36mScript Load (1.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (68.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (295.51ms)
+Completed 200 OK in 334ms (Views: 232.6ms | ActiveRecord: 71.2ms)
+
+
+Started GET "/api/v1/scripts/cj5nxbpwj00003k5r4zextveu" for 127.0.0.1 at 2017-07-28 16:51:47 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"cj5nxbpwj00003k5r4zextveu"}
+  [1m[36mScript Load (1.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (4.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (70.93ms)
+Completed 200 OK in 83ms (Views: 68.2ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/api/v1/scripts/cj5nxbpwj00003k5r4zextveu" for 127.0.0.1 at 2017-07-28 16:52:59 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"cj5nxbpwj00003k5r4zextveu"}
+  [1m[36mScript Load (11.4ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (326.51ms)
+Completed 200 OK in 388ms (Views: 321.4ms | ActiveRecord: 22.1ms)
+
+
+Started GET "/api/v1/scripts/cj5nxbpwj00003k5r4zextveu" for 127.0.0.1 at 2017-07-28 16:53:06 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"cj5nxbpwj00003k5r4zextveu"}
+  [1m[36mScript Load (1.9ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.8ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (154.11ms)
+Completed 200 OK in 286ms (Views: 147.4ms | ActiveRecord: 12.6ms)
+
+
+Started GET "/api/v1/scripts/cj5nxbpwj00003k5r4zextveu" for 127.0.0.1 at 2017-07-28 16:53:45 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"cj5nxbpwj00003k5r4zextveu"}
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (7.1ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.0ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (255.25ms)
+Completed 200 OK in 294ms (Views: 255.4ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/api/v1/scripts/cj5nxbpwj00003k5r4zextveu" for 127.0.0.1 at 2017-07-28 16:54:21 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"cj5nxbpwj00003k5r4zextveu"}
+  [1m[36mScript Load (1.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (18.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (2.8ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (165.9ms)
+Completed 200 OK in 284ms (Views: 152.2ms | ActiveRecord: 22.6ms)
+
+
+Started GET "/api/v1/scripts/cj5nxbpwj00003k5r4zextveu" for 127.0.0.1 at 2017-07-28 16:54:41 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"cj5nxbpwj00003k5r4zextveu"}
+  [1m[36mScript Load (1.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (10.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (3.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (119.2ms)
+Completed 200 OK in 229ms (Views: 114.5ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/api/v1/scripts/cj5nxbpwj00003k5r4zextveu" for 127.0.0.1 at 2017-07-28 16:55:11 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"cj5nxbpwj00003k5r4zextveu"}
+  [1m[36mScript Load (4.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (4.1ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (329.3ms)
+Completed 200 OK in 1773ms (Views: 1632.8ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-28 16:55:39 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (5.7ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (1.08ms)
+Filter chain halted as :authorize_editor! rendered or redirected
+Completed 200 OK in 140ms (Views: 16.3ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/api/v1/scripts/cj5nxbpwj00003k5r4zextveu" for 127.0.0.1 at 2017-07-28 16:55:39 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"cj5nxbpwj00003k5r4zextveu"}
+  [1m[36mScript Load (1.2ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (6.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (0.9ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (85.75ms)
+Completed 200 OK in 112ms (Views: 78.9ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/api/v1/scripts/cj5nxbpwj00003k5r4zextveu" for 127.0.0.1 at 2017-07-28 16:56:11 -0400
+Processing by Api::V1::ScriptsController#show as HTML
+  Parameters: {"id"=>"cj5nxbpwj00003k5r4zextveu"}
+  [1m[36mScript Load (6.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5nxbpwj00003k5r4zextveu"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (65.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers]   [1m[36mVersion Load (1.4ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (291.66ms)
+Completed 200 OK in 339ms (Views: 228.6ms | ActiveRecord: 72.9ms)
+
+

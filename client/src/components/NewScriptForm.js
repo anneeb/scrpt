@@ -17,31 +17,31 @@ class NewScriptForm extends Component {
     router: PropTypes.object
   }
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
-
-  handleSubmit = (formData) => {
-    this.props.createScript(formData)
-  }
-
   componentWillUpdate(nextProps) {
-    if (nextProps.auth.shouldRedirect) {
+    if (nextProps.shouldRedirect) {
       this.props.authRedirectCompleted()
       this.context.router.history.push(`/scripts/${nextProps.script.cuid}/edit`)
     }
   }
 
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit = formData => {
+    this.props.createScript(formData)
+  }
+
   renderAlert = () => {
-    if (this.props.auth && this.props.auth.error) {
+    const error = this.props.error
+    if (error)
       return (
         <div className='alert alert-danger'>
-          <strong>Oops!</strong> {this.props.auth.error}
+          <strong>Oops!</strong> {error}
         </div>
       )
-    }
   }
 
   render () {
@@ -102,7 +102,11 @@ class NewScriptForm extends Component {
 }
 
 function mapStateToProps (state) {
-  return { auth: state.auth, script: state.script }
+  return {
+    error: state.AuthReducer.error,
+    script: state.ScriptReducer.script,
+    shouldRedirect: state.AuthReducer.shouldRedirect
+  }
 }
 
 export default connect(mapStateToProps, actions)(NewScriptForm)

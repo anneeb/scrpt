@@ -10,18 +10,18 @@ class LogInForm extends Component {
     cuid: this.props.cuid
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-  handleSubmit = (formData) => {
+  handleSubmit = formData => {
     this.props.logIn(formData)
   }
 
   renderAlert = () => {
-    const error = this.props.auth.error
+    const error = this.props.error
     if (error) {
       return (
         <div className='alert alert-danger'>
@@ -65,7 +65,7 @@ class LogInForm extends Component {
 }
 
 function mapStateToProps (state) {
-  return { auth: state.auth }
+  return { error: state.AuthReducer.error }
 }
 
 export default connect(mapStateToProps, actions)(LogInForm)

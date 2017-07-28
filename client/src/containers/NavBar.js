@@ -7,19 +7,17 @@ import LogInModal from '../containers/LogInModal'
 
 
 class NavBar extends Component {
-
-  renderOption = () => {
-    if (this.props.location.pathname === '/') {
+  renderModal = () => {
+    if (this.props.location.pathname === '/')
       return <NewScriptModal />
-    } else {
-      const cuid = this.props.location.pathname.split('/')[2]
-      const editor = this.props.auth[cuid]
-      if (editor) {
-        return <span>Editing as: <strong>{editor.name}</strong></span>
-      } else {
-        return <LogInModal cuid={cuid} />
-      }
-    }
+    if (this.props.script)
+      return this.renderScriptModal()
+  }
+
+  renderScriptModal = () => {
+    const cuid = this.props.location.pathname.split('/')[2]
+    const editor = this.props.auth[cuid]
+    return editor ? <span>Editing as: <strong>{editor.name}</strong></span> : <LogInModal cuid={cuid} />
   }
 
   render () {
@@ -33,7 +31,7 @@ class NavBar extends Component {
           </Menu.Item>
         <Menu.Menu position='right'>
           <Menu.Item>
-            {this.renderOption()}
+            {this.renderModal()}
           </Menu.Item>
         </Menu.Menu>
         </Container>
@@ -42,6 +40,11 @@ class NavBar extends Component {
   }
 }
 
-const mapStateToProps = (state) => { return {auth: state.auth} }
+const mapStateToProps = state => {
+  return {
+    auth: state.AuthReducer,
+    script: state.ScriptReducer.script
+  }
+}
 
 export default connect(mapStateToProps)(NavBar)
