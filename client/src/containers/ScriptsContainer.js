@@ -13,13 +13,19 @@ class ScriptContainer extends Component {
   }
 
   componentWillMount() {
-    this.props.checkScriptAuth(this.props.match.params.cuid)
+    console.log('checking auth', this.props.location.pathname.split('/')[3] === 'edit')
+    if (this.props.location.pathname.split('/')[3] === 'edit') {
+      this.props.checkScriptAuthWithRedirect(this.props.match.params.cuid)
+    } else {
+      this.props.checkScriptAuth(this.props.match.params.cuid)
+    }
+
   }
 
   componentWillUpdate(nextProps) {
     if (nextProps.auth.shouldRedirect) {
       this.props.authRedirectCompleted()
-      this.context.router.history.push(`/scripts/${nextProps.script.cuid}/edit`)
+      this.props.history.push(`/scripts/${nextProps.script.cuid}/edit`)
     }
   }
 
@@ -34,6 +40,7 @@ class ScriptContainer extends Component {
   }
 
   render () {
+    console.log('rendering scripts');
     return (
       <Container >
         {this.renderAlert()}

@@ -87,6 +87,29 @@ export function checkScriptAuth (cuid) {
   }
 }
 
+export function checkScriptAuthWithRedirect (cuid) {
+  const token = localStorage.getItem(cuid)
+  if (token) {
+    return checkAuthWithRedirect(token, cuid)
+  } else {
+    return getScript(cuid)
+  }
+}
+
+export function checkAuthWithRedirect(token, cuid) {
+  return function (dispatch) {
+    AuthAdapter.checkAuth(token)
+      .then(resp => {
+        if (resp.data.error) {
+          localStorage.removeItem(cuid)
+          dispatch(getScriptWithNoAuth(cuid))
+        } else {
+          dispatch(didGetScriptWithAuthRedirect(resp.data))
+        }
+      })
+  }
+}
+
 export function checkAuth(token, cuid) {
   return function (dispatch) {
     AuthAdapter.checkAuth(token)

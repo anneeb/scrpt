@@ -8,7 +8,7 @@ class AppRouter extends Component {
     return (
       <Switch>
         <Route exact path='/' component={HomeContainer} />
-        <Route path='/scripts/:cuid' render={(props) => <ScriptsContainer {...props} />} />
+        <Route path='/scripts/:cuid' component={ScriptsContainer} />
       </Switch>
     )
   }
