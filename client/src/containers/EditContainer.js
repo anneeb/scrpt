@@ -19,7 +19,7 @@ class EditContainer extends Component {
   componentWillUnmount () {
     const editorState = this.props.editorState
     if (editorState)
-      this.compareVersions(editorState)
+      this.createVersion()
   }
 
   initEditorState = (json) => {
@@ -27,11 +27,11 @@ class EditContainer extends Component {
     this.props.setEditorState(editorState)
   }
 
-  compareVersions = editorState => {
+  createVersion = () => {
     const oldJson = this.props.script.versions[0].contentState
     const newJson = this.stringifyContent(this.props.editorState.getCurrentContent())
     if (newJson !== oldJson)
-      this.createVersion(newJson)
+      this.props.createVersion(newJson, this.props.script.cuid)
   }
 
   stringifyContent = contentState => {
@@ -42,8 +42,10 @@ class EditContainer extends Component {
     return convertFromRaw(JSON.parse(json))
   }
 
-  createVersion = json => {
-    this.props.createVersion(json, this.props.script.cuid)
+  disableSave = () => {
+    const oldJson = this.props.script.versions[0].contentState
+    const newJson = this.stringifyContent(this.props.editorState.getCurrentContent())
+    return oldJson === newJson
   }
 
   focus = () => {
@@ -116,6 +118,8 @@ class EditContainer extends Component {
             editorState={editorState}
             onBlockToggle={this.toggleBlockType}
             onInlineToggle={this.toggleInlineStyle}
+            disableSave={this.disableSave}
+            createVersion={this.createVersion}
           />
           <div className='RichEditor-container'>
             <div className='RichEditor-editor' onClick={this.focus}>

@@ -136,12 +136,12 @@ export function createVersion(json, cuid) {
         }
       })
       .catch(() => {
-        dispatch(authError('Something went wrong. Please try again.'))
+        dispatch(scriptError('Something went wrong. Please try again.'))
       })
   }
 }
 
-// simple actions
+// dispatch actions
 
 export function didGetScript (data) {
   return {

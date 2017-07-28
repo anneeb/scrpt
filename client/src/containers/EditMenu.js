@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button } from 'semantic-ui-react'
 import StyleButton from '../components/StyleButton'
 
 class EditMenu extends Component {
@@ -15,6 +16,13 @@ class EditMenu extends Component {
     {icon: 'underline', style: 'UNDERLINE'},
     {icon: 'strikethrough', style: 'STRIKETHROUGH'}
   ]
+
+  renderSave() {
+    if (this.props.disableSave())
+      return <Button disabled>Saved!</Button>
+    else
+      return <Button onClick={this.props.createVersion}>Save</Button>
+  }
 
   render () {
     const editorState = this.props.editorState
@@ -45,7 +53,7 @@ class EditMenu extends Component {
             style={type.style}
           />
         )}
-        <button>Save</button>
+        {this.renderSave()}
       </div>
     )
   }
