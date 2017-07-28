@@ -7,7 +7,7 @@ class Pdf extends Component {
   state = {
     url: null
   }
-  
+
   componentWillMount () {
     pdfMake.vfs = pdfFonts.pdfMake.vfs
     const docDefinition = { content: 'This is an sample PDF printed with pdfMake' }
@@ -21,7 +21,7 @@ class Pdf extends Component {
 
   render () {
     const url = this.state.url
-    return url ?  <iframe src={url} /> : <div>loading...</div>
+    return url ?  <iframe src={url} title='scrpt'/> : <div>loading...</div>
   }
 }
 
