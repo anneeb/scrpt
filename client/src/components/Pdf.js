@@ -21,7 +21,7 @@ class Pdf extends Component {
 
   render () {
     const url = this.state.url
-    return url ?  <iframe src={url} title='scrpt'/> : <div>loading...</div>
+    return url ?  <iframe src={url} title='scrpt'/> : <div>Loading...</div>
   }
 }
 
