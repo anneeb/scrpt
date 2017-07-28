@@ -6,7 +6,6 @@ import * as actions from '../actions/'
 
 class ScriptContainer extends Component {
   componentWillMount() {
-    console.log('checking auth', this.props.location.pathname.split('/')[3] === 'edit')
     if (this.props.location.pathname.split('/')[3] === 'edit') {
       this.props.checkScriptAuthWithRedirect(this.props.match.params.cuid)
     } else {
@@ -35,7 +34,6 @@ class ScriptContainer extends Component {
   renderScript = () => {
     const script = this.props.script
     if (script) {
-      console.log('found script')
       return (
         <div>
           <Header content={script.title} subheader={script.cuid} />
@@ -46,7 +44,6 @@ class ScriptContainer extends Component {
   }
 
   render () {
-    console.log('rendering scripts');
     return (
       <Container >
         {this.renderAlert()}

@@ -5,7 +5,6 @@ import ScriptContainer from '../containers/ScriptContainer'
 import ReportsContainer from '../containers/ReportsContainer'
 import VersionsContainer from '../containers/VersionsContainer'
 import EditContainer from '../containers/EditContainer'
-import Auth from '../containers/Auth'
 
 class ScriptsRouter extends Component {
   render () {
@@ -16,7 +15,7 @@ class ScriptsRouter extends Component {
           <Route exact path='/scripts/:cuid' component={ScriptContainer} />
           <Route exact path='/scripts/:cuid/reports' component={ReportsContainer} />
           <Route exact path='/scripts/:cuid/versions' component={VersionsContainer} />
-          <Route exact path='/scripts/:cuid/edit' component={Auth(EditContainer)} />
+          <Route exact path='/scripts/:cuid/edit' component={EditContainer} />
         </Switch>
       </div>
     )

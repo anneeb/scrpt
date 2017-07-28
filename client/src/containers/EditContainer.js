@@ -8,7 +8,18 @@ import '../stylesheets/EditContainer.css'
 class EditContainer extends Component {
 
   componentWillMount () {
-    this.initEditorState(this.props.script.versions[0].contentState)
+    const cuid = this.props.match.params.cuid
+    if (this.props.auth[cuid]) {
+      this.initEditorState(this.props.script.versions[0].contentState)
+    } else {
+      this.props.history.push(`/scripts/${cuid}`)
+    }
+  }
+
+  componentWillUnmount () {
+    const editorState = this.props.editorState
+    if (editorState)
+      this.compareVersions(editorState)
   }
 
   initEditorState = (json) => {
@@ -16,11 +27,8 @@ class EditContainer extends Component {
     this.props.setEditorState(editorState)
   }
 
-  componentWillUnmount () {
-    this.compareVersions(this.props.script.versions[0].contentState)
-  }
-
-  compareVersions = oldJson => {
+  compareVersions = editorState => {
+    const oldJson = this.props.script.versions[0].contentState
     const newJson = this.stringifyContent(this.props.editorState.getCurrentContent())
     if (newJson !== oldJson)
       this.createVersion(newJson)
@@ -100,7 +108,6 @@ class EditContainer extends Component {
   }
 
   render () {
-    console.log('rendering edit')
     const editorState = this.props.editorState
     if (editorState) {
       return (
@@ -138,6 +145,7 @@ class EditContainer extends Component {
 
 const mapStateToProps = state => {
   return {
+    auth: state.AuthReducer,
     script: state.ScriptReducer.script,
     editorState: state.EditReducer.editorState
   }
