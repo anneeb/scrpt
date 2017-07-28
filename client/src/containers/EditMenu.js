@@ -19,9 +19,9 @@ class EditMenu extends Component {
 
   renderSave() {
     if (this.props.disableSave())
-      return <Button disabled>Saved!</Button>
+      return <Button compact positive disabled>Saved!</Button>
     else
-      return <Button onClick={this.props.createVersion}>Save</Button>
+      return <Button compact positive onClick={this.props.createVersion}>Save</Button>
   }
 
   render () {

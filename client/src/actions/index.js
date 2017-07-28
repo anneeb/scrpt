@@ -16,9 +16,9 @@ export function logIn (formData) {
   return function (dispatch) {
     AuthAdapter.logIn(formData)
       .then(resp => {
-        if (resp.data.error) {
+        if (resp.data.error)
           dispatch(authError(resp.data.error))
-        } else {
+        else {
           localStorage.setItem(resp.data.payload.script.cuid, resp.data.token)
           dispatch(didGetScriptWithAuthRedirect(resp.data))
         }
@@ -33,9 +33,9 @@ export function createScript (formData) {
   return function (dispatch) {
     ScriptsAdapter.createScript(formData)
       .then(resp => {
-        if (resp.data.error) {
+        if (resp.data.error)
           dispatch(authError(resp.data.error))
-        } else {
+        else {
           localStorage.setItem(resp.data.payload.script.cuid, resp.data.token)
           dispatch(didGetScriptWithAuthRedirect(resp.data))
         }
@@ -50,11 +50,10 @@ export function getScript (cuid) {
   return function (dispatch) {
     ScriptsAdapter.getScript(cuid)
       .then(resp => {
-        if (resp.data.error) {
+        if (resp.data.error)
           dispatch(scriptError(resp.data.error))
-        } else {
+        else
           dispatch(didGetScript(resp.data))
-        }
       })
       .catch(() => {
         dispatch(scriptError('Something went wrong. Please try again.'))
@@ -66,11 +65,10 @@ export function getScriptWithNoAuth (cuid) {
   return function (dispatch) {
     ScriptsAdapter.getScript(cuid)
       .then(resp => {
-        if (resp.data.error) {
+        if (resp.data.error)
           dispatch(scriptError(resp.data.error))
-        } else {
+        else
           dispatch(didGetScriptWithNoAuth(resp.data))
-        }
       })
       .catch(() => {
         dispatch(scriptError('Something went wrong. Please try again.'))
@@ -80,20 +78,18 @@ export function getScriptWithNoAuth (cuid) {
 
 export function checkScriptAuth (cuid) {
   const token = localStorage.getItem(cuid)
-  if (token) {
+  if (token)
     return checkAuth(token, cuid)
-  } else {
+  else
     return getScript(cuid)
-  }
 }
 
 export function checkScriptAuthWithRedirect (cuid) {
   const token = localStorage.getItem(cuid)
-  if (token) {
+  if (token)
     return checkAuthWithRedirect(token, cuid)
-  } else {
+  else
     return getScript(cuid)
-  }
 }
 
 export function checkAuthWithRedirect(token, cuid) {
@@ -103,9 +99,9 @@ export function checkAuthWithRedirect(token, cuid) {
         if (resp.data.error) {
           localStorage.removeItem(cuid)
           dispatch(getScriptWithNoAuth(cuid))
-        } else {
-          dispatch(didGetScriptWithAuthRedirect(resp.data))
         }
+        else
+          dispatch(didGetScriptWithAuthRedirect(resp.data))
       })
   }
 }
@@ -117,9 +113,9 @@ export function checkAuth(token, cuid) {
         if (resp.data.error) {
           localStorage.removeItem(cuid)
           dispatch(getScriptWithNoAuth(cuid))
-        } else {
-          dispatch(didGetScriptWithAuth(resp.data))
         }
+        else
+          dispatch(didGetScriptWithAuth(resp.data))
       })
   }
 }
@@ -129,11 +125,10 @@ export function createVersion(json, cuid) {
     const token = localStorage.getItem(cuid)
     VersionsAdapter.createVersion(json, token)
       .then(resp => {
-        if (resp.data.error) {
+        if (resp.data.error)
           dispatch(scriptError(resp.data.error))
-        } else {
+        else
           dispatch(didGetScript(resp.data))
-        }
       })
       .catch(() => {
         dispatch(scriptError('Something went wrong. Please try again.'))

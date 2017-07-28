@@ -7,7 +7,7 @@ class ReportsContainer extends Component {
       <div>
         <Header textAlign='center'>Reports</Header>
       </div>
-    );
+    )
   }
 }
 

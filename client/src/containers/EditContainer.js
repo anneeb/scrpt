@@ -9,11 +9,10 @@ class EditContainer extends Component {
 
   componentWillMount () {
     const cuid = this.props.match.params.cuid
-    if (this.props.auth[cuid]) {
+    if (this.props.auth[cuid])
       this.initEditorState(this.props.script.versions[0].contentState)
-    } else {
+    else
       this.props.history.push(`/scripts/${cuid}`)
-    }
   }
 
   componentWillUnmount () {
@@ -111,7 +110,7 @@ class EditContainer extends Component {
 
   render () {
     const editorState = this.props.editorState
-    if (editorState) {
+    if (editorState)
       return (
         <div className='RichEditor-root'>
           <EditMenu
@@ -138,11 +137,10 @@ class EditContainer extends Component {
           </div>
         </div>
       );
-    } else {
+    else
       return (
         <div> Loading... </div>
       )
-    }
   }
 
 }
