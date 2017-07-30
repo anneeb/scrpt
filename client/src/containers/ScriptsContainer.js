@@ -34,7 +34,7 @@ class ScriptsContainer extends Component {
     if (script)
       return (
         <div>
-          <Header content={script.title} subheader={script.cuid} />
+          <Header content={script.title} subheader={`key: ${script.cuid}`} />
           <ScriptsRouter />
         </div>
       )

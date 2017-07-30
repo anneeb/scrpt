@@ -22955,3 +22955,179 @@ Processing by Api::V1::AuthController#show as HTML
 Completed 200 OK in 433ms (Views: 194.5ms | ActiveRecord: 86.1ms)
 
 
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-30 18:47:33 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (22.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5r8lgam00003k5t6vs8hld4"], ["LIMIT", 1]]
+  [1m[36mEditor Load (2.3ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (28.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 5]]
+[active_model_serializers]   [1m[36mVersion Load (2.2ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 5]]
+[active_model_serializers]   [1m[36mEditor Load (0.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 43]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 42]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 41]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 40]]
+[active_model_serializers]   [1m[36mEditor Load (2.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 39]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 38]]
+[active_model_serializers]   [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 37]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 36]]
+[active_model_serializers]   [1m[36mEditor Load (18.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 35]]
+[active_model_serializers]   [1m[36mEditor Load (5.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 34]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 33]]
+[active_model_serializers]   [1m[36mEditor Load (1.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 32]]
+[active_model_serializers]   [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 31]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (403.62ms)
+Completed 200 OK in 628ms (Views: 347.1ms | ActiveRecord: 87.4ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-30 18:49:30 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (3.8ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5r8lgam00003k5t6vs8hld4"], ["LIMIT", 1]]
+  [1m[36mEditor Load (2.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (22.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 5]]
+[active_model_serializers]   [1m[36mVersion Load (2.6ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 5]]
+[active_model_serializers]   [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 43]]
+[active_model_serializers]   [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 42]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 41]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 40]]
+[active_model_serializers]   [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 39]]
+[active_model_serializers]   [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 38]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 37]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 36]]
+[active_model_serializers]   [1m[36mEditor Load (2.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 35]]
+[active_model_serializers]   [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 34]]
+[active_model_serializers]   [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 33]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 32]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 31]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (324.24ms)
+Completed 200 OK in 388ms (Views: 297.0ms | ActiveRecord: 39.3ms)
+
+
+Started POST "/api/v1/scripts" for 127.0.0.1 at 2017-07-30 18:49:48 -0400
+Processing by Api::V1::ScriptsController#create as HTML
+  Parameters: {"script"=>{"title"=>"I am a script", "password"=>"[FILTERED]", "confirmPassword"=>"[FILTERED]", "cuid"=>"cj5rbj7mu00003k5thozxln1g"}, "editor"=>{"name"=>"Me"}, "version"=>{"contentState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"71qbf\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+Unpermitted parameter: :confirmPassword
+  [1m[35m (3.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (44.0ms)[0m  [1m[32mINSERT INTO "scripts" ("title", "password_digest", "cuid", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "I am a script"], ["password_digest", "$2a$10$yan8CxPlEOxHle8cllNcVO0mX2/pP79eCJlRhvvqGBoYa7/pR8J1G"], ["cuid", "cj5rbj7mu00003k5thozxln1g"], ["created_at", "2017-07-30 22:49:48.649069"], ["updated_at", "2017-07-30 22:49:48.649069"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (10.4ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "contentState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 6], ["contentState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"71qbf\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-30 22:49:48.726081"], ["updated_at", "2017-07-30 22:49:48.726081"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.3ms)[0m  [1m[32mINSERT INTO "editors" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Me"], ["created_at", "2017-07-30 22:49:48.755491"], ["updated_at", "2017-07-30 22:49:48.755491"]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 44], ["editor_id", 9], ["created_at", "2017-07-30 22:49:48.784072"], ["updated_at", "2017-07-30 22:49:48.784072"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mEditor Load (3.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mVersion Load (1.7ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 44]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (168.96ms)
+Completed 200 OK in 481ms (Views: 171.2ms | ActiveRecord: 76.0ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-30 18:49:49 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (0.5ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5rbj7mu00003k5thozxln1g"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (9.0ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mVersion Load (4.7ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 44]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (50.76ms)
+Completed 200 OK in 57ms (Views: 37.2ms | ActiveRecord: 15.3ms)
+
+
+Started POST "/api/v1/versions" for 127.0.0.1 at 2017-07-30 18:49:58 -0400
+Processing by Api::V1::VersionsController#create as HTML
+  Parameters: {"version"=>{"contentState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"71qbf\",\"text\":\"ajslkdjflajskdlfjlkaslfdkasdf\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+  [1m[36mScript Load (0.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5rbj7mu00003k5thozxln1g"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.3ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "contentState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 6], ["contentState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"71qbf\",\"text\":\"ajslkdjflajskdlfjlkaslfdkasdf\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-30 22:49:58.305698"], ["updated_at", "2017-07-30 22:49:58.305698"]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 45], ["editor_id", 9], ["created_at", "2017-07-30 22:49:58.309852"], ["updated_at", "2017-07-30 22:49:58.309852"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mEditor Load (2.8ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mVersion Load (0.8ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 45]]
+[active_model_serializers]   [1m[36mEditor Load (0.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 44]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (17.83ms)
+Completed 200 OK in 34ms (Views: 13.9ms | ActiveRecord: 8.7ms)
+
+
+Started POST "/api/v1/versions" for 127.0.0.1 at 2017-07-30 18:50:11 -0400
+Processing by Api::V1::VersionsController#create as HTML
+  Parameters: {"version"=>{"contentState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"71qbf\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+  [1m[36mScript Load (0.3ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5rbj7mu00003k5thozxln1g"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.3ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (7.8ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "contentState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 6], ["contentState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"71qbf\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-30 22:50:11.826217"], ["updated_at", "2017-07-30 22:50:11.826217"]]
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 46], ["editor_id", 9], ["created_at", "2017-07-30 22:50:11.836659"], ["updated_at", "2017-07-30 22:50:11.836659"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mEditor Load (1.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mVersion Load (0.6ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 46]]
+[active_model_serializers]   [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 45]]
+[active_model_serializers]   [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 44]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (25.49ms)
+Completed 200 OK in 51ms (Views: 22.3ms | ActiveRecord: 15.9ms)
+
+
+Started POST "/api/v1/versions" for 127.0.0.1 at 2017-07-30 18:50:23 -0400
+Processing by Api::V1::VersionsController#create as HTML
+  Parameters: {"version"=>{"contentState"=>"{\"entityMap\":{},\"blocks\":[{\"key\":\"71qbf\",\"text\":\"ajslkdjflajskdlfjlkaslfdkasdf\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"}}
+  [1m[36mScript Load (0.6ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5rbj7mu00003k5thozxln1g"], ["LIMIT", 1]]
+  [1m[36mEditor Load (0.7ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "versions" ("script_id", "contentState", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["script_id", 6], ["contentState", "{\"entityMap\":{},\"blocks\":[{\"key\":\"71qbf\",\"text\":\"ajslkdjflajskdlfjlkaslfdkasdf\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}"], ["created_at", "2017-07-30 22:50:23.790504"], ["updated_at", "2017-07-30 22:50:23.790504"]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "editor_versions" ("version_id", "editor_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["version_id", 47], ["editor_id", 9], ["created_at", "2017-07-30 22:50:23.796096"], ["updated_at", "2017-07-30 22:50:23.796096"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers]   [1m[36mEditor Load (1.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mVersion Load (0.6ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 47]]
+[active_model_serializers]   [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 46]]
+[active_model_serializers]   [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 45]]
+[active_model_serializers]   [1m[36mEditor Load (0.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 44]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (29.86ms)
+Completed 200 OK in 61ms (Views: 27.2ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-30 18:52:40 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.8ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5rbj7mu00003k5thozxln1g"], ["LIMIT", 1]]
+  [1m[36mEditor Load (1.1ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (13.2ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mVersion Load (1.3ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 47]]
+[active_model_serializers]   [1m[36mEditor Load (1.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 46]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 45]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 44]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (153.51ms)
+Completed 200 OK in 193ms (Views: 140.1ms | ActiveRecord: 20.4ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-30 19:00:53 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (1.8ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5rbj7mu00003k5thozxln1g"], ["LIMIT", 1]]
+  [1m[36mEditor Load (1.6ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (14.3ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mVersion Load (1.1ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mEditor Load (2.9ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 47]]
+[active_model_serializers]   [1m[36mEditor Load (4.2ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 46]]
+[active_model_serializers]   [1m[36mEditor Load (0.5ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 45]]
+[active_model_serializers]   [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 44]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (118.24ms)
+Completed 200 OK in 183ms (Views: 99.7ms | ActiveRecord: 26.8ms)
+
+
+Started GET "/api/v1/me" for 127.0.0.1 at 2017-07-30 19:01:03 -0400
+Processing by Api::V1::AuthController#show as HTML
+  [1m[36mScript Load (3.1ms)[0m  [1m[34mSELECT  "scripts".* FROM "scripts" WHERE "scripts"."cuid" = $1 LIMIT $2[0m  [["cuid", "cj5rbj7mu00003k5thozxln1g"], ["LIMIT", 1]]
+  [1m[36mEditor Load (1.0ms)[0m  [1m[34mSELECT  "editors".* FROM "editors" WHERE "editors"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mEditor Load (25.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" INNER JOIN "versions" ON "editor_versions"."version_id" = "versions"."id" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mVersion Load (0.7ms)[0m  [1m[34mSELECT "versions".* FROM "versions" WHERE "versions"."script_id" = $1 ORDER BY "versions"."created_at" DESC[0m  [["script_id", 6]]
+[active_model_serializers]   [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 47]]
+[active_model_serializers]   [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 46]]
+[active_model_serializers]   [1m[36mEditor Load (0.6ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 45]]
+[active_model_serializers]   [1m[36mEditor Load (0.4ms)[0m  [1m[34mSELECT "editors".* FROM "editors" INNER JOIN "editor_versions" ON "editors"."id" = "editor_versions"."editor_id" WHERE "editor_versions"."version_id" = $1[0m  [["version_id", 44]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (127.56ms)
+Completed 200 OK in 161ms (Views: 103.4ms | ActiveRecord: 32.6ms)
+
+

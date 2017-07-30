@@ -8,7 +8,6 @@ import '../stylesheets/Pdf.css'
 class Pdf extends Component {
 
   getPdfUrl = () => {
-    console.log('generating')
     pdfMake.vfs = pdfFonts.pdfMake.vfs
     const docDefinition = { content: this.props.version.contentState }
     const pdfDocGenerator = pdfMake.createPdf(docDefinition)
