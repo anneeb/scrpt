@@ -5,7 +5,7 @@ class ReportsContainer extends Component {
   render () {
     return (
       <div>
-        <Header textAlign='center'>Reports</Header>
+        <Header textAlign='center'>Coming soon...</Header>
       </div>
     )
   }

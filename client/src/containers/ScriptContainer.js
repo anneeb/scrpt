@@ -7,7 +7,7 @@ class ScriptContainer extends Component {
   render () {
     return (
       <div className='script-pdf'>
-        <Pdf contentState={this.props.contentState}/>
+        <Pdf version={this.props.version}/>
       </div>
     )
   }
@@ -15,7 +15,7 @@ class ScriptContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    contentState: state.ScriptReducer.script.versions[0].contentState
+    version: state.ScriptReducer.script.versions[0]
   }
 }
 

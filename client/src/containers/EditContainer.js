@@ -4,6 +4,7 @@ import { Editor, EditorState, RichUtils, convertFromRaw, convertToRaw } from 'dr
 import EditMenu from '../containers/EditMenu'
 import * as actions from '../actions'
 import '../stylesheets/EditContainer.css'
+import 'draft-js/dist/Draft.css'
 
 class EditContainer extends Component {
 

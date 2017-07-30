@@ -1,30 +1,37 @@
 import React, { Component } from 'react'
-import pdfMake from "pdfmake/build/pdfmake"
-import pdfFonts from "pdfmake/build/vfs_fonts"
+import { connect } from 'react-redux'
+import pdfMake from 'pdfmake/build/pdfmake'
+import pdfFonts from 'pdfmake/build/vfs_fonts'
+import * as actions from '../actions'
 import '../stylesheets/Pdf.css'
 
 class Pdf extends Component {
-  state = {
-    url: null
-  }
 
-  componentWillMount () {
+  getPdfUrl = () => {
+    console.log('generating')
     pdfMake.vfs = pdfFonts.pdfMake.vfs
-    const docDefinition = { content: 'This is an sample PDF printed with pdfMake' }
+    const docDefinition = { content: this.props.version.contentState }
     const pdfDocGenerator = pdfMake.createPdf(docDefinition)
-    pdfDocGenerator.getDataUrl(this.setDataUrl)
+    pdfDocGenerator.getDataUrl(this.setPdfUrl)
   }
 
-  setDataUrl = dataUrl => {
-    this.setState({
+  setPdfUrl = dataUrl => {
+    const payload = {
+      id: this.props.version.id,
       url: dataUrl
-    })
+    }
+    this.props.addPdfUrl(payload)
   }
 
   render () {
-    const url = this.state.url
-    return url ?  <iframe src={url} title='scrpt'/> : <div>Loading...</div>
+    const url = this.props.version.url
+    if (url) {
+      return <iframe src={url} title='scrpt'/>
+    } else {
+      this.getPdfUrl()
+      return <div>Loading...</div>
+    }
   }
 }
 
-export default Pdf
+export default connect(null, actions)(Pdf)

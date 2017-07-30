@@ -3,7 +3,8 @@ import {
   DID_GET_SCRIPT_WITH_AUTH,
   DID_GET_SCRIPT_WITH_AUTH_REDIRECT,
   DID_GET_SCRIPT_WITH_NO_AUTH,
-  SET_VERSION
+  SET_VERSION,
+  ADD_PDF_URL
 } from '../actions/types'
 
 export default function (state = {}, action) {
@@ -38,6 +39,17 @@ export default function (state = {}, action) {
         active: action.payload.index,
         version: { ...action.payload.version }
       }
+    case ADD_PDF_URL:
+      if (state.version.id === action.payload.id)
+        return {
+          ...state,
+          version: {
+            ...state.version,
+            url: action.payload.url
+          }
+        }
+      else
+        return state
     default:
       return state
   }

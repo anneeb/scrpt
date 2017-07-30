@@ -36,7 +36,7 @@ class VersionContainer extends Component {
           </Grid.Column>
         </Grid>
         <div className='version-pdf'>
-          <Pdf contentState={this.props.version.contentState}/>
+          <Pdf version={this.props.version}/>
         </div>
       </div>
     )

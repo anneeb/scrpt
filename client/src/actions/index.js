@@ -9,6 +9,7 @@ import {
   AUTH_REDIRECT_COMPLETED,
   SET_EDITOR_STATE,
   SET_VERSION,
+  ADD_PDF_URL,
   AUTH_ERROR,
   SCRIPT_ERROR
 } from './types'
@@ -180,10 +181,17 @@ export function setEditorState(editorState) {
   }
 }
 
-export function setVersion(version) {
+export function setVersion(payload) {
   return {
     type: SET_VERSION,
-    payload: version
+    payload: payload
+  }
+}
+
+export function addPdfUrl(payload) {
+  return {
+    type: ADD_PDF_URL,
+    payload: payload
   }
 }
 
