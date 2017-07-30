@@ -8,6 +8,7 @@ import {
   DID_GET_SCRIPT_WITH_NO_AUTH,
   AUTH_REDIRECT_COMPLETED,
   SET_EDITOR_STATE,
+  SET_VERSION,
   AUTH_ERROR,
   SCRIPT_ERROR
 } from './types'
@@ -176,6 +177,13 @@ export function setEditorState(editorState) {
   return {
     type: SET_EDITOR_STATE,
     payload: editorState
+  }
+}
+
+export function setVersion(version) {
+  return {
+    type: SET_VERSION,
+    payload: version
   }
 }
 

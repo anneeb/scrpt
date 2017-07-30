@@ -7,5 +7,7 @@ export const AUTH_REDIRECT_COMPLETED = 'auth_redirect_completed'
 
 export const SET_EDITOR_STATE = 'set_editor_state'
 
+export const SET_VERSION = 'set_version'
+
 export const AUTH_ERROR = 'auth_error'
 export const SCRIPT_ERROR = 'script_error'

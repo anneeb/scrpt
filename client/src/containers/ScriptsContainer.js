@@ -4,7 +4,7 @@ import { Container, Header } from 'semantic-ui-react'
 import ScriptsRouter from '../routers/ScriptsRouter'
 import * as actions from '../actions/'
 
-class ScriptContainer extends Component {
+class ScriptsContainer extends Component {
   componentWillMount() {
     if (this.props.location.pathname.split('/')[3] === 'edit')
       this.props.checkScriptAuthWithRedirect(this.props.match.params.cuid)
@@ -58,4 +58,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, actions)(ScriptContainer)
+export default connect(mapStateToProps, actions)(ScriptsContainer)

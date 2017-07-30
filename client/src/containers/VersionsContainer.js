@@ -1,12 +1,19 @@
 import React, { Component } from 'react'
-import { Header } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
+import VersionsMenu from '../components/VersionsMenu'
+import VersionContainer from '../containers/VersionContainer'
 
 class VersionsContainer extends Component {
   render () {
     return (
-      <div>
-        <Header textAlign='center'>Versions</Header>
-      </div>
+      <Grid style={{height: '95vh'}}>
+        <Grid.Column width={3}>
+          <VersionsMenu />
+        </Grid.Column>
+        <Grid.Column width={13}>
+          <VersionContainer />
+        </Grid.Column>
+      </Grid>
     )
   }
 }

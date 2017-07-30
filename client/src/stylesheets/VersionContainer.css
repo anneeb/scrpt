@@ -1,0 +1,9 @@
+.version-container {
+  height: 100%;
+}
+
+.version-pdf {
+  border: 1px solid #ddd;
+  height: 90%;
+  width: 100%;
+}
