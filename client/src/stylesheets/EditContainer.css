@@ -1,8 +1,7 @@
 .RichEditor-root {
   background: #fff;
   border: 1px solid #ddd;
-  font-family: 'Georgia', serif;
-  font-size: 14px;
+  font: 12px Courier, fixed;
   padding: 15px;
   margin-bottom: 10px;
   height: 95vh;
@@ -69,18 +68,27 @@
 
 /* CUSTOM BLOCK STYLES */
 
-.RichEditor-editor .RichEditor-act {
-  color: red;
+.RichEditor-editor .RichEditor-act .public-DraftStyleDefault-ltr {
+  text-align: center;
+  text-decoration: underline;
+  text-transform: uppercase;
+  padding-top: 24px;
 }
 
-.RichEditor-editor .RichEditor-scene {
-  color: green;
+.RichEditor-editor .RichEditor-scene .public-DraftStyleDefault-ltr {
+  text-align: center;
+  text-decoration: underline;
+  text-transform: uppercase;
+  padding-top: 18px;
 }
 
-.RichEditor-editor .RichEditor-character {
-  color: blue;
+.RichEditor-editor .RichEditor-character .public-DraftStyleDefault-ltr {
+  text-transform: uppercase;
+  padding-top: 12px;
 }
 
-.RichEditor-editor .RichEditor-dialogue {
-  color: purple;
+.RichEditor-editor .RichEditor-dialogue .public-DraftStyleDefault-ltr {
+  padding-left: 0.5in;
+  padding-right: 0.5in;
+  padding-top: 6px;
 }
