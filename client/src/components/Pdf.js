@@ -24,9 +24,9 @@ class Pdf extends Component {
 
   render () {
     const url = this.props.version.url
-    if (url) {
+    if (url)
       return <iframe src={url} title='scrpt'/>
-    } else {
+    else {
       this.getPdfUrl()
       return <div>Loading...</div>
     }
