@@ -7,8 +7,54 @@ import '../stylesheets/Pdf.css'
 
 class Pdf extends Component {
 
+  fonts = {
+    Courier: {
+      normal: 'Courier New.ttf',
+      bold: 'Courier New Bold.ttf',
+      italics: 'Courier New Italic.ttf',
+      bolditalics: 'Courier New Bold Italic.ttf'
+    }
+  }
+
+  defaultStyle = {
+    font: 'Courier',
+    fontSize: 12
+  }
+
+  styles = {
+    act: {
+      alignment: 'center',
+      decoration: 'underline',
+      margin: [0, 24, 0, 0]
+    },
+    scene: {
+      alignment: 'center',
+      decoration: 'underline',
+      margin: [0, 18, 0, 0]
+    },
+    character: {
+      margin: [0, 12, 0, 0]
+    },
+    dialogue: {
+      margin: [36, 6, 36, 0]
+    }
+  }
+
+  upcaseStyles = {
+    act: true,
+    scene: true,
+    character: true,
+  }
+
+  inlineStyles = {
+    'BOLD': {bold: true},
+    'ITALIC': {italics: true},
+    'STRIKETHROUGH': {decoration: 'lineThrough'}
+  }
+
   getPdfUrl = () => {
     pdfMake.vfs = pdfFonts.pdfMake.vfs
+    pdfMake.fonts = this.fonts
     const docDefinition = this.defineDoc()
     const pdfDocGenerator = pdfMake.createPdf(docDefinition)
     pdfDocGenerator.getDataUrl(this.setPdfUrl)
@@ -16,26 +62,15 @@ class Pdf extends Component {
 
   defineDoc = () => {
     return {
+      info: {
+      	title: this.props.title,
+      	author: this.props.authors
+      },
       pageSize: 'LETTER',
-      pageMargins: 1,
+      pageMargins: 72,
       content: this.parseContent(),
-      defaultStyle: {
-        font: ,
-        fontSize: 12
-      }
-      styles: {
-        base: {
-          font:
-        }
-        act: {
-          fontSize: 22,
-          bold: true
-        },
-        anotherStyle: {
-          italic: true,
-          alignment: 'right'
-        }
-      }
+      defaultStyle: this.defaultStyle,
+      styles: this.styles
     }
   }
 
@@ -44,8 +79,40 @@ class Pdf extends Component {
     return contentState.blocks.map(this.parseBlock)
   }
 
-  parseBlock = b => {
-    return  { text: b.text, style: b.type}
+  parseBlock = block => {
+    const style = block.type
+    const text = this.upcaseStyles[style] ? block.text.toUpperCase() : block.text
+    const inlineRanges = block.inlineStyleRanges
+    return {
+      text: !inlineRanges.length ? text : this.inlineTextArray(inlineRanges, text),
+      style: style
+    }
+  }
+
+  inlineTextArray = (inlineRanges, text) => {
+    const inlineMap = this.createInlineMap(inlineRanges)
+    const characters = text.split('')
+    return this.createTextArray(characters, inlineMap)
+  }
+
+  createInlineMap = inlineRanges => {
+    let inlines = {}
+    inlineRanges.forEach(obj => {
+      const offset = obj.offset
+      for (let i = 0; i < obj.length; i++) {
+        inlines[offset + i] = {
+          ...inlines[offset + i],
+          ...this.inlineStyles[obj.style]
+        }
+      }
+    })
+    return inlines
+  }
+
+  createTextArray = (characters, inlineMap) => {
+    return characters.map((char, i) => {
+      return { text: char, ...inlineMap[i] }
+    })
   }
 
   setPdfUrl = dataUrl => {
@@ -67,4 +134,11 @@ class Pdf extends Component {
   }
 }
 
-export default connect(null, actions)(Pdf)
+const mapStateToProps = state => {
+  return {
+    title: state.ScriptReducer.script.title,
+    authors: state.ScriptReducer.script.editors.map(e => e.name).join(', ')
+  }
+}
+
+export default connect(mapStateToProps, actions)(Pdf)

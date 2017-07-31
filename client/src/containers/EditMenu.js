@@ -13,7 +13,6 @@ class EditMenu extends Component {
   inlineStyles = [
     {icon: 'bold', style: 'BOLD'},
     {icon: 'italic', style: 'ITALIC'},
-    {icon: 'underline', style: 'UNDERLINE'},
     {icon: 'strikethrough', style: 'STRIKETHROUGH'}
   ]
 
