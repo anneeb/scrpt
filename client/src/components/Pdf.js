@@ -42,8 +42,7 @@ class Pdf extends Component {
 
   upcaseStyles = {
     act: true,
-    scene: true,
-    character: true,
+    character: true
   }
 
   inlineStyles = {

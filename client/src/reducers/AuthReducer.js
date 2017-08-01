@@ -11,17 +11,20 @@ export default function (state = {}, action) {
     case DID_GET_SCRIPT_WITH_AUTH:
       return {
         ...state,
+        error: '',
         [action.payload.script.cuid]: action.payload.editor
       }
     case DID_GET_SCRIPT_WITH_AUTH_REDIRECT:
       return {
         ...state,
+        error: '',
         [action.payload.script.cuid]: action.payload.editor,
         shouldRedirect: true
       }
     case DID_GET_SCRIPT_WITH_NO_AUTH:
       return {
         ...state,
+        error: '',
         [action.payload.script.cuid]: null
       }
     case AUTH_REDIRECT_COMPLETED:

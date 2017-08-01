@@ -11,5 +11,7 @@ export const SET_VERSION = 'set_version'
 
 export const ADD_PDF_URL = 'add_pdf_url'
 
+export const SET_FILTERS = 'set_filters'
+
 export const AUTH_ERROR = 'auth_error'
 export const SCRIPT_ERROR = 'script_error'

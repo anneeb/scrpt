@@ -11,22 +11,18 @@ export default function (state = {}, action) {
   switch (action.type) {
     case DID_GET_SCRIPT:
       return {
-        ...state,
         script: { ...action.payload.script }
       }
     case DID_GET_SCRIPT_WITH_AUTH:
       return {
-        ...state,
         script: { ...action.payload.script }
       }
     case DID_GET_SCRIPT_WITH_AUTH_REDIRECT:
       return {
-        ...state,
         script: { ...action.payload.script }
       }
     case DID_GET_SCRIPT_WITH_NO_AUTH:
       return {
-        ...state,
         script: { ...action.payload.script }
       }
     case ADD_PDF_URL:

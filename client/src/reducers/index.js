@@ -3,12 +3,14 @@ import AuthReducer from './AuthReducer'
 import ScriptReducer from './ScriptReducer'
 import EditReducer from './EditReducer'
 import VersionReducer from './VersionReducer'
+import ReportReducer from './ReportReducer'
 
 const Reducers = combineReducers({
   AuthReducer,
   ScriptReducer,
   EditReducer,
-  VersionReducer
+  VersionReducer,
+  ReportReducer
 })
 
 export default Reducers

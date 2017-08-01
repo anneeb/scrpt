@@ -10,6 +10,7 @@ import {
   SET_EDITOR_STATE,
   SET_VERSION,
   ADD_PDF_URL,
+  SET_FILTERS,
   AUTH_ERROR,
   SCRIPT_ERROR
 } from './types'
@@ -191,6 +192,13 @@ export function setVersion(payload) {
 export function addPdfUrl(payload) {
   return {
     type: ADD_PDF_URL,
+    payload: payload
+  }
+}
+
+export function setFilters(payload) {
+  return {
+    type: SET_FILTERS,
     payload: payload
   }
 }
