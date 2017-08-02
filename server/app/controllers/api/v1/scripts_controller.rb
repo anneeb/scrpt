@@ -37,7 +37,7 @@ module Api
           }
         end
         render json: {
-          error: "Could not find script with cuid #{params[:cuid]}"
+          error: "Could not find script with key: #{params[:id]}"
         }
       end
 
