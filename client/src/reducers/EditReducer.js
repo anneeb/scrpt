@@ -1,5 +1,6 @@
 import {
   SET_EDITOR_STATE,
+  RESET_SCRIPT
 } from '../actions/types'
 
 export default function (state = {}, action) {
@@ -8,6 +9,8 @@ export default function (state = {}, action) {
       return {
         editorState: action.payload
       }
+    case RESET_SCRIPT:
+      return {}
     default:
       return state
   }

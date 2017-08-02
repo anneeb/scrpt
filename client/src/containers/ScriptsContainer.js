@@ -19,6 +19,10 @@ class ScriptsContainer extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.resetScript()
+  }
+
   renderAlert = () => {
     const error = this.props.error
     if (error)

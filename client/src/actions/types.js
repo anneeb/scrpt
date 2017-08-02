@@ -17,3 +17,5 @@ export const ADD_REPORT_URL = 'add_report_url'
 
 export const AUTH_ERROR = 'auth_error'
 export const SCRIPT_ERROR = 'script_error'
+
+export const RESET_SCRIPT = 'reset_script'

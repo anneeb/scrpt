@@ -4,7 +4,8 @@ import {
   DID_GET_SCRIPT_WITH_AUTH_REDIRECT,
   DID_GET_SCRIPT_WITH_NO_AUTH,
   SET_VERSION,
-  ADD_PDF_URL
+  ADD_PDF_URL,
+  RESET_SCRIPT
 } from '../actions/types'
 
 export default function (state = {}, action) {
@@ -45,6 +46,8 @@ export default function (state = {}, action) {
         }
       else
         return state
+    case RESET_SCRIPT:
+      return {}
     default:
       return state
   }

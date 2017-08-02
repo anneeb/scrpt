@@ -1,6 +1,7 @@
 import {
   SET_FILTERS,
-  ADD_REPORT_URL
+  ADD_REPORT_URL,
+  RESET_SCRIPT
 } from '../actions/types'
 
 export default function (state = {}, action) {
@@ -15,6 +16,8 @@ export default function (state = {}, action) {
         ...state,
         url: action.payload
       }
+    case RESET_SCRIPT:
+      return {}
     default:
       return state
   }

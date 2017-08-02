@@ -14,7 +14,8 @@ import {
   SET_FILTERS,
   ADD_REPORT_URL,
   AUTH_ERROR,
-  SCRIPT_ERROR
+  SCRIPT_ERROR,
+  RESET_SCRIPT
 } from './types'
 
 export function logIn (formData) {
@@ -173,6 +174,12 @@ export function didGetScriptWithNoAuth (data) {
   return {
     type: DID_GET_SCRIPT_WITH_NO_AUTH,
     payload: data.payload
+  }
+}
+
+export function resetScript () {
+  return {
+    type: RESET_SCRIPT
   }
 }
 
