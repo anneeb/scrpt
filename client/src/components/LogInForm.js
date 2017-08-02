@@ -10,10 +10,8 @@ class LogInForm extends Component {
     cuid: this.props.cuid
   }
 
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
+  handleChange = formData => {
+    this.setState(formData)
   }
 
   handleSubmit = formData => {
@@ -33,13 +31,12 @@ class LogInForm extends Component {
 
   render () {
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
         <Form.Input
           label='Editor'
           name='editor'
           placeholder='your name'
           value={this.state.editor}
-          onChange={this.handleChange}
           required
         />
         <Form.Input
@@ -48,7 +45,6 @@ class LogInForm extends Component {
           name='password'
           placeholder='script password'
           value={this.state.password}
-          onChange={this.handleChange}
           required
         />
         <Form.Input
@@ -56,7 +52,6 @@ class LogInForm extends Component {
           name='cuid'
           value={this.state.cuid}
         />
-
         {this.renderAlert()}
         <Form.Button type='submit' color='green'>Log In</Form.Button>
       </Form>

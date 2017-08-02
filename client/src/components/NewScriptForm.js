@@ -24,10 +24,8 @@ class NewScriptForm extends Component {
     }
   }
 
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
+  handleChange = formData => {
+    this.setState(formData)
   }
 
   handleSubmit = formData => {
@@ -46,13 +44,12 @@ class NewScriptForm extends Component {
 
   render () {
     return (
-      <Form onValidSubmit={this.handleSubmit}>
+      <Form onChange={this.handleChange} onValidSubmit={this.handleSubmit}>
         <Form.Input
           label='Title'
           name='title'
           placeholder='script title'
           value={this.state.title}
-          onChange={this.handleChange}
           required
         />
         <Form.Input
@@ -60,7 +57,6 @@ class NewScriptForm extends Component {
           name='editor'
           placeholder='your name'
           value={this.state.editor}
-          onChange={this.handleChange}
           required
         />
         <Form.Input
@@ -75,7 +71,6 @@ class NewScriptForm extends Component {
           }}
           errorLabel={ <Label color='red' pointing /> }
           value={this.state.password}
-          onChange={this.handleChange}
           required
         />
         <Form.Input
@@ -90,10 +85,8 @@ class NewScriptForm extends Component {
           }}
           errorLabel={ <Label color='red' pointing /> }
           value={this.state.confirmPassword}
-          onChange={this.handleChange}
           required
         />
-
         {this.renderAlert()}
         <Form.Button type='submit' color='green'>Submit</Form.Button>
       </Form>

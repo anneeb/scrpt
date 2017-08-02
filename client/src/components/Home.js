@@ -12,10 +12,8 @@ class Home extends Component {
     router: PropTypes.object
   }
 
-  handleChange = event => {
-    this.setState({
-      cuid: event.target.value
-    })
+  handleChange = formData => {
+    this.setState(formData)
   }
 
   handleSubmit = formData => {
@@ -24,7 +22,12 @@ class Home extends Component {
 
   render () {
     return (
-      <Grid as={Form} onSubmit={this.handleSubmit} style={{paddingTop: 50}} centered textAlign='center'>
+      <Grid as={Form}
+        onChange={this.handleChange}
+        onSubmit={this.handleSubmit}
+        style={{paddingTop: 50}}
+        centered textAlign='center'
+      >
         <Grid.Row>
           <Header as='h1'>
             Welcome to Scrpt!
@@ -47,7 +50,6 @@ class Home extends Component {
               name='cuid'
               placeholder='your script key'
               value={this.state.cuid}
-              onChange={this.handleChange}
             />
           </Form.Field>
         </Grid.Row>
