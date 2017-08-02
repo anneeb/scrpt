@@ -63,7 +63,7 @@ class ReportsContainer extends Component {
     if (this.props.filters && this.props.version.id === this.props.id)
       return <ReportContainer />
     else
-      return 'Loading...'
+      return <div>Loading...</div>
   }
 
   render () {
