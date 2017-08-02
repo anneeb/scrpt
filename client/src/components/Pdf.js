@@ -82,11 +82,18 @@ class Pdf extends Component {
 
   parseBlock = block => {
     const style = block.type
-    const text = this.upcaseStyles[style] ? block.text.toUpperCase() : block.text
+    let text = block.text
+    if (!text)
+      return {
+        text: '\n',
+        style
+      }
+    text = this.upcaseStyles[style] ? text.toUpperCase() : text
     const inlineRanges = block.inlineStyleRanges
+    text = !inlineRanges.length ? text : this.inlineTextArray(inlineRanges, text)
     return {
-      text: !inlineRanges.length ? text : this.inlineTextArray(inlineRanges, text),
-      style: style
+      text,
+      style
     }
   }
 
