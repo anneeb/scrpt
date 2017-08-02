@@ -11,6 +11,7 @@ import {
   SET_VERSION,
   ADD_PDF_URL,
   SET_FILTERS,
+  ADD_REPORT_URL,
   AUTH_ERROR,
   SCRIPT_ERROR
 } from './types'
@@ -200,6 +201,13 @@ export function setFilters(payload) {
   return {
     type: SET_FILTERS,
     payload: payload
+  }
+}
+
+export function addReportUrl(url) {
+  return {
+    type: ADD_REPORT_URL,
+    payload: url
   }
 }
 

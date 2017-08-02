@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Grid } from 'semantic-ui-react'
 import ReportsMenu from '../components/ReportsMenu'
+import ReportContainer from '../containers/ReportContainer'
 import * as actions from '../actions'
 
 class ReportsContainer extends Component {
@@ -58,6 +59,13 @@ class ReportsContainer extends Component {
     }
   }
 
+  renderReport = () => {
+    if (this.props.filters && this.props.version.id === this.props.id)
+      return <ReportContainer />
+    else
+      return 'Loading...'
+  }
+
   render () {
     return (
       <Grid style={{height: '95vh'}}>
@@ -65,7 +73,7 @@ class ReportsContainer extends Component {
           {this.renderMenu()}
         </Grid.Column>
         <Grid.Column width={12}>
-          report container
+          {this.renderReport()}
         </Grid.Column>
       </Grid>
     )
@@ -76,6 +84,7 @@ const mapStateToProps = state => {
   return {
     version: state.ScriptReducer.script.versions[0],
     id: state.ReportReducer.id,
+    filters: state.ReportReducer.filters
   }
 }
 

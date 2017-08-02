@@ -1,5 +1,6 @@
 import {
-  SET_FILTERS
+  SET_FILTERS,
+  ADD_REPORT_URL
 } from '../actions/types'
 
 export default function (state = {}, action) {
@@ -9,13 +10,10 @@ export default function (state = {}, action) {
         id: action.payload.id,
         filters: { ...action.payload.filters }
       }
-    case 'TOGGLE_ACT':
+    case ADD_REPORT_URL:
       return {
         ...state,
-        filters: {
-          ...state.filters,
-          ...action.payload
-        }
+        url: action.payload
       }
     default:
       return state

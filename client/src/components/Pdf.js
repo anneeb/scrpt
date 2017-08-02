@@ -74,7 +74,9 @@ class Pdf extends Component {
   }
 
   parseContent = () => {
-    const contentState = JSON.parse(this.props.version.contentState)
+    const report = this.props.reportVersion
+    const json = report ? report.contentState : this.props.version.contentState
+    const contentState = JSON.parse(json)
     return contentState.blocks.map(this.parseBlock)
   }
 
@@ -115,6 +117,8 @@ class Pdf extends Component {
   }
 
   setPdfUrl = dataUrl => {
+    if (this.props.reportVersion)
+      return this.props.addReportUrl(dataUrl)
     const payload = {
       id: this.props.version.id,
       url: dataUrl
@@ -123,7 +127,7 @@ class Pdf extends Component {
   }
 
   render () {
-    const url = this.props.version.url
+    const url = this.props.reportVersion ? this.props.reportUrl : this.props.version.url
     if (url)
       return <iframe src={url} title='scrpt'/>
     else {
@@ -136,7 +140,8 @@ class Pdf extends Component {
 const mapStateToProps = state => {
   return {
     title: state.ScriptReducer.script.title,
-    authors: state.ScriptReducer.script.editors.map(e => e.name).join(', ')
+    authors: state.ScriptReducer.script.editors.map(e => e.name).join(', '),
+    reportUrl: state.ReportReducer.url
   }
 }
 
