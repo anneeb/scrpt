@@ -22,7 +22,7 @@ class LogInForm extends Component {
     const error = this.props.error
     if (error) {
       return (
-        <div className='alert alert-danger'>
+        <div>
           <strong>Oops!</strong> {error}
         </div>
       )
