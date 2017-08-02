@@ -1,7 +1,6 @@
 .RichEditor-root {
   background: #fff;
   border: 1px solid #ddd;
-  font: 12px Courier, fixed;
   padding: 15px;
   margin-bottom: 10px;
   height: 95vh;
@@ -24,6 +23,7 @@
   border: 1px #ddd solid;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Courier New', monospace;
 }
 
 .RichEditor-editor .public-DraftEditorPlaceholder-root,
@@ -42,7 +42,6 @@
 
 .RichEditor-editor .public-DraftStyleDefault-pre {
   background-color: rgba(0, 0, 0, 0.05);
-  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
   font-size: 16px;
   padding: 20px;
 }

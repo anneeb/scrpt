@@ -35,7 +35,7 @@ class NavBar extends Component {
       <Menu inverted style={{borderRadius: 0}}>
         <Container>
           <Menu.Item as={Link} to='/'>
-            <Header as='h2' inverted>
+            <Header as='h2' inverted style={{fontFamily: 'Courier New'}}>
               scrpt
             </Header>
           </Menu.Item>
