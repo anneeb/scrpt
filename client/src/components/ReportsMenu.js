@@ -68,7 +68,7 @@ class ReportsMenu extends Component {
           <Checkbox
             as={Menu.Item}
             key={sIdx}
-            label={scene.title}
+            label={`${aIdx + 1}.${sIdx + 1} - ${scene.title}`}
             checked={show}
             onClick={() => this.toggleScene(sIdx, aIdx, !show)}
           />
@@ -78,7 +78,7 @@ class ReportsMenu extends Component {
         <Accordion as={Menu.Item} key={aIdx}>
           <Accordion.Title>
             <Icon name='dropdown' />
-            {act.title}
+            {`${aIdx + 1}. ${act.title}`}
           </Accordion.Title>
           <Accordion.Content>
             <Checkbox
@@ -95,36 +95,39 @@ class ReportsMenu extends Component {
   }
 
   renderCharacters = () => {
-    const allShow = this.props.filters.characters.every(scene => scene.show)
-    const checkboxes = this.props.filters.characters.map((char, idx) => {
-      const show = char.show
-      return (
-        <Checkbox
-          as={Menu.Item}
-          key={idx}
-          label={char.name}
-          checked={show}
-          onClick={() => this.toggleCharacter(idx, !show)}
-        />
-      )
-    })
-    return (
-      <Accordion as={Menu.Item}>
-        <Accordion.Title>
-          <Icon name='dropdown' />
-          Characters
-        </Accordion.Title>
-        <Accordion.Content>
+    const characters = this.props.filters.characters
+    if (characters.length) {
+      const allShow = characters.every(scene => scene.show)
+      const checkboxes = characters.sort().map((char, idx) => {
+        const show = char.show
+        return (
           <Checkbox
             as={Menu.Item}
-            label='ALL'
-            checked={allShow}
-            onClick={() => this.toggleAllCharacters(!allShow)}
+            key={idx}
+            label={char.name}
+            checked={show}
+            onClick={() => this.toggleCharacter(idx, !show)}
           />
-          {checkboxes}
-        </Accordion.Content>
-      </Accordion>
-    )
+        )
+      })
+      return (
+        <Accordion as={Menu.Item}>
+          <Accordion.Title>
+            <Icon name='dropdown' />
+            Characters
+          </Accordion.Title>
+          <Accordion.Content>
+            <Checkbox
+              as={Menu.Item}
+              label='ALL'
+              checked={allShow}
+              onClick={() => this.toggleAllCharacters(!allShow)}
+            />
+            {checkboxes}
+          </Accordion.Content>
+        </Accordion>
+      )
+    }
   }
 
   render () {
