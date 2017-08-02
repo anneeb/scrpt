@@ -16,8 +16,8 @@ module Api
           })
           return render json: {
             payload: {
-              editor: ActiveModel::Serializer::EditorSerializer.new(editor),
-              script: ActiveModel::Serializer::ScriptSerializer.new(script)
+              editor: EditorSerializer.new(editor),
+              script: ScriptSerializer.new(script)
             },
             token: created_token
           }
