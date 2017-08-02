@@ -4,12 +4,16 @@ import { Link } from 'react-router-dom'
 import { Menu, Container, Header } from 'semantic-ui-react'
 import NewScriptModal from '../containers/NewScriptModal'
 import LogInModal from '../containers/LogInModal'
-
+import LogOutDropdown from '../components/LogOutDropdown'
 
 class NavBar extends Component {
   renderModal = () => {
     if (this.props.location.pathname === '/')
-      return <NewScriptModal />
+      return (
+        <Menu.Item>
+          <NewScriptModal />
+        </Menu.Item>
+      )
     if (this.props.script)
       return this.renderScriptModal()
   }
@@ -17,7 +21,13 @@ class NavBar extends Component {
   renderScriptModal = () => {
     const cuid = this.props.location.pathname.split('/')[2]
     const editor = this.props.auth[cuid]
-    return editor ? <span>Editing as: <strong>{editor.name}</strong></span> : <LogInModal cuid={cuid} />
+    if (editor)
+      return <LogOutDropdown name={editor.name} cuid={cuid} />
+    return (
+      <Menu.Item>
+        <LogInModal cuid={cuid} />
+      </Menu.Item>
+    )
   }
 
   render () {
@@ -30,9 +40,7 @@ class NavBar extends Component {
             </Header>
           </Menu.Item>
         <Menu.Menu position='right'>
-          <Menu.Item>
-            {this.renderModal()}
-          </Menu.Item>
+          {this.renderModal()}
         </Menu.Menu>
         </Container>
       </Menu>

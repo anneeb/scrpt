@@ -6,6 +6,7 @@ import {
   DID_GET_SCRIPT_WITH_AUTH,
   DID_GET_SCRIPT_WITH_AUTH_REDIRECT,
   DID_GET_SCRIPT_WITH_NO_AUTH,
+  NO_AUTH,
   AUTH_REDIRECT_COMPLETED,
   SET_EDITOR_STATE,
   SET_VERSION,
@@ -96,7 +97,7 @@ export function checkScriptAuthWithRedirect (cuid) {
     return getScript(cuid)
 }
 
-export function checkAuthWithRedirect(token, cuid) {
+export function checkAuthWithRedirect (token, cuid) {
   return function (dispatch) {
     AuthAdapter.checkAuth(token)
       .then(resp => {
@@ -110,7 +111,7 @@ export function checkAuthWithRedirect(token, cuid) {
   }
 }
 
-export function checkAuth(token, cuid) {
+export function checkAuth (token, cuid) {
   return function (dispatch) {
     AuthAdapter.checkAuth(token)
       .then(resp => {
@@ -124,7 +125,7 @@ export function checkAuth(token, cuid) {
   }
 }
 
-export function createVersion(json, cuid) {
+export function createVersion (json, cuid) {
   return function (dispatch) {
     const token = localStorage.getItem(cuid)
     VersionsAdapter.createVersion(json, token)
@@ -138,6 +139,11 @@ export function createVersion(json, cuid) {
         dispatch(scriptError('Something went wrong. Please try again.'))
       })
   }
+}
+
+export function logOut (cuid) {
+  localStorage.removeItem(cuid)
+  return noAuth(cuid)
 }
 
 // dispatch actions
@@ -170,41 +176,48 @@ export function didGetScriptWithNoAuth (data) {
   }
 }
 
+export function noAuth (cuid) {
+  return {
+    type: NO_AUTH,
+    payload: cuid
+  }
+}
+
 export function authRedirectCompleted () {
   return {
     type: AUTH_REDIRECT_COMPLETED
   }
 }
 
-export function setEditorState(editorState) {
+export function setEditorState (editorState) {
   return {
     type: SET_EDITOR_STATE,
     payload: editorState
   }
 }
 
-export function setVersion(payload) {
+export function setVersion (payload) {
   return {
     type: SET_VERSION,
     payload: payload
   }
 }
 
-export function addPdfUrl(payload) {
+export function addPdfUrl (payload) {
   return {
     type: ADD_PDF_URL,
     payload: payload
   }
 }
 
-export function setFilters(payload) {
+export function setFilters (payload) {
   return {
     type: SET_FILTERS,
     payload: payload
   }
 }
 
-export function addReportUrl(url) {
+export function addReportUrl (url) {
   return {
     type: ADD_REPORT_URL,
     payload: url

@@ -16,6 +16,12 @@ class EditContainer extends Component {
       this.props.history.push(`/scripts/${cuid}`)
   }
 
+  componentWillReceiveProps (nextProps) {
+    const cuid = nextProps.match.params.cuid
+    if (!nextProps.auth[cuid])
+      nextProps.history.push(`/scripts/${cuid}`)
+  }
+
   componentWillUnmount () {
     const editorState = this.props.editorState
     if (editorState)
