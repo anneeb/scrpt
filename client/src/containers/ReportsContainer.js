@@ -31,7 +31,7 @@ class ReportsContainer extends Component {
             title: text,
             show: true
           }
-          act ? act.scenes.push(scene) : filters.acts.push({scenes: [scene]})
+          act ? act.scenes.push(scene) : filters.acts.push({title: '', scenes: [scene]})
           break
         case 'character':
           filters.characters[text.toUpperCase()] = true

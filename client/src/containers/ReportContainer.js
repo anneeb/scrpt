@@ -23,7 +23,9 @@ class ReportContainer extends Component {
           sceneIdx = -1
           return actPush ? results.push(block) : true
         case 'scene':
-          scenePush = this.props.filters.acts[actIdx].scenes[++sceneIdx].show
+          const adx = actIdx === -1 ? 0 : actIdx
+          const sdx = sceneIdx === -1 ? 0 : ++sceneIdx
+          scenePush = this.props.filters.acts[adx].scenes[sdx].show
           return actPush && scenePush ? results.push(block) : true
         case 'character':
           charPush = this.props.filters.characters[text.toUpperCase()]
