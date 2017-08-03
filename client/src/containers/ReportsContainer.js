@@ -11,7 +11,7 @@ class ReportsContainer extends Component {
     const contentState = JSON.parse(this.props.version.contentState)
     let filters = {
       acts: [],
-      characters: []
+      characters: {}
     }
     contentState.blocks.forEach(block => {
       const text = block.text
@@ -34,13 +34,7 @@ class ReportsContainer extends Component {
           act ? act.scenes.push(scene) : filters.acts.push({scenes: [scene]})
           break
         case 'character':
-          let characters = filters.characters
-          const character = {
-            name: text.toUpperCase(),
-            show: true
-          }
-          if (!characters.filter(char => char.name === character.name).length)
-            characters.push(character)
+          filters.characters[text.toUpperCase()] = true
           break
         default:
       }

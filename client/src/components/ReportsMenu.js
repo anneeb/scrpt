@@ -11,7 +11,8 @@ class ReportsMenu extends Component {
       act.show = true
       act.scenes.forEach(scene => scene.show = true)
     })
-    filters.characters.forEach(char => char.show = true)
+    let characters = filters.characters
+    Object.keys(characters).forEach(name => characters[name] = true)
     this.props.setFilters({
       id: this.props.id,
       filters: filters
@@ -43,16 +44,16 @@ class ReportsMenu extends Component {
   toggleAllCharacters = (allShow) => {
     let filters = { ...this.props.filters }
     let characters = filters.characters
-    characters.forEach(c => c.show = allShow)
+    Object.keys(characters).forEach(name => characters[name] = allShow)
     this.props.setFilters({
       id: this.props.id,
       filters: filters
     })
   }
 
-  toggleCharacter = (idx, show) => {
+  toggleCharacter = (name, show) => {
     let filters = { ...this.props.filters }
-    filters.characters[idx].show = show
+    filters.characters[name] = show
     this.props.setFilters({
       id: this.props.id,
       filters: filters
@@ -96,17 +97,18 @@ class ReportsMenu extends Component {
 
   renderCharacters = () => {
     const characters = this.props.filters.characters
-    if (characters.length) {
-      const allShow = characters.every(scene => scene.show)
-      const checkboxes = characters.sort().map((char, idx) => {
-        const show = char.show
+    const names = Object.keys(characters)
+    if (names.length) {
+      const allShow = names.every(name => characters[name])
+      const checkboxes = names.sort().map((name, i) => {
+        const show = characters[name]
         return (
           <Checkbox
             as={Menu.Item}
-            key={idx}
-            label={char.name}
+            key={i}
+            label={name}
             checked={show}
-            onClick={() => this.toggleCharacter(idx, !show)}
+            onClick={() => this.toggleCharacter(name, !show)}
           />
         )
       })
