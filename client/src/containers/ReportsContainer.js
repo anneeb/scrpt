@@ -45,29 +45,25 @@ class ReportsContainer extends Component {
     })
   }
 
-  renderMenu = () => {
-    if (this.props.version.id !== this.props.id) {
-      this.getFilters()
-    } else {
+  renderMenu = (matchId) => {
+    if (matchId)
       return <ReportsMenu />
-    }
+    this.getFilters()
   }
 
-  renderReport = () => {
-    if (this.props.filters && this.props.version.id === this.props.id)
-      return <ReportContainer />
-    else
-      return <div>Loading...</div>
+  renderReport = (matchId) => {
+    return matchId && this.props.filters ? <ReportContainer /> : <div>Loading...</div>
   }
 
   render () {
+    const matchId = this.props.version.id === this.props.id
     return (
       <Grid style={{height: '95vh'}}>
         <Grid.Column width={4}>
-          {this.renderMenu()}
+          {this.renderMenu(matchId)}
         </Grid.Column>
         <Grid.Column width={12}>
-          {this.renderReport()}
+          {this.renderReport(matchId)}
         </Grid.Column>
       </Grid>
     )

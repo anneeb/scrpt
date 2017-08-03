@@ -54,7 +54,7 @@ class Home extends Component {
           </Form.Field>
         </Grid.Row>
         <Grid.Row>
-          <Form.Button disabled={!this.state.cuid} color='green'>
+          <Form.Button color='green' disabled={!this.state.cuid}>
             GO
           </Form.Button>
         </Grid.Row>

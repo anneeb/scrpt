@@ -2,20 +2,26 @@ import React, { Component } from 'react'
 import { Icon } from 'semantic-ui-react'
 
 class StyleButton extends Component {
-  onToggle = (event) => {
-    event.preventDefault();
-    this.props.onToggle(this.props.style);
+  onToggle = event => {
+    event.preventDefault()
+    this.props.onToggle(this.props.style)
   }
 
-  render() {
-    let className = 'RichEditor-styleButton';
-    if (this.props.active)
-      className += ' RichEditor-activeButton'
+  getClassName = () => {
+    let className = 'RichEditor-styleButton'
+    return this.props.active ? className + ' RichEditor-activeButton' : className
+  }
+
+  renderLabel = () => {
+    return this.props.icon ? <Icon name={this.props.icon}/> : this.props.label
+  }
+
+  render () {
     return (
-      <span className={className} onMouseDown={this.onToggle}>
-        {this.props.icon ? <Icon name={this.props.icon}/> : this.props.label}
+      <span className={this.getClassName()} onMouseDown={this.onToggle}>
+        {this.renderLabel()}
       </span>
-    );
+    )
   }
 }
 

@@ -11,7 +11,9 @@ class NewScriptModal extends Component {
           New
         </Button>
       }>
-        <Modal.Header>Create a New Script</Modal.Header>
+        <Modal.Header>
+          Create a New Script
+        </Modal.Header>
         <Modal.Content>
           <NewScriptForm />
         </Modal.Content>

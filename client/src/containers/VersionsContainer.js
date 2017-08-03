@@ -8,11 +8,10 @@ import * as actions from '../actions'
 class VersionsContainer extends Component {
   componentWillMount () {
     if (this.props.active !== 0) {
-      const payload = {
+      this.props.setVersion({
         index: 0,
-        version: this.props.versions[0]
-      }
-      this.props.setVersion(payload)
+        version: this.props.version
+      })
     }
   }
 
@@ -33,7 +32,7 @@ class VersionsContainer extends Component {
 const mapStateToProps = state => {
   return {
     active: state.VersionReducer.active,
-    versions: state.ScriptReducer.script.versions
+    version: state.ScriptReducer.script.versions[0]
   }
 }
 

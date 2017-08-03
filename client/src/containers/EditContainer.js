@@ -23,20 +23,21 @@ class EditContainer extends Component {
   }
 
   componentWillUnmount () {
-    const editorState = this.props.editorState
-    if (editorState)
+    if (this.props.editorState)
       this.createVersion()
   }
 
   initEditorState = (json) => {
-    const editorState = EditorState.createWithContent(this.parseContent(json))
-    this.props.setEditorState(editorState)
+    this.props.setEditorState(EditorState.createWithContent(this.parseContent(json)))
+  }
+
+  parseContent = json => {
+    return convertFromRaw(JSON.parse(json))
   }
 
   createVersion = () => {
-    const oldJson = this.props.script.versions[0].contentState
     const newJson = this.stringifyContent(this.props.editorState.getCurrentContent())
-    if (newJson !== oldJson)
+    if (newJson !== this.props.script.versions[0].contentState)
       this.props.createVersion(newJson, this.props.script.cuid)
   }
 
@@ -44,15 +45,7 @@ class EditContainer extends Component {
     return JSON.stringify(convertToRaw(contentState))
   }
 
-  parseContent = json => {
-    return convertFromRaw(JSON.parse(json))
-  }
-
-  disableSave = () => {
-    const oldJson = this.props.script.versions[0].contentState
-    const newJson = this.stringifyContent(this.props.editorState.getCurrentContent())
-    return oldJson === newJson
-  }
+  // events
 
   focus = () => {
     this.refs.editor.focus()
@@ -66,15 +59,21 @@ class EditContainer extends Component {
     const newState = RichUtils.handleKeyCommand(this.props.editorState, command)
     if (newState) {
       this.onChange(newState)
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
   onTab = event => {
     event.preventDefault()
     const maxDepth = 4;
-    this.onChange(RichUtils.onTab(event, this.props.editorState, maxDepth));
+    this.onChange(RichUtils.onTab(event, this.props.editorState, maxDepth))
+  }
+
+  // editor menu
+
+  saveDisabled = () => {
+    return this.props.script.versions[0].contentState === this.stringifyContent(this.props.editorState.getCurrentContent())
   }
 
   // block styles
@@ -115,39 +114,38 @@ class EditContainer extends Component {
     );
   }
 
-  render () {
-    const editorState = this.props.editorState
-    if (editorState)
-      return (
-        <div className='RichEditor-root'>
-          <EditMenu
-            editorState={editorState}
-            onBlockToggle={this.toggleBlockType}
-            onInlineToggle={this.toggleInlineStyle}
-            disableSave={this.disableSave}
-            createVersion={this.createVersion}
-          />
-          <div className='RichEditor-container'>
-            <div className='RichEditor-editor' onClick={this.focus}>
-              <Editor
-                blockStyleFn={this.getBlockStyle}
-                customStyleMap={this.styleMap}
-                editorState={editorState}
-                handleKeyCommand={this.handleKeyCommand}
-                onChange={this.onChange}
-                onTab={this.onTab}
-                placeholder="Tell a story..."
-                ref="editor"
-                spellCheck={true}
-              />
-            </div>
+  renderEditor = (editorState) => {
+    return (
+      <div className='RichEditor-root'>
+        <EditMenu
+          editorState={editorState}
+          onBlockToggle={this.toggleBlockType}
+          onInlineToggle={this.toggleInlineStyle}
+          saveDisabled={this.saveDisabled()}
+          createVersion={this.createVersion}
+        />
+        <div className='RichEditor-container'>
+          <div className='RichEditor-editor' onClick={this.focus}>
+            <Editor
+              blockStyleFn={this.getBlockStyle}
+              customStyleMap={this.styleMap}
+              editorState={editorState}
+              handleKeyCommand={this.handleKeyCommand}
+              onChange={this.onChange}
+              onTab={this.onTab}
+              placeholder="Tell a story..."
+              ref="editor"
+              spellCheck={true}
+            />
           </div>
         </div>
-      );
-    else
-      return (
-        <div> Loading... </div>
-      )
+      </div>
+    )
+  }
+
+  render () {
+    const editorState = this.props.editorState
+    return editorState ? this.renderEditor(editorState) : <div>Loading...</div>
   }
 
 }

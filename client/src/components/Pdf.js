@@ -54,8 +54,7 @@ class Pdf extends Component {
   getPdfUrl = () => {
     pdfMake.vfs = pdfFonts.pdfMake.vfs
     pdfMake.fonts = this.fonts
-    const docDefinition = this.defineDoc()
-    const pdfDocGenerator = pdfMake.createPdf(docDefinition)
+    const pdfDocGenerator = pdfMake.createPdf(this.defineDoc())
     pdfDocGenerator.getDataUrl(this.setPdfUrl)
   }
 
@@ -76,8 +75,7 @@ class Pdf extends Component {
   parseContent = () => {
     const report = this.props.reportVersion
     const json = report ? report.contentState : this.props.version.contentState
-    const contentState = JSON.parse(json)
-    return contentState.blocks.map(this.parseBlock)
+    return JSON.parse(json).blocks.map(this.parseBlock)
   }
 
   parseBlock = block => {
@@ -91,16 +89,11 @@ class Pdf extends Component {
     text = this.upcaseStyles[style] ? text.toUpperCase() : text
     const inlineRanges = block.inlineStyleRanges
     text = !inlineRanges.length ? text : this.inlineTextArray(inlineRanges, text)
-    return {
-      text,
-      style
-    }
+    return { text, style }
   }
 
   inlineTextArray = (inlineRanges, text) => {
-    const inlineMap = this.createInlineMap(inlineRanges)
-    const characters = text.split('')
-    return this.createTextArray(characters, inlineMap)
+    return this.createTextArray(text.split(''), this.createInlineMap(inlineRanges))
   }
 
   createInlineMap = inlineRanges => {
@@ -118,19 +111,19 @@ class Pdf extends Component {
   }
 
   createTextArray = (characters, inlineMap) => {
-    return characters.map((char, i) => {
-      return { text: char, ...inlineMap[i] }
+    return characters.map((text, i) => {
+      return { text, ...inlineMap[i] }
     })
   }
 
-  setPdfUrl = dataUrl => {
+  setPdfUrl = url => {
     if (this.props.reportVersion)
-      return this.props.addReportUrl(dataUrl)
-    const payload = {
-      id: this.props.version.id,
-      url: dataUrl
-    }
-    this.props.addPdfUrl(payload)
+      this.props.addReportUrl(url)
+    else
+      this.props.addPdfUrl({
+        id: this.props.version.id,
+        url
+      })
   }
 
   render () {

@@ -11,6 +11,16 @@ class VersionContainer extends Component {
     this.props.createVersion(this.props.version.contentState, this.props.cuid)
   }
 
+  renderHeader = () => {
+    const date = new Date(this.props.version.created_at)
+    return (
+      <Header
+        content={`Created on: ${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`}
+        subheader={`Editors: ${this.props.version.editors.map((e) => e.name).join(', ')}`}
+      />
+    )
+  }
+
   renderButton = () => {
     if (this.props.auth[this.props.cuid])
       return (
@@ -21,15 +31,11 @@ class VersionContainer extends Component {
   }
 
   render () {
-    const date = new Date(this.props.version.created_at)
     return (
       <div className='version-container'>
         <Grid style={{height: '14%'}}>
           <Grid.Column width={12}>
-            <Header
-              content={`Created on: ${date.toLocaleDateString()} at ${date.toLocaleTimeString()}`}
-              subheader={`Editors: ${this.props.version.editors.map((e) => e.name).join(', ')}`}
-            />
+            {this.renderHeader()}
           </Grid.Column>
           <Grid.Column width={4} textAlign='right'>
             {this.renderButton()}

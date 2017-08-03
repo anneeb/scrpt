@@ -8,7 +8,7 @@ import * as actions from '../actions'
 class NewScriptForm extends Component {
   state = {
     title: '',
-    editor: '',
+    name: '',
     password: '',
     confirmPassword: ''
   }
@@ -54,9 +54,9 @@ class NewScriptForm extends Component {
         />
         <Form.Input
           label='Editor'
-          name='editor'
+          name='name'
           placeholder='your name'
-          value={this.state.editor}
+          value={this.state.name}
           required
         />
         <Form.Input
@@ -64,13 +64,13 @@ class NewScriptForm extends Component {
           type='password'
           name='password'
           placeholder='script password'
+          value={this.state.password}
           validations={{ minLength: 6 }}
           validationErrors={{
             minLength: 'Password must be at least 6 characters',
             isDefaultRequiredValue: 'Password is required'
           }}
           errorLabel={ <Label color='red' pointing /> }
-          value={this.state.password}
           required
         />
         <Form.Input
@@ -78,17 +78,19 @@ class NewScriptForm extends Component {
           type='password'
           name='confirmPassword'
           placeholder='script password again'
+          value={this.state.confirmPassword}
           validations={{equalsField: 'password'}}
           validationErrors={{
             equalsField: 'Passwords must match',
             isDefaultRequiredValue: 'Password confirmation is required'
           }}
           errorLabel={ <Label color='red' pointing /> }
-          value={this.state.confirmPassword}
           required
         />
         {this.renderAlert()}
-        <Form.Button type='submit' color='green'>Submit</Form.Button>
+        <Form.Button type='submit' color='green'>
+          Submit
+        </Form.Button>
       </Form>
     )
   }

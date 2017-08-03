@@ -35,10 +35,10 @@ class ReportContainer extends Component {
   }
 
   getVersion = () => {
-    const contentState = JSON.parse(this.props.json)
-    const newBlocks = this.applyFilters(contentState.blocks)
-    const newContentState = JSON.stringify({blocks: newBlocks})
-    return {contentState: newContentState}
+    const oldContentState = JSON.parse(this.props.json)
+    const newBlocks = this.applyFilters(oldContentState.blocks)
+    const contentState = JSON.stringify({blocks: newBlocks})
+    return { contentState }
   }
 
   render () {

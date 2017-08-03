@@ -84,18 +84,12 @@ export function getScriptWithNoAuth (cuid) {
 
 export function checkScriptAuth (cuid) {
   const token = localStorage.getItem(cuid)
-  if (token)
-    return checkAuth(token, cuid)
-  else
-    return getScript(cuid)
+  return token ? checkAuth(token, cuid) : getScript(cuid)
 }
 
 export function checkScriptAuthWithRedirect (cuid) {
   const token = localStorage.getItem(cuid)
-  if (token)
-    return checkAuthWithRedirect(token, cuid)
-  else
-    return getScript(cuid)
+  return token ? checkAuthWithRedirect(token, cuid) : getScript(cuid)
 }
 
 export function checkAuthWithRedirect (token, cuid) {
@@ -203,24 +197,24 @@ export function setEditorState (editorState) {
   }
 }
 
-export function setVersion (payload) {
+export function setVersion (data) {
   return {
     type: SET_VERSION,
-    payload: payload
+    payload: data
   }
 }
 
-export function addPdfUrl (payload) {
+export function addPdfUrl (data) {
   return {
     type: ADD_PDF_URL,
-    payload: payload
+    payload: data
   }
 }
 
-export function setFilters (payload) {
+export function setFilters (data) {
   return {
     type: SET_FILTERS,
-    payload: payload
+    payload: data
   }
 }
 

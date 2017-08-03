@@ -7,7 +7,7 @@ class VersionsMenu extends Component {
 
   handleClick = index => {
     const payload = {
-      index: index,
+      index,
       version: this.props.versions[index]
     }
     this.props.setVersion(payload)

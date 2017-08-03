@@ -5,7 +5,7 @@ import * as actions from '../actions'
 
 class LogInForm extends Component {
   state = {
-    editor: '',
+    name: '',
     password: '',
     cuid: this.props.cuid
   }
@@ -20,13 +20,12 @@ class LogInForm extends Component {
 
   renderAlert = () => {
     const error = this.props.error
-    if (error) {
+    if (error)
       return (
         <div>
           <strong>Oops!</strong> {error}
         </div>
       )
-    }
   }
 
   render () {
@@ -34,9 +33,9 @@ class LogInForm extends Component {
       <Form onChange={this.handleChange} onSubmit={this.handleSubmit}>
         <Form.Input
           label='Editor'
-          name='editor'
+          name='name'
           placeholder='your name'
-          value={this.state.editor}
+          value={this.state.name}
           required
         />
         <Form.Input
@@ -53,7 +52,9 @@ class LogInForm extends Component {
           value={this.state.cuid}
         />
         {this.renderAlert()}
-        <Form.Button type='submit' color='green'>Log In</Form.Button>
+        <Form.Button type='submit' color='green'>
+          Log In
+        </Form.Button>
       </Form>
     )
   }

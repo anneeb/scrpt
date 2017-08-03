@@ -16,13 +16,6 @@ class EditMenu extends Component {
     {icon: 'strikethrough', style: 'STRIKETHROUGH'}
   ]
 
-  renderSave() {
-    if (this.props.disableSave())
-      return <Button compact positive disabled>Saved!</Button>
-    else
-      return <Button compact positive onClick={this.props.createVersion}>Save</Button>
-  }
-
   render () {
     const editorState = this.props.editorState
     const currentStyle = editorState.getCurrentInlineStyle()
@@ -52,7 +45,12 @@ class EditMenu extends Component {
             style={type.style}
           />
         )}
-        {this.renderSave()}
+        <Button compact positive
+          disabled={this.props.saveDisabled}
+          onClick={this.props.createVersion}
+        >
+          Save
+        </Button>
       </div>
     )
   }

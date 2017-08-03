@@ -11,7 +11,9 @@ class LogInModal extends Component {
           Edit
         </Button>
       }>
-        <Modal.Header>Log In</Modal.Header>
+        <Modal.Header>
+          Log In
+        </Modal.Header>
         <Modal.Content>
           <LogInForm cuid={this.props.cuid} />
         </Modal.Content>

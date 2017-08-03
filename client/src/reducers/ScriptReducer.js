@@ -32,7 +32,7 @@ export default function (state = {}, action) {
         script: {
           ...state.script,
           versions: state.script.versions.map(v => {
-            return v.id === action.payload.id ? {...v, url: action.payload.url} : v
+            return v.id === action.payload.id ? { ...v, url: action.payload.url } : v
           })
         }
       }

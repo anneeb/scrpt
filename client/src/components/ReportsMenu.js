@@ -15,7 +15,7 @@ class ReportsMenu extends Component {
     Object.keys(characters).forEach(name => characters[name] = true)
     this.props.setFilters({
       id: this.props.id,
-      filters: filters
+      filters
     })
   }
 
@@ -26,7 +26,7 @@ class ReportsMenu extends Component {
     act.scenes.forEach(s => s.show = allShow)
     this.props.setFilters({
       id: this.props.id,
-      filters: filters
+      filters
     })
   }
 
@@ -37,7 +37,7 @@ class ReportsMenu extends Component {
     act.show = act.scenes.some(s => s.show)
     this.props.setFilters({
       id: this.props.id,
-      filters: filters
+      filters
     })
   }
 
@@ -47,7 +47,7 @@ class ReportsMenu extends Component {
     Object.keys(characters).forEach(name => characters[name] = allShow)
     this.props.setFilters({
       id: this.props.id,
-      filters: filters
+      filters
     })
   }
 
@@ -56,7 +56,7 @@ class ReportsMenu extends Component {
     filters.characters[name] = show
     this.props.setFilters({
       id: this.props.id,
-      filters: filters
+      filters
     })
   }
 
@@ -66,8 +66,7 @@ class ReportsMenu extends Component {
       const checkboxes = act.scenes.map((scene, sIdx) => {
         const show = scene.show
         return (
-          <Checkbox
-            as={Menu.Item}
+          <Checkbox as={Menu.Item}
             key={sIdx}
             label={`${aIdx + 1}.${sIdx + 1} - ${scene.title}`}
             checked={show}
@@ -82,8 +81,7 @@ class ReportsMenu extends Component {
             {`${aIdx + 1}. ${act.title}`}
           </Accordion.Title>
           <Accordion.Content>
-            <Checkbox
-              as={Menu.Item}
+            <Checkbox as={Menu.Item}
               label='ALL'
               checked={allShow}
               onClick={() => this.toggleAllScenes(aIdx, !allShow)}
@@ -103,8 +101,7 @@ class ReportsMenu extends Component {
       const checkboxes = names.sort().map((name, i) => {
         const show = characters[name]
         return (
-          <Checkbox
-            as={Menu.Item}
+          <Checkbox as={Menu.Item}
             key={i}
             label={name}
             checked={show}
@@ -119,8 +116,7 @@ class ReportsMenu extends Component {
             Characters
           </Accordion.Title>
           <Accordion.Content>
-            <Checkbox
-              as={Menu.Item}
+            <Checkbox as={Menu.Item}
               label='ALL'
               checked={allShow}
               onClick={() => this.toggleAllCharacters(!allShow)}

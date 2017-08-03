@@ -36,16 +36,15 @@ export default function (state = {}, action) {
         version: { ...action.payload.version }
       }
     case ADD_PDF_URL:
-      if (state.version.id === action.payload.id)
-        return {
-          ...state,
-          version: {
-            ...state.version,
-            url: action.payload.url
-          }
-        }
-      else
+      if (state.version.id !== action.payload.id)
         return state
+      return {
+        ...state,
+        version: {
+          ...state.version,
+          url: action.payload.url
+        }
+      }
     case RESET_SCRIPT:
       return {}
     default:
