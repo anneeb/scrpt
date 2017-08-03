@@ -62,7 +62,7 @@ class ReportsMenu extends Component {
 
   renderActs = () => {
     return this.props.filters.acts.map((act, aIdx) => {
-      const allShow = act.scenes.every(scene => scene.show)
+      const allShow = !act.scenes.some(scene => !scene.show)
       const checkboxes = act.scenes.map((scene, sIdx) => {
         const show = scene.show
         return (
@@ -99,7 +99,7 @@ class ReportsMenu extends Component {
     const characters = this.props.filters.characters
     const names = Object.keys(characters)
     if (names.length) {
-      const allShow = names.every(name => characters[name])
+      const allShow = !names.some(name => !characters[name])
       const checkboxes = names.sort().map((name, i) => {
         const show = characters[name]
         return (
