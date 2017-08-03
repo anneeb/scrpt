@@ -98,12 +98,13 @@ class Pdf extends Component {
 
   createInlineMap = inlineRanges => {
     let inlines = {}
-    inlineRanges.forEach(obj => {
-      const offset = obj.offset
-      for (let i = 0; i < obj.length; i++) {
+    inlineRanges.forEach(range => {
+      const offset = range.offset
+      const style = range.style
+      for (let i = 0; i < range.length; i++) {
         inlines[offset + i] = {
           ...inlines[offset + i],
-          ...this.inlineStyles[obj.style]
+          ...this.inlineStyles[style]
         }
       }
     })
