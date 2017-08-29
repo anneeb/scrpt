@@ -1,5 +1,9 @@
 # _scrpt_
 
+A playwriting portal with in-editor styling, version control, and filterable PDF generation.
+
+You can find a live demo [here](https://scrpt.herokuapp.com).
+
 ## User Story
 
 As a reader, I want:
@@ -38,77 +42,70 @@ As a writer, I want:
 * React
   * React DOM
   * React Router DOM
-  * React Semantic UI
-  * DraftJS
+  * Semantic UI
+  * Formsy
 * Redux
   * React-Redux
-* Reactive javascript
-* WebSocket
-* PDFkit or jsPDF or Generatre pdf (react)
+* Cuid
+* Draft.js
+* PDFMake
+
 
 #### Server
 
 * Ruby on Rails
 * PostgreSQL
-* CUID
 
 ## Store State
 
 ```javascript
 state = {
-  auth: {
-    isLoggedIn: boolean
-    name: string
+  Auth: {
+    [cuid]: editor object {
+      id: integer,
+      name: string,
+    },
+    error: string
   },
-  script = {
+  Edit: {
+    editorState: object
+  },
+  Script: {
+    error: string,
+    script: {
+      cuid: string,
+      id: integer,
+      title: string,
+      editors: [ editor objects ],
+      versions: [ version objects ]
+    }
+  },
+  Report: {
     id: integer,
-    cuid: string,
-    title: string,
-    editor: {editorState},
-    versions: [
-      {
-        id: integer,
-        editors: [
-          {
-            name: string
-          }
-        ],
-        characters: [
-          {
-            name: string,
-            description: text
-          }
-        ],
-        acts: [
-          {
-            id: integer,
-            title: string,
-            index: float,
-            scenes: [
-              {
-                id: integer,
-                title: string,
-                index: float,
-                actions: [
-                  {
-                    id: integer,
-                    type: string,
-                    body: text,
-                    index: float,
-                    characters: [
-                      {
-                        id: integer,
-                        name: string
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
+    filters: {
+      acts: [ act objects {
+        title: string,
+        scenes: [ scene objects {
+          title: string,
+          show: boolean
+        }],
+        show: boolean
+      }],
+      characters: {
+        [name]: boolean
       }
-    ]
+    },
+    url: string
+  }
+  Version: {
+    active: integer,
+    version: version object {
+      created_at: date,
+      contentState: string,
+      id: integer,
+      editors: [ editor objects ],
+      url: string
+    }
   }
 }
 ```
