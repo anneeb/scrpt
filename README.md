@@ -19,7 +19,6 @@ As a writer, I want:
 * To simultaneously work on one document with other collaborators
 * To be able to revert back to older versions of the script
 
-
 ## Entity Relationship Diagram
 
 ![erd](./public/erd.jpeg)
@@ -33,7 +32,6 @@ As a writer, I want:
 
 
 ![wireframes](./public/wireframe_2.jpeg)
-
 
 ## Frameworks and Libraries
 
@@ -49,7 +47,6 @@ As a writer, I want:
 * Cuid
 * Draft.js
 * PDFMake
-
 
 #### Server
 
